@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preyar Piyush | Cyber Security & Tactical Analyst</title>
-    <meta name="google-site-verification" content="8D3U4fzta1xt2DujOnyz9A09fhOqsgvxt_RwMX9Kc" />
+    <title>Preyar Piyush | Cyber Security & AI Directory</title>
+    <meta name="google-site-verification" content="BD3U4f2ta1xt2DuJOnyz9A09fhOqsgvxt_Rw8NX9Kc" />
 
     <!-- JSON-LD Person Schema Markup Verified -->
-    <script type="application/ld+json">
+    <script type="application/ld-json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
@@ -37,15 +37,35 @@
     </script>
 
     <style>
-        body, html {
+        /* डार्क ब्लू साइबरपंक और प्ले स्टोर थीम वेरिएबल्स */
+        :root {
+            --bg-dark-blue: #020813;
+            --surface-blue: #0b1528;
+            --neon-cyan: #00f0ff;
+            --neon-blue: #0066ff;
+            --neon-red: #ff0055;
+            --text-main: #e2e8f0;
+            --text-muted: #64748b;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #050505;
-            color: #00ff66;
-            font-family: 'Courier New', Courier, monospace;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: var(--neon-cyan) var(--bg-dark-blue);
         }
+
+        body, html {
+            background-color: var(--bg-dark-blue);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* मैट्रिक्स एनीमेशन बैकग्राउंड */
         #matrix {
             position: fixed;
             top: 0;
@@ -53,204 +73,239 @@
             width: 100%;
             height: 100%;
             z-index: 1;
-            opacity: 0.15;
+            opacity: 0.08; /* डार्क ब्लू को निखारने के लिए हल्का रखा है */
             pointer-events: none;
         }
+
         .terminal-overlay {
             position: relative;
             z-index: 2;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
+            max-width: 600px; /* प्ले स्टोर मोबाइल व्यू के लिए परफेक्ट चौड़ाई */
+            margin: 0 auto;
+            padding: 15px;
         }
-        .terminal-window {
-            background: rgba(10, 10, 10, 0.9);
-            border: 1px solid #00ff66;
-            box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
-            border-radius: 6px;
-            padding: 25px;
-            margin-bottom: 30px;
+
+        /* 1. प्रोफाइल सेक्शन (सबसे ऊपर) */
+        .profile-header {
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--surface-blue) 0%, var(--bg-dark-blue) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            margin-bottom: 25px;
+            margin-top: 15px;
         }
-        .terminal-header {
-            display: flex;
-            gap: 8px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 15px var(--neon-blue);
+            margin: 0 auto 15px auto;
         }
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27c93f; }
-        h1 { color: #fff; font-size: 2rem; margin: 0 0 10px 0; text-shadow: 0 0 10px #00ff66; }
-        h2 { color: #888; font-size: 1.1rem; margin-bottom: 20px; }
-        .prompt { color: #ff3366; font-weight: bold; }
-        .blink { animation: blinker 1s linear infinite; color: #00ff66; }
-        @keyframes blinker { 50% { opacity: 0; } }
-        .badge-grid { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
-        .badge {
-            background: #111;
-            border: 1px solid #333;
-            color: #00ff66;
-            padding: 8px 16px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 12px;
-            transition: 0.3s;
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-blue);
         }
-        .badge:hover {
-            background: #00ff66;
-            color: #000;
-            box-shadow: 0 0 15px rgba(0, 255, 102, 0.6);
+
+        .profile-tagline {
+            color: var(--neon-cyan);
+            font-size: 0.8rem;
             font-weight: bold;
+            letter-spacing: 2px;
+            margin: 5px 0 12px 0;
+            text-transform: uppercase;
         }
+
+        .profile-bio {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* सोशल लिंक्स ग्रिड */
+        .badge-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .badge {
+            color: var(--text-main);
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            text-decoration: none;
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .badge:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark-blue);
+            box-shadow: 0 0 8px var(--neon-cyan);
+        }
+
+        /* 2. लाइव सर्च पेलोड बार */
         #toolSearch {
             width: 100%;
-            box-sizing: border-box;
-            max-width: 500px;
-            padding: 12px;
-            background: #000;
-            border: 1px solid #ff3366;
-            color: #ff3366;
-            font-family: 'Courier New', monospace;
-            border-radius: 4px;
-            outline: none;
+            padding: 14px;
+            background: var(--surface-blue);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: #fff;
+            border-radius: 12px;
+            font-size: 0.95rem;
             margin-bottom: 20px;
+            outline: none;
         }
-        .filter-btn {
-            background: #000;
-            border: 1px solid #00ff66;
-            color: #00ff66;
-            padding: 6px 14px;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
+
+        #toolSearch:focus {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
         }
-        .filter-btn.active {
-            background: #00ff66;
-            color: #000;
-            font-weight: bold;
+
+        .section-title {
+            font-size: 1.1rem;
+            color: var(--neon-cyan);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
-        .filter-btn.hack-btn { border-color: #ff3366; color: #ff3366; }
-        .filter-btn.hack-btn.active { background: #ff3366; color: #000; }
-        .tool-card {
-            background: rgba(5, 5, 5, 0.9);
-            border: 1px solid #333;
-            padding: 15px;
-            border-radius: 4px;
+
+        /* 3. कॉन्टैक्ट लिस्ट स्टाइल रो (Row) सिस्टम */
+        .tools-list {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 6px; /*緊湊型 पैडिंग जिससे कॉन्टैक्ट नंबर जैसा फील आए */
         }
-        .tool-card.hacking-priority {
-            border-color: #ff3366;
-            box-shadow: 0 0 10px rgba(255, 51, 102, 0.1);
+
+        .tool-item {
+            display: flex;
+            align-items: center;
+            background-color: var(--surface-blue);
+            padding: 10px 14px;
+            border-radius: 12px;
+            transition: all 0.15s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+            will-change: transform; /* सुपर स्मूथ 20 पेज स्क्रॉलिंग फिजिक्स के लिए */
         }
-        .tool-link {
-            display: block;
-            text-align: center;
-            padding: 8px;
-            text-decoration: none;
+
+        .tool-item:hover {
+            border-color: rgba(0, 240, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        /* प्ले स्टोर टॉप चार्ट्स सीरियल नंबर */
+        .tool-index {
+            font-size: 1rem;
             font-weight: bold;
-            font-size: 13px;
-            margin-top: 15px;
-            border-radius: 3px;
+            color: var(--text-muted);
+            width: 32px;
+            flex-shrink: 0;
         }
-        .lnk-sec { background: #00ff66; color: #000; }
-        .lnk-hak { background: #ff3366; color: #000; }
-        footer { text-align: center; color: #444; font-size: 11px; margin-top: 5px; }
+
+        /* टूल आइकॉन */
+        .tool-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: #121d33;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .tool-details {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .tool-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .tool-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .tool-action-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--neon-cyan);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .tool-item:hover .tool-action-btn {
+            background-color: var(--neon-cyan);
+            color: var(--bg-dark-blue);
+        }
     </style>
 </head>
 <body>
 
+    <!-- मैट्रिक्स एनीमेशन -->
     <canvas id="matrix"></canvas>
 
     <div class="terminal-overlay">
         
-        
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <div class="dot dot-red"></div>
-                <div class="dot dot-yellow"></div>
-                <div class="dot dot-green"></div>
-            </div>
-            <p><span class="prompt">root@piyush:~#</span> ./display_identity.sh</p>
-            <h1>Preyar Piyush (प्रेयर पीयूष)</h1>
-            <h2>[+] White Hat Ethical Hacker & Cyber Security Analyst</h2>
-            <p style="color: #aaa; line-height: 1.6;">
-                Welcome to the digital operations node. Specializing in penetration testing, threat hunting, and automated secure infrastructure deployments. Securing the perimeter layer by layer.
-            </p>
-
-            <!-- Corrected Custom Ecosystem Badges with rel="me" -->
-            <div class="badge-grid">
-                <a class="badge" href="https://github.com" target="_blank" rel="me">root@github</a>
-                <a class="badge" href="https://gitlab.com" target="_blank" rel="me">core@gitlab</a>
-                <a class="badge" href="https://linkedin.com" target="_blank" rel="me">sec@linkedin</a>
-                <a class="badge" href="https://tryhackme.com" target="_blank" rel="me">labs@tryhackme</a>
-                <a class="badge" href="https://google.com" target="_blank" rel="me">dev@google</a>
-            </div>
-        </div>
-
-        <!-- AI Tools Hub -->
-        <div class="terminal-window" style="border-color: #ff3366; box-shadow: 0 0 20px rgba(255, 51, 102, 0.15);">
-            <div class="terminal-header">
-                <div class="dot dot-red"></div>
-                <div class="dot dot-yellow"></div>
-                <div class="dot dot-green"></div>
-            </div>
-            <p><span class="prompt">root@piyush:~#</span> ./load_ai_exploits.py --target=all</p>
-            <h2 style="color: #ff3366; margin-top: 5px;">⚡ TACTICAL AI HUB DIRECTORY</h2>
+        <!-- प्रोफाइल अनुभाग -->
+        <header class="profile-header">
+            <div class="profile-avatar" style="background: url('https://github.com.png') center/cover;"></div>
+            <h1 class="profile-name">Preyar Piyush</h1>
+            <div class="profile-tagline">[ White Hat Ethical Hacker ]</div>
+            <p class="profile-bio">प्रेयर पीयूष। लखनऊ, उत्तर प्रदेश से एक साइबर सुरक्षा विशेषज्ञ। मैं सिस्टम्स पैचिंग, नेटवर्क पेन-टेस्टिंग और एडवांस AI ऑटोमेशन डायरेक्टरी पर काम करता हूँ।</p>
             
-            <div style="margin-bottom: 25px;">
-                <input type="text" id="toolSearch" onkeyup="renderTools()" placeholder="[🔍 Enter Search Payload...]">
-                
-                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                    <button class="filter-btn active" onclick="filterCategory('all', this)">ALL_NODES (<span id="total-count">0</span>)</button>
-                    <button class="filter-btn hack-btn" onclick="filterCategory('hacking', this)">💀 HACKING_TOOLS</button>
-                    <button class="filter-btn" onclick="filterCategory('code', this)">DEV_CORE</button>
-                    <button class="filter-btn" onclick="filterCategory('text', this)">TEXT_LLM</button>
-                    <button class="filter-btn" onclick="filterCategory('image', this)">IMAGE_AI</button>
-                </div>
+            <div class="badge-grid">
+                <a href="https://github.com" class="badge" target="_blank">💻 GitHub</a>
+                <a href="https://linkedin.com" class="badge" target="_blank">🔗 LinkedIn</a>
+                <a href="https://tryhackme.com" class="badge" target="_blank">💀 TryHackMe</a>
+                <a href="https://gitlab.com" class="badge" target="_blank">🦊 GitLab</a>
             </div>
+        </header>
 
-            <div id="toolsGridContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px;">
-                <!-- Injected via Database Engine -->
-            </div>
-        </div>
+        <!-- लाइव सर्च बार इंजन -->
+        <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="🔍 Enter Search Payload...">
 
-        <footer>
-            [STATUS: LIVE DEPLOYED] • CC2026 PREYAR PYUSH. IDENTITY REPLICATED.<span class="blink">_</span>
-        </footer>
+        <h2 class="section-title">⚡ Core Tools Dashboard</h2>
+        
+        <!-- 20+ पेज की कॉन्टैक्ट स्क्रॉलिंग डायरेक्टरी -->
+        <div class="tools-list" id="toolsListContainer"></div>
+
     </div>
 
-    <!-- DB Resource Link -->
-    <script src="tools-data.js"></script>
-
+    <!-- टूल्स जनरेटर और सर्च स्क्रिप्ट -->
     <script>
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const katakana = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ01';
-    const alphabet = katakana.split('');
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    const rainDrops = [];
-    for (let x = 0; x < columns; x++) { rainDrops[x] = 1; }
-    const drawMatrix = () => {
-        ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#00ff66';
-        ctx.font = fontSize + 'px monospace';
-        for (let i = 0; i < rainDrops.length; i++) {
-            const text = alphabet[Math.floor(Math.random() * alphabet.length)];
-            ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-            if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) { rainDrops[i] = 0; }
-            rainDrops[i]++;
-        }
-    };
-    setInterval(drawMatrix, 30);
-    window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
-
-    let currentCategory = 'all';
-    
+        // A to Z सॉर्टेड हैकिंग टूल्स डेटाबेस
+        const hackingTools = [
+            { name: "Aircrack-ng", desc: "WiFi network security assessment & auditing tool" },
+            { name: "Burp Suite", desc: "Web application security testing & vulnerability scanning" },
+            { name: "Ghidra", desc: "NSA reverse engineering software analysis framework" },
+            { name: "Hashcat", desc: "Advanced and fastest password cracking utility" },
+            { name: "Metasploit", desc: "Penetration testing and exploit development framework" },
+            { name: "Nmap", desc: "Network mapper and security vulnerability scanner" },
+            { name: "Sqlmap", desc: "Automatic SQL injection and database takeover tool" },
+            
