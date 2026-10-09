@@ -6,7 +6,7 @@
     <title>Preyar Piyush | Cyber Security & Tactical Analyst</title>
     <meta name="google-site-verification" content="8D3U4fzta1xt2DujOnyz9A09fhOqsgvxt_RwMX9Kc" />
 
-    <!-- JSON-LD Person Schema Markup -->
+    <!-- JSON-LD Person Schema Markup Verified -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -26,17 +26,16 @@
       },
       "url": "https://github.io",
       "sameAs": [
-        "https://github.com",
-        "https://gitlab.com",
-        "https://linkedin.com",
-        "https://tryhackme.com",
-        "https://google.com"
+        "https://63piyush63.github.com",
+        "https://63piyush63.gitlab.com",
+        "https://63piyush63.linkedin.com",
+        "https://63piyush63.tryhackme.com",
+        "https://me.developers.google.com/u/109809989349859704969"
       ]
     }
     </script>
 
     <style>
-        /* Cyberpunk Hackers Grid Layout */
         body, html {
             margin: 0;
             padding: 0;
@@ -46,8 +45,6 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
-
-        /* Matrix Background Canvas Location */
         #matrix {
             position: fixed;
             top: 0;
@@ -58,7 +55,6 @@
             opacity: 0.15;
             pointer-events: none;
         }
-
         .terminal-overlay {
             position: relative;
             z-index: 2;
@@ -66,8 +62,6 @@
             margin: 40px auto;
             padding: 20px;
         }
-
-        /* Hacker Shell Header Window */
         .terminal-window {
             background: rgba(10, 10, 10, 0.9);
             border: 1px solid #00ff66;
@@ -76,7 +70,6 @@
             padding: 25px;
             margin-bottom: 30px;
         }
-
         .terminal-header {
             display: flex;
             gap: 8px;
@@ -84,20 +77,15 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
-
         .dot { width: 12px; height: 12px; border-radius: 50%; }
         .dot-red { background: #ff5f56; }
         .dot-yellow { background: #ffbd2e; }
         .dot-green { background: #27c93f; }
-
         h1 { color: #fff; font-size: 2rem; margin: 0 0 10px 0; text-shadow: 0 0 10px #00ff66; }
         h2 { color: #888; font-size: 1.1rem; margin-bottom: 20px; }
-        
         .prompt { color: #ff3366; font-weight: bold; }
         .blink { animation: blinker 1s linear infinite; color: #00ff66; }
         @keyframes blinker { 50% { opacity: 0; } }
-
-        /* Tactical Badges Styling */
         .badge-grid { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
         .badge {
             background: #111;
@@ -115,8 +103,6 @@
             box-shadow: 0 0 15px rgba(0, 255, 102, 0.6);
             font-weight: bold;
         }
-
-        /* Search inputs & Controls */
         #toolSearch {
             width: 100%;
             box-sizing: border-box;
@@ -129,9 +115,7 @@
             border-radius: 4px;
             outline: none;
             margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(255, 51, 102, 0.2);
         }
-
         .filter-btn {
             background: #000;
             border: 1px solid #00ff66;
@@ -148,8 +132,6 @@
         }
         .filter-btn.hack-btn { border-color: #ff3366; color: #ff3366; }
         .filter-btn.hack-btn.active { background: #ff3366; color: #000; }
-
-        /* Dynamic Database Output Cards */
         .tool-card {
             background: rgba(5, 5, 5, 0.9);
             border: 1px solid #333;
@@ -175,13 +157,11 @@
         }
         .lnk-sec { background: #00ff66; color: #000; }
         .lnk-hak { background: #ff3366; color: #000; }
-
         footer { text-align: center; color: #444; font-size: 11px; margin-top: 5px; }
     </style>
 </head>
 <body>
 
-    <!-- Dynamic Animated Background Canvas Matrix -->
     <canvas id="matrix"></canvas>
 
     <div class="terminal-overlay">
@@ -200,16 +180,17 @@
                 Welcome to the digital operations node. Specializing in penetration testing, threat hunting, and automated secure infrastructure deployments. Securing the perimeter layer by layer.
             </p>
 
+            <!-- Corrected Custom Ecosystem Badges with rel="me" -->
             <div class="badge-grid">
-                <a class="badge" href="https://github.com" target="_blank" rel="noopener">root@github</a>
-                <a class="badge" href="https://gitlab.com" target="_blank" rel="noopener">core@gitlab</a>
-                <a class="badge" href="https://linkedin.com" target="_blank" rel="noopener">sec@linkedin</a>
-                <a class="badge" href="https://tryhackme.com" target="_blank" rel="noopener">labs@tryhackme</a>
-                <a class="badge" href="https://google.com" target="_blank" rel="noopener">dev@google</a>
+                <a class="badge" href="https://github.com" target="_blank" rel="me">root@github</a>
+                <a class="badge" href="https://gitlab.com" target="_blank" rel="me">core@gitlab</a>
+                <a class="badge" href="https://linkedin.com" target="_blank" rel="me">sec@linkedin</a>
+                <a class="badge" href="https://tryhackme.com" target="_blank" rel="me">labs@tryhackme</a>
+                <a class="badge" href="https://google.com" target="_blank" rel="me">dev@google</a>
             </div>
         </div>
 
-        <!-- AI Tools Terminal Window -->
+        <!-- AI Tools Hub -->
         <div class="terminal-window" style="border-color: #ff3366; box-shadow: 0 0 20px rgba(255, 51, 102, 0.15);">
             <div class="terminal-header">
                 <div class="dot dot-red"></div>
@@ -232,47 +213,43 @@
             </div>
 
             <div id="toolsGridContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px;">
-                <!-- Output injected via JavaScript Engine -->
+                <!-- Injected via Database Engine -->
             </div>
         </div>
 
         <footer>
-            [STATUS: LIVE DEPLOYED] • CC2026 PREYAR PIYUSH. IDENTITY REPLICATED.<span class="blink">_</span>
+            [STATUS: LIVE DEPLOYED] • CC2026 PREYAR PYUSH. IDENTITY REPLICATED.<span class="blink">_</span>
         </footer>
     </div>
 
-    <!-- Inject Script Files Reference -->
+    <!-- DB Resource Link -->
     <script src="tools-data.js"></script>
 
-    <!-- Matrix Animation and Engine Script -->
     <script>
-    // 1. Matrix Digital Rain Logic
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
-
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
     const katakana = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ01';
     const alphabet = katakana.split('');
-
     const fontSize = 16;
     const columns = canvas.width / fontSize;
-
     const rainDrops = [];
-    for (let x = 0; x < columns; x++) {
-        rainDrops[x] = 1;
-    }
-
+    for (let x = 0; x < columns; x++) { rainDrops[x] = 1; }
     const drawMatrix = () => {
         ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
         ctx.fillStyle = '#00ff66';
         ctx.font = fontSize + 'px monospace';
-
         for (let i = 0; i < rainDrops.length; i++) {
             const text = alphabet[Math.floor(Math.random() * alphabet.length)];
             ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+            if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) { rainDrops[i] = 0; }
+            rainDrops[i]++;
+        }
+    };
+    setInterval(drawMatrix, 30);
+    window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
-        
+    let currentCategory = 'all';
+    
