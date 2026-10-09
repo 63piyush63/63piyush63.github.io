@@ -297,15 +297,117 @@
 
     </div>
 
+
     <!-- टूल्स जनरेटर और सर्च स्क्रिप्ट -->
-    <script>
-        // A to Z सॉर्टेड हैकिंग टूल्स डेटाबेस
-        const hackingTools = [
-            { name: "Aircrack-ng", desc: "WiFi network security assessment & auditing tool" },
-            { name: "Burp Suite", desc: "Web application security testing & vulnerability scanning" },
-            { name: "Ghidra", desc: "NSA reverse engineering software analysis framework" },
-            { name: "Hashcat", desc: "Advanced and fastest password cracking utility" },
-            { name: "Metasploit", desc: "Penetration testing and exploit development framework" },
-            { name: "Nmap", desc: "Network mapper and security vulnerability scanner" },
-            { name: "Sqlmap", desc: "Automatic SQL injection and database takeover tool" },
+<script>
+    // A to Z सॉर्टेड हैकिंग टूल्स डेटाबेस
+    const hackingTools = [
+        { name: "Aircrack-ng", desc: "WiFi network security assessment & auditing tool" },
+        { name: "Burp Suite", desc: "Web application security testing & vulnerability scanning" },
+        { name: "Ghidra", desc: "NSA reverse engineering software analysis framework" },
+        { name: "Hashcat", desc: "Advanced and fastest password cracking utility" },
+        { name: "Metasploit", desc: "Penetration testing and exploit development framework" },
+        { name: "Nmap", desc: "Network mapper and security vulnerability scanner" },
+        { name: "Sqlmap", desc: "Automatic SQL injection and database takeover tool" },
+        { name: "Wireshark", desc: "Interactive network packet analyzer and sniffer" }
+    ].sort((a, b) => a.name.localeCompare(b.name));
+
+    const aiTools = [
+        { name: "ChatGPT", desc: "Conversational intelligence & advanced scripting assist" },
+        { name: "Claude AI", desc: "Advanced code review and structural logic analysis" },
+        { name: "GitHub Copilot", desc: "AI pair programmer for swift execution" },
+        { name: "Midjourney", desc: "High-fidelity conceptual graphic generation engine" }
+    ];
+
+    const container = document.getElementById('toolsListContainer');
+    let htmlContent = "";
+    let currentGlobalIndex = 1;
+
+    // 1. Hacking Tools Render
+    hackingTools.forEach(tool => {
+        htmlContent += `
+            <div class="tool-item" style="border-left: 3px solid var(--neon-red);"> 
+                <div class="tool-index">${currentGlobalIndex++}</div>
+                <div class="tool-icon" style="color: var(--neon-red);">💀</div>
+                <div class="tool-details">
+                    <div class="tool-name">${tool.name}</div>
+                    <div class="tool-desc">${tool.desc}</div>
+                </div>
+                <button class="tool-action-btn" style="color: var(--neon-red);">Launch</button>
+            </div>
+        `;
+    });
+
+    // 2. 20+ Pages Contact Scrolling Simulation (200 Items)
+    for (let i = 1; i <= 200; i++) {
+        const sample = aiTools[(i - 1) % aiTools.length];
+        htmlContent += `
+            <div class="tool-item">
+                <div class="tool-index">${currentGlobalIndex++}</div>
+                <div class="tool-icon" style="color: var(--neon-cyan);">${sample.name.substring(0,2)}</div>
+                <div class="tool-details">
+                    <div class="tool-name">${sample.name} #${i}</div>
+                    <div class="tool-desc">${sample.desc}</div>
+                </div>
+                <button class="tool-action-btn">Open</button>
+            </div>
+        `;
+    }
+
+    container.innerHTML = htmlContent;
+
+    // Instant Payload Filtering Function
+    function filterTools() {
+        let input = document.getElementById('toolSearch').value.toLowerCase();
+        let items = document.getElementsByClassName('tool-item');
+        
+        for (let i = 0; i < items.length; i++) {
+            let nameEl = items[i].querySelector('.tool-name');
+            let descEl = items[i].querySelector('.tool-desc');
             
+            let name = nameEl ? nameEl.innerText.toLowerCase() : "";
+            let desc = descEl ? descEl.innerText.toLowerCase() : "";
+            
+            if (name.includes(input) || desc.includes(input)) {
+                items[i].style.display = "flex";
+            } else {
+                items[i].style.display = "none";
+            }
+        }
+    }
+
+    // --- Matrix Rain Animation Engine ---
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const katakana = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const alphabet = katakana.split('');
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const rainDrops = Array.from({ length: columns }).fill(1);
+
+    const drawMatrix = () => {
+        ctx.fillStyle = 'rgba(2, 8, 19, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#00f0ff';
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < rainDrops.length; i++) {
+            const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+            ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+            if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                rainDrops[i] = 0;
+            }
+            rainDrops[i]++;
+        }
+    };
+    setInterval(drawMatrix, 30);
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+</script>
+</body>
+</html>
