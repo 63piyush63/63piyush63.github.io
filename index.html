@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preyar Piyush | White Hat Ethical Hacker & Cybersecurity Enthusiast</title>
-    <meta name="google-site-verification" content="RO3U41Ztalxt2BJuyDnzyz9AO9fW0qsgVxt_RwNx9Kc" />
-    
-    <!-- JSON-LD Schema Markup for Knowledge Card -->
+    <title>Preyar Piyush | Cyber Security & Tactical Analyst</title>
+    <meta name="google-site-verification" content="8D3U4fzta1xt2DujOnyz9A09fhOqsgvxt_RwMX9Kc" />
+
+    <!-- JSON-LD Person Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Preyar Piyush",
       "alternateName": "प्रेयर पीयूष",
-      "jobTitle": "Cyber Security Analyst",
+      "jobTitle": "White Hat Ethical Hacker & Cyber Security Analyst",
       "worksFor": {
         "@type": "Organization",
         "name": "GitHub / Freelance"
@@ -36,141 +36,243 @@
     </script>
 
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0d1117; color: #c9d1d9; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .container { max-width: 700px; width: 100%; background: #161b22; padding: 30px; border-radius: 8px; border: 1px solid #30363d; box-shadow: 0 4px 10px rgba(0,0,0,0.3); margin: 20px; }
-        h1 { color: #58a6ff; margin-bottom: 5px; }
-        h2 { color: #8b949e; font-size: 1.1rem; font-weight: 400; margin-top: 0; margin-bottom: 25px; }
-        p { line-height: 1.6; color: #8b949e; }
-        .highlight { color: #58a6ff; font-weight: bold; }
-        .links-section { margin-top: 30px; border-top: 1px solid #30363d; padding-top: 20px; }
-        .links-section h3 { color: #f0f6fc; font-size: 1rem; }
-        .badge-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .badge { background: #21262d; border: 1px solid #30363d; color: #58a6ff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: background 0.2s, border-color 0.2s; }
-        .badge:hover { background: #30363d; border-color: #8b949e; color: #f0f6fc; }
-        footer { margin-top: 40px; text-align: center; font-size: 0.8rem; color: #484f58; }
+        /* Cyberpunk Hackers Grid Layout */
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #050505;
+            color: #00ff66;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Matrix Background Canvas Location */
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .terminal-overlay {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* Hacker Shell Header Window */
+        .terminal-window {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid #00ff66;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        h1 { color: #fff; font-size: 2rem; margin: 0 0 10px 0; text-shadow: 0 0 10px #00ff66; }
+        h2 { color: #888; font-size: 1.1rem; margin-bottom: 20px; }
+        
+        .prompt { color: #ff3366; font-weight: bold; }
+        .blink { animation: blinker 1s linear infinite; color: #00ff66; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        /* Tactical Badges Styling */
+        .badge-grid { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+        .badge {
+            background: #111;
+            border: 1px solid #333;
+            color: #00ff66;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+        .badge:hover {
+            background: #00ff66;
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.6);
+            font-weight: bold;
+        }
+
+        /* Search inputs & Controls */
+        #toolSearch {
+            width: 100%;
+            box-sizing: border-box;
+            max-width: 500px;
+            padding: 12px;
+            background: #000;
+            border: 1px solid #ff3366;
+            color: #ff3366;
+            font-family: 'Courier New', monospace;
+            border-radius: 4px;
+            outline: none;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(255, 51, 102, 0.2);
+        }
+
+        .filter-btn {
+            background: #000;
+            border: 1px solid #00ff66;
+            color: #00ff66;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        .filter-btn.active {
+            background: #00ff66;
+            color: #000;
+            font-weight: bold;
+        }
+        .filter-btn.hack-btn { border-color: #ff3366; color: #ff3366; }
+        .filter-btn.hack-btn.active { background: #ff3366; color: #000; }
+
+        /* Dynamic Database Output Cards */
+        .tool-card {
+            background: rgba(5, 5, 5, 0.9);
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .tool-card.hacking-priority {
+            border-color: #ff3366;
+            box-shadow: 0 0 10px rgba(255, 51, 102, 0.1);
+        }
+        .tool-link {
+            display: block;
+            text-align: center;
+            padding: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            margin-top: 15px;
+            border-radius: 3px;
+        }
+        .lnk-sec { background: #00ff66; color: #000; }
+        .lnk-hak { background: #ff3366; color: #000; }
+
+        footer { text-align: center; color: #444; font-size: 11px; margin-top: 5px; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Preyar Piyush</h1>
-    <h2>White Hat Ethical Hacker & Cybersecurity Enthusiast</h2>
-    
-    <p>Welcome to my digital official footprint. I am <span class="highlight">Preyar Piyush</span>, a dedicated <strong>Cyber Security Analyst</strong>.</p>
-    <p>With an active presence across major technical nodes and automated open-source workflows, I focus heavily on penetration testing, threat modeling, and defensive infrastructure architectures.</p>
-    
-    <div class="links-section">
-        <h3>Verified Digital Ecosystem (Connected Nodes)</h3>
-        <div class="badge-grid">
-            <a class="badge" href="https://github.com" rel="me" target="_blank">GitHub Profile</a>
-            <a class="badge" href="https://gitlab.com" rel="me" target="_blank">GitLab Profile</a>
-            <a class="badge" href="https://linkedin.com" rel="me" target="_blank">LinkedIn Network</a>
-            <a class="badge" href="https://tryhackme.com" rel="me" target="_blank">TryHackMe Labs</a>
-            <a class="badge" href="https://google.com" rel="me" target="_blank">Google Developer ID</a>
-        </div>
-    </div>
-    
-    <!-- Main AI Tools Hub Section with Hacking Priority -->
-<section id="ai-hub" style="padding: 40px 15px; font-family: 'Segoe UI', system-ui, sans-serif; background: #161b22; color: #c9d1d9; border-radius: 6px; margin-top: 30px; border: 1px solid #30363d;">
-    <div style="text-align: center;">
-        <h2 style="color: #58a6ff; font-size: 1.8rem; margin-bottom: 5px;">⚡ Ultimate AI Tools Directory</h2>
-        <p style="color: #8b949e; font-size: 0.95rem; margin-bottom: 25px;">दुनिया भर के सबसे शक्तिशाली AI टूल्स। (Cyber Security टूल्स टॉप पर हैं)</p>
+    <!-- Dynamic Animated Background Canvas Matrix -->
+    <canvas id="matrix"></canvas>
+
+    <div class="terminal-overlay">
         
-        <!-- Search & Control Layout -->
-        <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; margin-bottom: 25px;">
-            <input type="text" id="toolSearch" onkeyup="renderTools()" placeholder="🔍 सर्च करें (जैसे: PentestGPT, ChatGPT...)" 
-                   style="width: 100%; max-width: 400px; padding: 12px 16px; border-radius: 20px; border: 2px solid #30363d; background: #0d1117; color: #fff; font-size: 0.95rem; outline: none;">
+        
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+            </div>
+            <p><span class="prompt">root@piyush:~#</span> ./display_identity.sh</p>
+            <h1>Preyar Piyush (प्रेयर पीयूष)</h1>
+            <h2>[+] White Hat Ethical Hacker & Cyber Security Analyst</h2>
+            <p style="color: #aaa; line-height: 1.6;">
+                Welcome to the digital operations node. Specializing in penetration testing, threat hunting, and automated secure infrastructure deployments. Securing the perimeter layer by layer.
+            </p>
+
+            <div class="badge-grid">
+                <a class="badge" href="https://github.com" target="_blank" rel="noopener">root@github</a>
+                <a class="badge" href="https://gitlab.com" target="_blank" rel="noopener">core@gitlab</a>
+                <a class="badge" href="https://linkedin.com" target="_blank" rel="noopener">sec@linkedin</a>
+                <a class="badge" href="https://tryhackme.com" target="_blank" rel="noopener">labs@tryhackme</a>
+                <a class="badge" href="https://google.com" target="_blank" rel="noopener">dev@google</a>
+            </div>
+        </div>
+
+        <!-- AI Tools Terminal Window -->
+        <div class="terminal-window" style="border-color: #ff3366; box-shadow: 0 0 20px rgba(255, 51, 102, 0.15);">
+            <div class="terminal-header">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+            </div>
+            <p><span class="prompt">root@piyush:~#</span> ./load_ai_exploits.py --target=all</p>
+            <h2 style="color: #ff3366; margin-top: 5px;">⚡ TACTICAL AI HUB DIRECTORY</h2>
             
-            <!-- Category Selection Bar -->
-            <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 5px;">
-                <button class="filter-btn active" onclick="filterCategory('all', this)" style="padding: 6px 12px; border-radius: 15px; border: 1px solid #30363d; background: #21262d; color: #fff; cursor: pointer; font-size: 13px;">All Tools (<span id="total-count">0</span>)</button>
-                <button class="filter-btn" onclick="filterCategory('hacking', this)" style="padding: 6px 12px; border-radius: 15px; border: 1px solid #ff4444; background: #0d1117; color: #ff4444; cursor: pointer; font-weight: bold; font-size: 13px;">💀 Hacking</button>
-                <button class="filter-btn" onclick="filterCategory('code', this)" style="padding: 6px 12px; border-radius: 15px; border: 1px solid #30363d; background: #0d1117; color: #8b949e; cursor: pointer; font-size: 13px;">Coding</button>
-                <button class="filter-btn" onclick="filterCategory('text', this)" style="padding: 6px 12px; border-radius: 15px; border: 1px solid #30363d; background: #0d1117; color: #8b949e; cursor: pointer; font-size: 13px;">Chat</button>
-            </div>
-        </div>
-
-        <!-- Live Content Display Grid -->
-        <div id="toolsGridContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; text-align: left;">
-            <!-- Rendered Dynamically -->
-        </div>
-    </div>
-</section>
-
-<!-- Include Global Database Engine -->
-<script src="tools-data.js"></script>
-
-<script>
-let currentCategory = 'all';
-
-document.addEventListener("DOMContentLoaded", () => {
-    if (typeof aiToolsData !== 'undefined') {
-        document.getElementById('total-count').innerText = aiToolsData.length;
-        renderTools();
-    }
-});
-
-function filterCategory(cat, element) {
-    currentCategory = cat;
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.style.background = '#0d1117';
-        btn.style.color = btn.innerText.includes("Hacking") ? '#ff4444' : '#8b949e';
-    });
-    element.style.background = '#21262d';
-    element.style.color = '#fff';
-    renderTools();
-}
-
-function renderTools() {
-    const searchVal = document.getElementById('toolSearch').value.toLowerCase();
-    const container = document.getElementById('toolsGridContainer');
-    if(!container || typeof aiToolsData === 'undefined') return;
-    container.innerHTML = ''; 
-
-    let filtered = aiToolsData.filter(tool => {
-        const matchesSearch = tool.name.toLowerCase().includes(searchVal) || tool.desc.toLowerCase().includes(searchVal);
-        const matchesCat = currentCategory === 'all' || tool.category === currentCategory;
-        return matchesSearch && matchesCat;
-    });
-
-    if (currentCategory === 'all') {
-        filtered.sort((a, b) => {
-            if (a.category === 'hacking' && b.category !== 'hacking') return -1;
-            if (a.category !== 'hacking' && b.category === 'hacking') return 1;
-            return 0;
-        });
-    }
-
-    if(filtered.length === 0) {
-        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #8b949e; padding: 20px;">कोई टूल नहीं मिला!</div>`;
-        return;
-    }
-
-    filtered.forEach(tool => {
-        const card = document.createElement('div');
-        const isHacking = tool.category === 'hacking';
-        
-        card.style.cssText = `background: #0d1117; border: ${isHacking ? "1px solid #ff4444" : "1px solid #30363d"}; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;`;
-        
-        card.innerHTML = `
-            <div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                    <h3 style="color: #f0f6fc; margin: 0; font-size: 1.1rem;">\${tool.name}</h3>
-                    <span style="font-size: 10px; padding: 1px 6px; border-radius: 8px; background: #21262d; color: ${isHacking ? "#ff4444" : "#58a6ff"}; font-weight: bold;">\${tool.category}</span>
+            <div style="margin-bottom: 25px;">
+                <input type="text" id="toolSearch" onkeyup="renderTools()" placeholder="[🔍 Enter Search Payload...]">
+                
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="filter-btn active" onclick="filterCategory('all', this)">ALL_NODES (<span id="total-count">0</span>)</button>
+                    <button class="filter-btn hack-btn" onclick="filterCategory('hacking', this)">💀 HACKING_TOOLS</button>
+                    <button class="filter-btn" onclick="filterCategory('code', this)">DEV_CORE</button>
+                    <button class="filter-btn" onclick="filterCategory('text', this)">TEXT_LLM</button>
+                    <button class="filter-btn" onclick="filterCategory('image', this)">IMAGE_AI</button>
                 </div>
-                <p style="color: #8b949e; font-size: 13px; line-height: 1.4; margin: 0 0 15px 0;">\${tool.desc}</p>
             </div>
-            <a href="\${tool.link}" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background: ${isHacking ? "#cc3333" : "#238636"}; color: #fff; padding: 8px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 13px;">Use Tool ↗</a>
-        `;
-        container.appendChild(card);
-    });
-}
-</script>
-    
-    <footer>
-        &copy; 2026 Preyar Piyush. Verified Identity Node. All rights reserved.
-    </footer>
-</div>
 
-</body>
-</html>
+            <div id="toolsGridContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px;">
+                <!-- Output injected via JavaScript Engine -->
+            </div>
+        </div>
+
+        <footer>
+            [STATUS: LIVE DEPLOYED] • CC2026 PREYAR PIYUSH. IDENTITY REPLICATED.<span class="blink">_</span>
+        </footer>
+    </div>
+
+    <!-- Inject Script Files Reference -->
+    <script src="tools-data.js"></script>
+
+    <!-- Matrix Animation and Engine Script -->
+    <script>
+    // 1. Matrix Digital Rain Logic
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const katakana = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ01';
+    const alphabet = katakana.split('');
+
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+
+    const rainDrops = [];
+    for (let x = 0; x < columns; x++) {
+        rainDrops[x] = 1;
+    }
+
+    const drawMatrix = () => {
+        ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#00ff66';
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < rainDrops.length; i++) {
+            const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+            ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+        
