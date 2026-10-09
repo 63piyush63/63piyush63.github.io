@@ -70,6 +70,103 @@
         </div>
     </div>
     
+    <!-- Main AI Tools Hub Section with Hacking Priority -->
+<section id="ai-hub" style="padding: 40px 15px; font-family: 'Segoe UI', system-ui, sans-serif; background: #161b22; color: #c9d1d9; border-radius: 6px; margin-top: 30px; border: 1px solid #30363d;">
+    <div style="text-align: center;">
+        <h2 style="color: #58a6ff; font-size: 1.8rem; margin-bottom: 5px;">⚡ Ultimate AI Tools Directory</h2>
+        <p style="color: #8b949e; font-size: 0.95rem; margin-bottom: 25px;">दुनिया भर के सबसे शक्तिशाली AI टूल्स। (Cyber Security टूल्स टॉप पर हैं)</p>
+        
+        <!-- Search & Control Layout -->
+        <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; margin-bottom: 25px;">
+            <input type="text" id="toolSearch" onkeyup="renderTools()" placeholder="🔍 सर्च करें (जैसे: PentestGPT, ChatGPT...)" 
+                   style="width: 100%; max-width: 400px; padding: 12px 16px; border-radius: 20px; border: 2px solid #30363d; background: #0d1117; color: #fff; font-size: 0.95rem; outline: none;">
+            
+            <!-- Category Selection Bar -->
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 5px;">
+                <button class="filter-btn active" onclick="filterCategory('all', this)" style="padding: 6px 12px; border-radius: 15px; border: 1px solid #30363d; background: #21262d; color: #fff; cursor: pointer; font-size: 13px;">All Tools (<span id="total-count">0</span>)</button>
+                <button class="filter-btn" onclick="filterCategory('hacking', this)" style="padding: 6px 12px; border-radius: 15px; border: 1px solid #ff4444; background: #0d1117; color: #ff4444; cursor: pointer; font-weight: bold; font-size: 13px;">💀 Hacking</button>
+                <button class="filter-btn" onclick="filterCategory('code', this)" style="padding: 6px 12px; border-radius: 15px; border: 1px solid #30363d; background: #0d1117; color: #8b949e; cursor: pointer; font-size: 13px;">Coding</button>
+                <button class="filter-btn" onclick="filterCategory('text', this)" style="padding: 6px 12px; border-radius: 15px; border: 1px solid #30363d; background: #0d1117; color: #8b949e; cursor: pointer; font-size: 13px;">Chat</button>
+            </div>
+        </div>
+
+        <!-- Live Content Display Grid -->
+        <div id="toolsGridContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; text-align: left;">
+            <!-- Rendered Dynamically -->
+        </div>
+    </div>
+</section>
+
+<!-- Include Global Database Engine -->
+<script src="tools-data.js"></script>
+
+<script>
+let currentCategory = 'all';
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (typeof aiToolsData !== 'undefined') {
+        document.getElementById('total-count').innerText = aiToolsData.length;
+        renderTools();
+    }
+});
+
+function filterCategory(cat, element) {
+    currentCategory = cat;
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.style.background = '#0d1117';
+        btn.style.color = btn.innerText.includes("Hacking") ? '#ff4444' : '#8b949e';
+    });
+    element.style.background = '#21262d';
+    element.style.color = '#fff';
+    renderTools();
+}
+
+function renderTools() {
+    const searchVal = document.getElementById('toolSearch').value.toLowerCase();
+    const container = document.getElementById('toolsGridContainer');
+    if(!container || typeof aiToolsData === 'undefined') return;
+    container.innerHTML = ''; 
+
+    let filtered = aiToolsData.filter(tool => {
+        const matchesSearch = tool.name.toLowerCase().includes(searchVal) || tool.desc.toLowerCase().includes(searchVal);
+        const matchesCat = currentCategory === 'all' || tool.category === currentCategory;
+        return matchesSearch && matchesCat;
+    });
+
+    if (currentCategory === 'all') {
+        filtered.sort((a, b) => {
+            if (a.category === 'hacking' && b.category !== 'hacking') return -1;
+            if (a.category !== 'hacking' && b.category === 'hacking') return 1;
+            return 0;
+        });
+    }
+
+    if(filtered.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #8b949e; padding: 20px;">कोई टूल नहीं मिला!</div>`;
+        return;
+    }
+
+    filtered.forEach(tool => {
+        const card = document.createElement('div');
+        const isHacking = tool.category === 'hacking';
+        
+        card.style.cssText = `background: #0d1117; border: ${isHacking ? "1px solid #ff4444" : "1px solid #30363d"}; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between;`;
+        
+        card.innerHTML = `
+            <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <h3 style="color: #f0f6fc; margin: 0; font-size: 1.1rem;">\${tool.name}</h3>
+                    <span style="font-size: 10px; padding: 1px 6px; border-radius: 8px; background: #21262d; color: ${isHacking ? "#ff4444" : "#58a6ff"}; font-weight: bold;">\${tool.category}</span>
+                </div>
+                <p style="color: #8b949e; font-size: 13px; line-height: 1.4; margin: 0 0 15px 0;">\${tool.desc}</p>
+            </div>
+            <a href="\${tool.link}" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background: ${isHacking ? "#cc3333" : "#238636"}; color: #fff; padding: 8px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 13px;">Use Tool ↗</a>
+        `;
+        container.appendChild(card);
+    });
+}
+</script>
+    
     <footer>
         &copy; 2026 Preyar Piyush. Verified Identity Node. All rights reserved.
     </footer>
