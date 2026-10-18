@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://63piyush63.github.io/sitemap.xml
