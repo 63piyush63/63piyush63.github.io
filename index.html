@@ -328,6 +328,13 @@ let currentGlobalIndex = 1;
 
 hackingTools.sort((a, b) => a.name.localeCompare(b.name));
 
+if (container) {
+    container.style.maxHeight = "75vh";
+    container.style.overflowY = "auto";
+    container.style.webkitOverflowScrolling = "touch";
+    container.style.scrollBehavior = "smooth";
+}
+
 hackingTools.forEach(tool => {
     htmlContent += `
         <div class="tool-item" style="border-left: 5px solid var(--neon-red); cursor: pointer;" onclick="window.open('${tool.url}', '_blank')">
@@ -359,39 +366,41 @@ aiTools.forEach(tool => {
 if (container) {
     container.innerHTML = htmlContent;
 }
-    
-    // --- Matrix Rain Animation Engine ---
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
 
-    const katakana = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const alphabet = katakana.split('');
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    const rainDrops = Array.from({ length: columns }).fill(1);
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-    const drawMatrix = () => {
+const katakana = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const alphabet = katakana.split('');
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const rainDrops = Array.from({ length: columns }).fill(1);
+
+const drawMatrix = () => {
     ctx.fillStyle = 'rgba(10, 25, 47, 0.08)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#00f0ff';
     ctx.font = fontSize + 'px monospace';
 
-        for (let i = 0; i < rainDrops.length; i++) {
-            const text = alphabet[Math.floor(Math.random() * alphabet.length)];
-            ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-            if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                rainDrops[i] = 0;
-            }
-            rainDrops[i]++;
+    for (let i = 0; i < rainDrops.length; i++) {
+        const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+        ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+        if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            rainDrops[i] = 0;
         }
-    };
-    setInterval(drawMatrix, 30);
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
+        rainDrops[i]++;
+    }
+};
+
+setInterval(drawMatrix, 30);
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
 </script>
 </body>
-</html>
+</html
+    
