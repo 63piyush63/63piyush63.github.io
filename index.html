@@ -304,71 +304,63 @@
 <script>
     // A to Z सॉर्टेड हैकिंग टूल्स डेटाबेस
     const hackingTools = [
-  { name: "Aircrack-ng", desc: "WiFi network security assessment & auditing tool", url: "https://aircrack-ng.org" },
-  { name: "Burp Suite", desc: "Web application security testing & vulnerability scanning", url: "https://portswigger.net" },
-  { name: "Ghidra", desc: "NSA reverse engineering software analysis framework", url: "https://ghidra-sre.org" },
-  { name: "Hashcat", desc: "Advanced and fastest password cracking utility", url: "https://hashcat.net" },
-  { name: "Metasploit", desc: "Penetration testing and exploit development framework", url: "https://metasploit.com" },
-  { name: "Nmap", desc: "Network mapper and security vulnerability scanner", url: "https://nmap.org" },
-  { name: "Sqlmap", desc: "Automatic SQL injection and database takeover tool", url: "https://sqlmap.org" },
-  { name: "Wireshark", desc: "Interactive network packet analyzer and sniffer", url: "https://wireshark.org" }
-].sort((a, b) => a.name.localeCompare(b.name));
+    { name: "Aircrack-ng", desc: "WiFi network security assessment & auditing tool", url: "https://aircrack-ng.org", icon: "f1eb" },
+    { name: "Burp Suite", desc: "Web application security testing & vulnerability scanning", url: "https://portswigger.net", icon: "f121" },
+    { name: "Ghidra", desc: "NSA reverse engineering software analysis framework", url: "https://ghidra-sre.org", icon: "f085" },
+    { name: "Hashcat", desc: "Advanced and fastest password cracking utility", url: "https://hashcat.net", icon: "f084" },
+    { name: "Metasploit", desc: "Penetration testing and exploit development framework", url: "https://metasploit.com", icon: "f120" },
+    { name: "Nmap", desc: "Network mapper and security vulnerability scanner", url: "https://nmap.org", icon: "f0ac" },
+    { name: "Sqlmap", desc: "Automatic SQL injection and database takeover tool", url: "https://sqlmap.org", icon: "f1c0" },
+    { name: "Wireshark", desc: "Interactive network packet analyzer and sniffer", url: "https://wireshark.org", icon: "f1e2" }
+];
 
-    const aiTools = [
-  { name: "ChatGPT", desc: "Conversational intelligence & advanced scripting assist", url: "https://chatgpt.com" },
-  { name: "Claude AI", desc: "Advanced code review and structural logic analysis", url: "https://claude.ai" },
-  { name: "Google Gemini", desc: "Google's powerful multimodal AI ecosystem", url: "https://google.com" },
-  { name: "GitHub Copilot", desc: "AI pair programmer for swift execution", url: "https://github.com" },
-  { name: "Midjourney", desc: "High-fidelity conceptual graphic generation engine", url: "https://midjourney.com" }
+const aiTools = [
+    { name: "ChatGPT", desc: "Conversational intelligence & advanced scripting assist", url: "https://chatgpt.com" },
+    { name: "Claude AI", desc: "Advanced code review and structural logic analysis", url: "https://claude.ai" },
+    { name: "Google Gemini", desc: "Google's powerful multimodal AI ecosystem", url: "https://google.com" },
+    { name: "GitHub Copilot", desc: "AI pair programmer for swift execution", url: "https://github.com" },
+    { name: "Midjourney", desc: "High-fidelity conceptual graphic generation engine", url: "https://midjourney.com" }
 ];
 
 const container = document.getElementById('toolsListContainer');
 let htmlContent = "";
 let currentGlobalIndex = 1;
 
-// 1. Hacking Tools Render
+hackingTools.sort((a, b) => a.name.localeCompare(b.name));
+
 hackingTools.forEach(tool => {
-  htmlContent += `
-    <div class="tool-item" style="border-left: 3px solid var(--neon-red); cursor: pointer;" onclick="window.open('${tool.url}', '_blank')"> 
-      <div class="tool-index">${currentGlobalIndex++}</div>
-      <div class="tool-icon" style="color: var(--neon-red);">💀</div>
-      <div class="tool-details">
-        <div class="tool-name">${tool.name}</div>
-        <div class="tool-desc">${tool.desc}</div>
-      </div>
-      <button class="tool-action-btn" style="color: var(--neon-red);" onclick="event.stopPropagation(); window.open('${tool.url}', '_blank')">Launch</button>
-    </div>
-  `;
+    htmlContent += `
+        <div class="tool-item" style="border-left: 5px solid var(--neon-red); cursor: pointer;" onclick="window.open('${tool.url}', '_blank')">
+            <div class="tool-index">${currentGlobalIndex++}</div>
+            <div class="tool-icon" style="color: var(--neon-red);">&#x${tool.icon};</div>
+            <div class="tool-details">
+                <div class="tool-name">${tool.name}</div>
+                <div class="tool-desc">${tool.desc}</div>
+            </div>
+            <button class="tool-action-btn" style="color: var(--neon-red);" onclick="event.stopPropagation(); window.open('${tool.url}', '_blank')">Open</button>
+        </div>
+    `;
 });
 
-// 2. AI Tools Render
 aiTools.forEach(tool => {
-  htmlContent += `
-    <div class="tool-item" style="cursor: pointer;" onclick="window.open('${tool.url}', '_blank')">
-      <div class="tool-index">${currentGlobalIndex++}</div>
-      <div class="tool-icon" style="color: var(--neon-cyan);">${tool.name.substring(0,2)}</div>
-      <div class="tool-details">
-        <div class="tool-name">${tool.name}</div>
-        <div class="tool-desc">${tool.desc}</div>
-      </div>
-      <button class="tool-action-btn" onclick="event.stopPropagation(); window.open('${tool.url}', '_blank')">Open</button>
-    </div>
-  `;
+    htmlContent += `
+        <div class="tool-item" style="cursor: pointer;" onclick="window.open('${tool.url}', '_blank')">
+            <div class="tool-index">${currentGlobalIndex++}</div>
+            <div class="tool-icon" style="color: var(--neon-cyan);">${tool.name.substring(0,2)}</div>
+            <div class="tool-details">
+                <div class="tool-name">${tool.name}</div>
+                <div class="tool-desc">${tool.desc}</div>
+            </div>
+            <button class="tool-action-btn" onclick="event.stopPropagation(); window.open('${tool.url}', '_blank')">Open</button>
+        </div>
+    `;
 });
 
-container.innerHTML = htmlContent;
+if (container) {
+    container.innerHTML = htmlContent;
+}
     
-            let name = nameEl ? nameEl.innerText.toLowerCase() : "";
-            let desc = descEl ? descEl.innerText.toLowerCase() : "";
-            
-            if (name.includes(input) || desc.includes(input)) {
-                items[i].style.display = "flex";
-            } else {
-                items[i].style.display = "none";
-            }
-        }
-    }
-
+    
     // --- Matrix Rain Animation Engine ---
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
