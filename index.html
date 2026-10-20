@@ -3,298 +3,427 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="63piyush63, Preyar, Piyush, Preyar Piyush, Cyber Security, Ethical Hacker, Coding Expert">
-    <meta name="description" content="Preyar Piyush - White Hat Ethical Hacker & Cyber Security Analyst Portfolio">
-    <title>Preyar Piyush | Cyber Security Analyst</title>
+    <title>Preyar Piyush | Cyber Security & AI Directory</title>
+    <meta name="google-site-verification" content="BD3U4f2ta1xt2DuJOnyz9A09fhOqsgvxt_Rw8NX9Kc" />
+
+    <!-- JSON-LD Person Schema Markup Verified -->
+    <script type="application/ld-json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Preyar Piyush",
+      "alternateName": "63piyush",
+      "jobTitle": "White Hat Ethical Hacker & Cyber Security Analyst",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "GitHub / Freelance"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lucknow",
+        "addressRegion": "Uttar Pradesh",
+        "addressCountry": "India"
+      },
+      "url": "https://63piyush63.github.io",
+      "sameAs": [
+        "https://github.com/63piyush63",
+        "https://gitlab.com/63piyush63",
+        "https://www.linkedin.com/in/63piyush63"
+        "https://tryhackme.com/p/63piyush63"
+        "https://www.wikidata.org/wiki/User:63piyush63"
+        "https://me.developers.google.com/u/109809989349859704969"
+        "https://wikidata.org/Q141662462"
+      ]
+    }
+    </script>
+
     <style>
+        /* डार्क ब्लू साइबरपंक और प्ले स्टोर थीम वेरिएबल्स */
+        :root {
+            --bg-dark-blue: #020813;
+            --surface-blue: #0b1528;
+            --neon-cyan: #00f0ff;
+            --neon-blue: #0066ff;
+            --neon-red: #ff0055;
+            --text-main: #e2e8f0;
+            --text-muted: #64748b;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Courier New', Courier, monospace, sans-serif;
+            scrollbar-width: thin;
+            scrollbar-color: var(--neon-cyan) var(--bg-dark-blue);
         }
-        html, body {
-            height: 100%;
-            background-color: #030712;
-            color: #ffffff;
-            overflow: hidden;
-            position: relative;
+
+        body, html {
+            background-color: var(--bg-dark-blue);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
         }
-        canvas {
+
+        /* मैट्रिक्स एनीमेशन बैकग्राउंड */
+        #matrix {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 1;
+            opacity: 0.08; /* डार्क ब्लू को निखारने के लिए हल्का रखा है */
+            pointer-events: none;
         }
-        .main-wrapper {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            width: 100%;
-            padding: 20px;
+
+        .terminal-overlay {
+            position: relative;
+            z-index: 2;
+            max-width: 600px; /* प्ले स्टोर मोबाइल व्यू के लिए परफेक्ट चौड़ाई */
+            margin: 0 auto;
+            padding: 15px;
         }
-        .header-section {
+
+        /* 1. प्रोफाइल सेक्शन (सबसे ऊपर) */
+        .profile-header {
+            padding: 40px 20px;
             text-align: center;
-            margin-bottom: 20px;
-            flex-shrink: 0;
-        }
-        .profile-container {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 15px auto;
-            position: relative;
-        }
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px solid #00d2ff;
-            object-fit: cover;
-            box-shadow: 0 0 20px #8a2be2;
-        }
-        h1 {
-            font-size: 2.2rem;
-            color: #ffffff;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-        }
-        .subtitle {
-            font-size: 0.85rem;
-            color: #00e5ff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-            font-weight: bold;
-        }
-        .bio {
-            font-size: 0.95rem;
-            color: #9e95b3;
-            max-width: 750px;
-            margin: 0 auto 15px auto;
-            line-height: 1.5;
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        .social-btn {
-            background: rgba(13, 27, 42, 0.6);
-            border: 1px solid #1b4965;
-            color: #8ecae6;
-            padding: 6px 14px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-        .social-btn:hover {
-            border-color: #00e5ff;
-            box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
-            color: #fff;
-        }
-        .search-container {
+            background: linear-gradient(180deg, var(--surface-blue) 0%, var(--bg-dark-blue) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 240, 255, 0.1);
             margin-bottom: 25px;
-            position: relative;
+            margin-top: 15px;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 15px var(--neon-blue);
+            margin: 0 auto 15px auto;
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .profile-tagline {
+            color: var(--neon-cyan);
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 5px 0 12px 0;
+            text-transform: uppercase;
+        }
+
+        .profile-bio {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
             max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .search-box {
-            width: 100%;
-            padding: 12px 20px 12px 40px;
-            border-radius: 6px;
-            border: 1px solid #1e1b4b;
-            background: rgba(10, 6, 22, 0.8);
-            color: #00e5ff;
-            font-size: 0.9rem;
-            outline: none;
-            transition: 0.3s;
-        }
-        .search-box:focus {
-            border-color: #8a2be2;
-            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
-        }
-        .search-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1rem;
-            color: #4f46e5;
-        }
-        .dashboard-container {
-            display: flex;
-            gap: 20px;
-            flex: 1;
-            min-height: 0;
-            max-width: 1400px;
-            width: 100%;
             margin: 0 auto;
         }
-        .dashboard-panel {
-            flex: 1;
+
+        /* सोशल लिंक्स ग्रिड */
+        .badge-grid {
             display: flex;
-            flex-direction: column;
-            background: rgba(8, 10, 24, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 15px;
-            min-height: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
         }
-        .panel-title {
+
+        .badge {
+            color: var(--text-main);
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            text-decoration: none;
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .badge:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark-blue);
+            box-shadow: 0 0 8px var(--neon-cyan);
+        }
+
+        /* 2. लाइव सर्च पेलोड बार */
+        #toolSearch {
+            width: 100%;
+            padding: 14px;
+            background: var(--surface-blue);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: #fff;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        #toolSearch:focus {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        .section-title {
             font-size: 1.1rem;
-            font-weight: bold;
+            color: var(--neon-cyan);
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
             letter-spacing: 1px;
             text-transform: uppercase;
-            flex-shrink: 0;
         }
-        .left-title { color: #f43f5e; }
-        .right-title { color: #0d9488; }
-        .scrollable-list {
-            flex: 1;
-            overflow-y: auto;
-            padding-right: 5px;
-            scroll-behavior: smooth;
+
+        /* 3. कॉन्टैक्ट लिस्ट स्टाइल रो (Row) सिस्टम */
+        .tools-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px; /*緊湊型 पैडिंग जिससे कॉन्टैक्ट नंबर जैसा फील आए */
         }
-        .scrollable-list::-webkit-scrollbar {
-            width: 6px;
-        }
-        .scrollable-list::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.1);
-        }
-        .scrollable-list::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.1);
-            border-radius: 4px;
-        }
-        .tool-row {
+
+        .tool-item {
             display: flex;
             align-items: center;
-            background: rgba(15, 17, 35, 0.8);
-            border-radius: 6px;
-            padding: 12px;
-            margin-bottom: 10px;
-            transition: 0.2s;
+            background-color: var(--surface-blue);
+            padding: 10px 14px;
+            border-radius: 12px;
+            transition: all 0.15s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+            will-change: transform; /* सुपर स्मूथ 20 पेज स्क्रॉलिंग फिजिक्स के लिए */
         }
-        .left-panel .tool-row { border: 1px solid rgba(244, 63, 94, 0.15); }
-        .right-panel .tool-row { border: 1px solid rgba(13, 148, 136, 0.15); }
-        .left-panel .tool-row:hover { border-color: #f43f5e; box-shadow: 0 0 10px rgba(244, 63, 94, 0.2); }
-        .right-panel .tool-row:hover { border-color: #0d9488; box-shadow: 0 0 10px rgba(13, 148, 136, 0.2); }
-        
+
+        .tool-item:hover {
+            border-color: rgba(0, 240, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        /* प्ले स्टोर टॉप चार्ट्स सीरियल नंबर */
         .tool-index {
-            font-size: 0.9rem;
-            color: #6b7280;
-            width: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-muted);
+            width: 32px;
             flex-shrink: 0;
         }
-        .tool-icon-box {
-            width: 32px;
-            height: 32px;
-            border-radius: 4px;
+
+        /* टूल आइकॉन */
+        .tool-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: #121d33;
+            margin-right: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
             font-weight: bold;
-            margin-right: 15px;
             flex-shrink: 0;
         }
-        .left-panel .tool-icon-box { background: rgba(244, 63, 94, 0.15); color: #f43f5e; border: 1px solid rgba(244, 63, 94, 0.3); }
-        .right-panel .tool-icon-box { background: rgba(13, 148, 136, 0.15); color: #0d9488; border: 1px solid rgba(13, 148, 136, 0.3); }
-        
-        .tool-details {
-            flex: 1;
-            min-width: 0;
-            padding-right: 10px;
-        }
-        .tool-name {
-            font-weight: bold;
-            font-size: 0.95rem;
-            color: #ffffff;
-            margin-bottom: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .tool-desc {
-            font-size: 0.78rem;
-            color: #9ca3af;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .action-btn {
-            padding: 6px 16px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-            flex-shrink: 0;
-            transition: 0.2s;
-        }
-        .left-panel .action-btn { background: #e11d48; color: #ffffff; }
-        .left-panel .action-btn:hover { background: #f43f5e; }
-        .right-panel .action-btn { background: #0f766e; color: #ffffff; }
-        .right-panel .action-btn:hover { background: #0d9488; }
 
-        @media (max-width: 768px) {
-            html, body { overflow-y: auto; height: auto; }
-            .main-wrapper { height: auto; }
-            .dashboard-container { flex-direction: column; height: auto; }
-            .dashboard-panel { height: 450px; }
+        .tool-details {
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .tool-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .tool-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .tool-action-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--neon-cyan);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .tool-item:hover .tool-action-btn {
+            background-color: var(--neon-cyan);
+            color: var(--bg-dark-blue);
         }
     </style>
 </head>
 <body>
 
-    <canvas id="rainCanvas"></canvas>
+    <!-- मैट्रिक्स एनीमेशन -->
+    <canvas id="matrix"></canvas>
 
-    <div class="main-wrapper">
-        <div class="header-section">
-            <div class="profile-container">
-                <img src="https://github.com" alt="Preyar Piyush" class="profile-img">
-            </div>
-            <h1>Preyar Piyush</h1>
-            <div class="subtitle">[ White Hat Ethical Hacker & Cyber Security Analyst ]</div>
-            <p class="bio">Cyber Security Specialist from India. Specializing in secure architectures, penetration testing, automated systems, and advanced AI directory engines.</p>
+    <div class="terminal-overlay">
+        
+                <!-- PROFILE SECTION IN ENGLISH -->
+        <header class="profile-header">
+<div class="profile-avatar" style="background: url('https://github.com/63piyush63.png') center/cover;"></div>
+            <h1 class="profile-name">Preyar Piyush</h1>
+            <div class="profile-tagline">[ White Hat Ethical Hacker & Cyber Security Analyst ]</div>
+            <p class="profile-bio">Cyber Security Specialist from India. Specializing in secure architectures, penetration testing, automated systems, and advanced AI directory engines.</p>
             
-            <div class="social-links">
-                <a href="https://github.com" target="_blank" class="social-btn">GitHub</a>
-                <a href="https://linkedin.com" target="_blank" class="social-btn">LinkedIn</a>
-                <a href="https://tryhackme.com" target="_blank" class="social-btn">TryHackMe</a>
-                <a href="https://gitlab.com" target="_blank" class="social-btn">GitLab</a>
+            <div class="badge-grid">
+                <a href="https://github.com/63piyush63" class="badge" target="_blank">💻 GitHub</a>
+                <a href="https://www.linkedin.com/in/63piyush63" class="badge" target="_blank">🔗 LinkedIn</a>
+                <a href="https://tryhackme.com/p/63piyush63" class="badge" target="_blank">💀 TryHackMe</a>
+                <a href="https://gitlab.com/63piyush63" class="badge" target="_blank">🦊 GitLab</a>
             </div>
+        </header>
+        
 
-            <div class="search-container">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="toolSearch" class="search-box" placeholder="Enter Search Payload...">
-            </div>
-        </div>
+        <!-- लाइव सर्च बार इंजन -->
+        <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="🔍 Enter Search Payload...">
 
-        <div class="dashboard-container">
-            <div class="dashboard-panel left-panel">
-                <div class="panel-title left-title">⚡ Ethical Hacking Tools</div>
-                <div class="scrollable-list" id="hackingContainer"></div>
-            </div>
-            
-            <div class="dashboard-panel right-panel">
-                <div class="panel-title right-title">🌐 AI & Productivity Tools</div>
-                <div class="scrollable-list" id="aiContainer"></div>
-            </div>
-        </div>
+        <h2 class="section-title">⚡ Core Tools Dashboard</h2>
+        
+        <!-- 20+ पेज की कॉन्टैक्ट स्क्रॉलिंग डायरेक्टरी -->
+        <div class="tools-list" id="toolsListContainer"></div>
+
     </div>
 
-    <script>
-        const canvas = document.getElementById('rainCanvas');
-        const ctx = canvas.getContext('2d');
 
-        
+    <!-- टूल्स जनरेटर और सर्च स्क्रिप्ट -->
+<script>
+    // A to Z सॉर्टेड हैकिंग टूल्स डेटाबेस
+const baseHacking = [
+    { name: "Aircrack-ng", desc: "WiFi network security assessment & auditing tool", url: "https://aircrack-ng.org", icon: "f1eb" },
+    { name: "Burp Suite", desc: "Web application security testing & vulnerability scanning", url: "https://portswigger.net", icon: "f121" },
+    { name: "Ghidra", desc: "NSA reverse engineering software analysis framework", url: "https://ghidra-sre.org", icon: "f085" },
+    { name: "Hashcat", desc: "Advanced and fastest password cracking utility", url: "https://hashcat.net", icon: "f084" },
+    { name: "Metasploit", desc: "Penetration testing and exploit development framework", url: "https://metasploit.com", icon: "f120" },
+    { name: "Nmap", desc: "Network mapper and security vulnerability scanner", url: "https://nmap.org", icon: "f0ac" },
+    { name: "Sqlmap", desc: "Automatic SQL injection and database takeover tool", url: "https://sqlmap.org", icon: "f1c0" },
+    { name: "Wireshark", desc: "Interactive network packet analyzer and sniffer", url: "https://wireshark.org", icon: "f1e2" }
+];
+
+const baseAI = [
+    { name: "ChatGPT", desc: "Conversational intelligence & advanced scripting assist", url: "https://chatgpt.com" },
+    { name: "Claude AI", desc: "Advanced code review and structural logic analysis", url: "https://claude.ai" },
+    { name: "Google Gemini", desc: "Google's powerful multimodal AI ecosystem", url: "https://google.com" },
+    { name: "GitHub Copilot", desc: "AI pair programmer for swift execution", url: "https://github.com" },
+    { name: "DeepSeek", desc: "High-performance AI model specialized in reasoning", url: "https://deepseek.com" },
+    { name: "Midjourney", desc: "High-fidelity conceptual graphic generation engine", url: "https://midjourney.com" }
+];
+
+const hackingTools = [];
+const aiTools = [];
+
+for (let i = 0; i < 150; i++) {
+    const base = baseHacking[i % baseHacking.length];
+    hackingTools.push({
+        name: `${base.name} Sec-${Math.floor(i / baseHacking.length) + 1}`,
+        desc: `${base.desc} (Node-${i + 1})`,
+        url: base.url,
+        icon: base.icon
+    });
+}
+
+for (let i = 0; i < 150; i++) {
+    const base = baseAI[i % baseAI.length];
+    aiTools.push({
+        name: `${base.name} v${Math.floor(i / baseAI.length) + 1}`,
+        desc: `${base.desc} (Layer-${i + 1})`,
+        url: base.url
+    });
+}
+
+const container = document.getElementById('toolsListContainer');
+let htmlContent = "";
+let currentGlobalIndex = 1;
+
+hackingTools.sort((a, b) => a.name.localeCompare(b.name));
+aiTools.sort((a, b) => a.name.localeCompare(b.name));
+
+if (container) {
+    container.style.maxHeight = "75vh";
+    container.style.overflowY = "auto";
+    container.style.webkitOverflowScrolling = "touch";
+    container.style.scrollBehavior = "smooth";
+}
+
+hackingTools.forEach(tool => {
+    htmlContent += `
+        <div class="tool-item" style="border-left: 5px solid var(--neon-red); cursor: pointer;" onclick="window.open('${tool.url}', '_blank')">
+            <div class="tool-index">${currentGlobalIndex++}</div>
+            <div class="tool-icon" style="color: var(--neon-red);">&#x${tool.icon};</div>
+            <div class="tool-details">
+                <div class="tool-name">${tool.name}</div>
+                <div class="tool-desc">${tool.desc}</div>
+            </div>
+            <button class="tool-action-btn" style="color: var(--neon-red);" onclick="event.stopPropagation(); window.open('${tool.url}', '_blank')">Open</button>
+        </div>
+    `;
+});
+
+aiTools.forEach(tool => {
+    htmlContent += `
+        <div class="tool-item" style="cursor: pointer;" onclick="window.open('${tool.url}', '_blank')">
+            <div class="tool-index">${currentGlobalIndex++}</div>
+            <div class="tool-icon" style="color: var(--neon-cyan);">${tool.name.substring(0,2)}</div>
+            <div class="tool-details">
+                <div class="tool-name">${tool.name}</div>
+                <div class="tool-desc">${tool.desc}</div>
+            </div>
+            <button class="tool-action-btn" onclick="event.stopPropagation(); window.open('${tool.url}', '_blank')">Open</button>
+        </div>
+    `;
+});
+
+if (container) {
+    container.innerHTML = htmlContent;
+}
+
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const katakana = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const alphabet = katakana.split('');
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const rainDrops = Array.from({ length: columns }).fill(1);
+
+const drawMatrix = () => {
+    ctx.fillStyle = 'rgba(10, 25, 47, 0.08)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#00f0ff';
+    ctx.font = fontSize + 'px monospace';
+
+    for (let i = 0; i < rainDrops.length; i++) {
+        const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+        ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+        if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            rainDrops[i] = 0;
+        }
+        rainDrops[i]++;
+    }
+};
+
+setInterval(drawMatrix, 30);
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
+</body>
+</html>
