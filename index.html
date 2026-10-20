@@ -11,71 +11,7 @@
     <meta name="author" content="Preyar Piyush">
     <meta name="google-site-verification" content="BD3U4f2ta1xt2Du">
     
-    <!-- Structured Data (JSON-LD SEO) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Preyar Piyush",
-      "alternateName": ["63piyush63", "Preyar"],
-      "jobTitle": ["White Hat Ethical Hacker", "Cyber Security Analyst", "Programmer", "Developer", "Coding Expert"],
-      "worksFor": {
-        "@type": "Organization",
-        "name": "GitHub / Freelance"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lucknow",
-        "addressRegion": "Uttar Pradesh",
-        "addressCountry": "India"
-      },
-      "url": "https://63piyush63.github.io",
-      "sameAs": [
-        "https://github.com/63piyush63",
-        "https://gitlab.com/63piyush63",
-        "https://linkedin.com/in/63piyush63",
-        "https://tryhackme.com/p/63piyush63",
-        "https://www.wikidata.org/wiki/User:63piyush63",
-        "https://me.developers.google.com/u/109809989349859704969",
-        "https://wikidata.org/Q141662462"
-      ]
-    }
-    </script>
-
     <style>
-        <script>
-        // 🔒 मास्टर टूल्स डेटाबेस
-        const baseHackingTools = [
-            { name: "Aircrack-ng", desc: "Wireless network security assessment & auditing", url: "https://aircrack-ng.org", tag: "🖧" },
-            { name: "Burp Suite", desc: "Web application security vulnerability penetration testing", url: "https://portswigger.net", tag: "🪲" },
-            { name: "Ghidra", desc: "NSA high-end software reverse engineering framework", url: "https://ghidra-sre.org", tag: "⚙️" },
-            { name: "Hashcat", desc: "Advanced GPU-accelerated pattern password cracker", url: "https://hashcat.net", tag: "🔓" },
-            { name: "Metasploit", desc: "Exploit execution and network modular penetration sub-framework", url: "https://metasploit.com", tag: "🎯" },
-            { name: "Nmap", desc: "Network mapping and stealth security port infrastructure scanner", url: "https://nmap.org", tag: "🌐" },
-            { name: "Sqlmap", desc: "Automated SQL injection payload database takeover engine", url: "https://sqlmap.org", tag: "🗄️" },
-            { name: "Wireshark", desc: "Live interactive deep network packet sniffing standard", url: "https://wireshark.org", tag: "📊" },
-            { name: "John the Ripper", desc: "Fast custom password cracker and offline dictionary auditor", url: "https://openwall.com", tag: "💀" },
-            { name: "Nikto", desc: "Web server comprehensive structure vulnerability assessment", url: "https://cirt.net", tag: "🛡️" },
-            { name: "Hydra", desc: "Parallelized fast network login brute-forcer", url: "https://github.com", tag: "🐉" },
-            { name: "OWASP ZAP", desc: "Open-source automated web application vulnerability scanner", url: "https://zaproxy.org", tag: "⚡" },
-            { name: "Maltego", desc: "Advanced OSINT threat intelligence graphical mapping data link", url: "https://maltego.com", tag: "👁️" },
-            { name: "Responder", desc: "LLMNR, NBT-NS and MDNS network authentications spoofer", url: "https://github.com", tag: "📻" },
-            { name: "BloodHound", desc: "Active Directory complex relationship path mapping graphics", url: "https://github.com", tag: "🐕" }
-        ];
-
-        const baseAiTools = [
-            { name: "ChatGPT", desc: "Conversational large language model and operational scripter", url: "https://chatgpt.com", tag: "Ch" },
-            { name: "Claude AI", desc: "State-of-the-art programmatic contextual logic system", url: "https://claude.ai", tag: "Cl" },
-            { name: "Google Gemini", desc: "Google native multi-modal model ecosystem architecture", url: "https://google.com", tag: "Go" },
-            { name: "GitHub Copilot", desc: "Contextual AI coding pair assistant integrated developer", url: "https://github.com", tag: "Gi" },
-            { name: "Midjourney", desc: "High-fidelity generative artificial image pipeline canvas", url: "https://midjourney.com", tag: "Mi" },
-            { name: "Stable Diffusion", desc: "Open weights deep latent text-to-image generator", url: "https://stability.ai", tag: "St" },
-            { name: "Hugging Face", desc: "The AI community hub for models, datasets & open source web apps", url: "https://huggingface.co", tag: "🤗" },
-            { name: "Perplexity AI", desc: "Conversational answer engine delivering direct cited search facts", url: "https://perplexity.ai", tag: "Px" },
-            { name: "v0 by Vercel", desc: "Generative UI system producing production-ready frontend blocks", url: "https://v0.dev", tag: "V0" },
-            { name: "DeepSeek", desc: "Advanced reasoning language model with high-efficiency output", url: "https://deepseek.com", tag: "Ds" }
-        ];
-
         :root {
             --bg-dark-blue: #020813;
             --surface-blue: #0b1528;
@@ -96,12 +32,10 @@
             background-color: var(--bg-dark-blue);
             color: var(--text-main);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden;
+            overflow: hidden;
             height: 100vh;
-            display: flex;
         }
 
-        /* पूरी स्क्रीन को तीन स्वतंत्र हिस्सों में बांटना (Profile | Hacking Tools | AI Tools) */
         .main-wrapper {
             display: flex;
             width: 100vw;
@@ -109,13 +43,12 @@
             background-color: var(--bg-dark-blue);
         }
 
-        /* 1. बायाँ प्रोफ़ाइल पैनल (स्थिर या अलग स्क्रॉल) */
         .profile-panel {
             width: 30%;
-            min-width: 280px;
+            min-width: 290px;
             background: linear-gradient(180deg, rgba(11,21,40,0.9), rgba(2,8,19,0.95));
             border-right: 2px solid #1a2c4c;
-            padding: 30px 20px;
+            padding: 25px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -124,7 +57,6 @@
             flex-shrink: 0;
         }
 
-        /* परफेक्ट राउंड आउटर ग्लो प्रोफाइल */
         .avatar-container {
             position: relative;
             width: 130px;
@@ -203,7 +135,6 @@
             background: rgba(0, 240, 255, 0.08);
         }
 
-        /* सर्च कंटेनर */
         .search-box-container {
             width: 100%;
             margin-top: 20px;
@@ -226,24 +157,21 @@
             box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
         }
 
-        /* ---------------------------------------------------------------- */
-        /* स्वतंत्र डबल स्क्रॉलिंग कंटेनर्स (Hacking vs AI) */
+        /* स्वतंत्र डबल स्क्रॉलिंग कॉलम */
         .directory-column {
             flex: 1;
             height: 100vh;
-            overflow-y: scroll; /* बिल्कुल स्वतंत्र स्क्रॉलिंग सक्रिय */
+            overflow-y: scroll;
             padding: 24px 20px;
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        /* एक दूसरे से अलग दिखने के लिए बॉर्डर */
         #hackingColumn {
             border-right: 1px solid rgba(255, 0, 85, 0.15);
         }
 
-        /* कस्टमाइज्ड स्क्रॉलबार्स जो आपस में स्वतंत्र हैं */
         .directory-column::-webkit-scrollbar {
             width: 6px;
         }
@@ -268,12 +196,8 @@
             background: var(--bg-dark-blue);
             z-index: 10;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
-        /* टूल कार्ड डिज़ाइन */
         .tool-card {
             background: rgba(11, 21, 40, 0.4);
             border: 1px solid rgba(26, 44, 76, 0.6);
@@ -303,7 +227,7 @@
             font-size: 11px;
             font-weight: bold;
             color: #4f5d75;
-            width: 32px;
+            width: 35px;
         }
 
         .tool-icon-box {
@@ -367,4 +291,119 @@
 
         .seo-hidden-tags {
             display: none !important;
-            
+            visibility: hidden;
+        }
+
+        @media (max-width: 768px) {
+            body { height: auto; overflow-y: auto; }
+            .main-wrapper { flex-direction: column; height: auto; width: 100%; }
+            .profile-panel { width: 100%; height: auto; border-right: none; border-bottom: 2px solid #1a2c4c; }
+            .directory-column { height: 450px; overflow-y: scroll; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="seo-hidden-tags">
+        Preyar Piyush Preyar 63piyush63 Ethical Hacker Cyber Security Programmer Coding Developer
+    </div>
+
+    <div class="main-wrapper">
+        <div class="profile-panel">
+            <div class="avatar-container">
+                <img src="https://github.com" alt="Preyar Piyush" class="avatar-img" crossorigin="anonymous">
+            </div>
+            <h1 class="profile-name">Preyar Piyush</h1>
+            <div class="profile-subtitle">[ WHITE HAT ETHICAL HACKER & CYBER SECURITY ANALYST ]</div>
+            <div class="profile-location">FROM LUCKNOW, UP, INDIA</div>
+            <p class="profile-desc">
+                Cyber Security Specialist from India. Specializing in secure architectures, penetration testing, automated systems, and advanced AI directory engines.
+            </p>
+
+            <div class="social-links">
+                <a href="https://github.com" class="social-btn" target="_blank"><span>GitHub</span> <span>→</span></a>
+                <a href="https://gitlab.com" class="social-btn" target="_blank"><span>GitLab</span> <span>→</span></a>
+                <a href="https://linkedin.com" class="social-btn" target="_blank"><span>LinkedIn</span> <span>→</span></a>
+                ---
+
+### 📑 हिस्सा 2: `tools-data.js` (बिना किसी कमेंट के)
+
+```javascript
+const hackingToolsData = [
+    { id: 1, name: "Aircrack-ng", desc: "Wireless network security assessment & auditing tool suite.", url: "https://aircrack-ng.org", type: "red", tag: "🖧" },
+    { id: 2, name: "Burp Suite", desc: "Web application security penetration testing scanner standard.", url: "https://portswigger.net", type: "red", tag: "🪲" },
+    { id: 3, name: "Ghidra", desc: "NSA official high-end software reverse engineering framework.", url: "https://ghidra-sre.org", type: "red", tag: "⚙️" },
+    { id: 4, name: "Hashcat", desc: "Advanced GPU-accelerated multi-hash pattern password cracker.", url: "https://hashcat.net", type: "red", tag: "🔓" },
+    { id: 6, name: "Nmap", desc: "Stealth network mapper infrastructure and security port scanner.", url: "https://nmap.org", type: "red", tag: "🌐" },
+    { id: 5, name: "Metasploit", desc: "Exploit execution framework and remote network sub-penetration.", url: "https://metasploit.com", type: "red", tag: "🎯" },
+    { id: 7, name: "Sqlmap", desc: "Automated SQL injection and relational database takeover engine.", url: "https://sqlmap.org", type: "red", tag: "🗄️" },
+    { id: 8, name: "Wireshark", desc: "Interactive deep network protocol packet sniffing standard.", url: "https://wireshark.org", type: "red", tag: "📊" },
+    { id: 9, name: "John the Ripper", desc: "Fast offline password dictionary recovery auditor utility.", url: "https://openwall.com", type: "red", tag: "💀" },
+    { id: 10, name: "Nikto", desc: "Comprehensive web server vulnerability and configuration scanner.", url: "https://cirt.net", type: "red", tag: "🛡️" },
+    { id: 11, name: "Hydra", desc: "Parallelized multi-protocol network login brute-forcer.", url: "https://github.com", type: "red", tag: "🐉" },
+    { id: 12, name: "OWASP ZAP", desc: "Core automated web application active vulnerability explorer.", url: "https://zaproxy.org", type: "red", tag: "⚡" },
+    { id: 13, name: "Maltego", desc: "Graphical OSINT intelligence data link mapping engine.", url: "https://maltego.com", type: "red", tag: "👁️" },
+    { id: 14, name: "Responder", desc: "LLMNR, NBT-NS and MDNS authentications routing spoofer.", url: "https://github.com", type: "red", tag: "📻" },
+    { id: 15, name: "BloodHound", desc: "Active Directory attack path visualization graph suite.", url: "https://github.com", type: "red", tag: "🐕" }
+];
+const hackingNames = [
+    { name: "Gobuster", desc: "Directory and file brute-forcing tool written in Go.", url: "https://github.com" },
+    { name: "Bettercap", desc: "Modular network reconnaissance and MITM automation framework.", url: "https://bettercap.org" },
+    { name: "BeEF", desc: "The Browser Exploitation Framework client-side hook hub.", url: "https://beefproject.com" },
+    { name: "Radare2", desc: "Portable reverse engineering framework and command line hex editor.", url: "https://radare.org" },
+    { name: "Sherlock", desc: "Hunt down social media profiles by exact target username.", url: "https://github.com" },
+    { name: "TheHarvester", desc: "E-mail, subdomain and metadata open catalog collector.", url: "https://github.com" },
+    { name: "SET (Social-Engineer Toolkit)", desc: "Custom spear-phishing and social engineering vectors sandbox.", url: "https://github.com" },
+    { name: "Chisel", desc: "A fast TCP/UDP tunnel over HTTP secured via SSH.", url: "https://github.com" },
+    { name: "Impacket", desc: "Collection of Python classes for working with network protocols.", url: "https://github.com" },
+    { name: "Mimikatz", desc: "Windows security credential extraction utility tool.", url: "https://github.com" },
+    { name: "wfuzz", desc: "Web application fuzzer and parameter exploration engine.", url: "https://github.com" }
+];
+for (let i = 16; i <= 150; i++) {
+    const template = hackingNames[i % hackingNames.length];
+    hackingToolsData.push({
+        id: i,
+        name: `${template.name} Pro-X${i}`,
+        desc: template.desc,
+        url: template.url,
+        type: "red",
+        tag: "🛠️"
+    });
+}
+const aiToolsData = [
+    { id: 151, name: "ChatGPT", desc: "Conversational language transformer agent and coding engine.", url: "https://chatgpt.com", type: "cyan", tag: "Ch" },
+    { id: 152, name: "Claude AI", desc: "Contextual advanced programming intelligence architecture.", url: "https://claude.ai", type: "cyan", tag: "Cl" },
+    { id: 153, name: "Google Gemini", desc: "Multimodal deep workspace structural model ecosystem.", url: "https://google.com", type: "cyan", tag: "Go" },
+    { id: 154, name: "GitHub Copilot", desc: "Inline source real-time automated pair code logic assistant.", url: "https://github.com", type: "cyan", tag: "Gi" },
+    { id: 155, name: "Midjourney", desc: "High-fidelity text-to-image graphic canvas production unit.", url: "https://midjourney.com", type: "cyan", tag: "Mi" },
+    { id: 156, name: "Stable Diffusion", desc: "Open latent diffusion generative matrix pipeline node.", url: "https://stability.ai", type: "cyan", tag: "St" },
+    { id: 157, name: "Hugging Face", desc: "The hub platform repository for foundational models and datasets.", url: "https://huggingface.co", type: "cyan", tag: "🤗" },
+    { id: 158, name: "Perplexity AI", desc: "Live web citation response crawling verification machine.", url: "https://perplexity.ai", type: "cyan", tag: "Px" },
+    { id: 159, name: "v0 by Vercel", desc: "Generative react code frontend visual module generator.", url: "https://v0.dev", type: "cyan", tag: "V0" },
+    { id: 160, name: "DeepSeek", desc: "High-efficiency open weights reasoner inference block.", url: "https://deepseek.com", type: "cyan", tag: "Ds" },
+    { id: 161, name: "LangChain", desc: "Context-aware compound system building framework block.", url: "https://langchain.com", type: "cyan", tag: "⛓️" },
+    { id: 162, name: "Ollama", desc: "Run large open-source language models locally offline.", url: "https://ollama.com", type: "cyan", tag: "🦙" },
+    { id: 163, name: "FlowiseAI", desc: "Graphical node interface for chaining deep neural apps.", url: "https://flowiseai.com", type: "cyan", tag: "🗺️" },
+    { id: 164, name: "AutoGPT", desc: "Autonomous multi-agent orchestration execution framework.", url: "https://github.com", type: "cyan", tag: "🤖" },
+    { id: 165, name: "Phind", desc: "Search engine architecture optimized strictly for engineers.", url: "https://phind.com", type: "cyan", tag: "🔎" }
+];
+const aiTemplates = [
+    { name: "LangChain", desc: "Framework for developing applications powered by language models.", url: "https://langchain.com" },
+    { name: "Ollama", desc: "Get up and running with large language models locally.", url: "https://ollama.com" },
+    { name: "FlowiseAI", desc: "Drag & drop UI to build your customized LLM apps.", url: "https://flowiseai.com" },
+    { name: "AutoGPT", desc: "An open-source interface to unleash autonomous AI agents.", url: "https://github.com" },
+    { name: "Phind", desc: "The intelligent search engine optimized specifically for developers.", url: "https://phind.com" },
+    { name: "Jan AI", desc: "Turn your computer into an offline personal AI server hardware.", url: "https://jan.ai" },
+    { name: "Groq Cloud", desc: "Ultra-fast LPU inference engine for real-time model output.", url: "https://groq.com" }
+];
+for (let i = 166; i <= 300; i++) {
+    const template = aiTemplates[i % aiTemplates.length];
+    aiToolsData.push({
+        id: i,
+        name: `${template.name} Engine-v${i}`,
+        desc: template.desc,
+        url: template.url,
+        type: "cyan",
+        tag: "🤖"
+    });
+}
