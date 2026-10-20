@@ -1,203 +1,336 @@
-```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>63piyush63 | Preyar Piyush | Preyar | Piyush | Cyber Security | Ethical Hacker | Coding Expert</title>
-<meta name="description" content="Official website of Preyar Piyush aka 63piyush63 - White Hat Ethical Hacker, Cyber Security Analyst & Coding Expert from India. 300+ Hacking & AI Tools Directory with Contact Style List and Purple Rain Theme.">
-<meta name="keywords" content="63piyush63, Preyar, Piyush, Preyar Piyush, Cyber Security, Ethical Hacker, Coding Expert, White Hat Hacker, 63piyush63 github, Preyar Piyush Lucknow">
-<meta name="author" content="Preyar Piyush">
-<meta name="google-site-verification" content="BD3U4f2ta1xt2DuH3oQ2">
-<link rel="canonical" href="https://63piyush63.github.io/">
-<meta property="og:title" content="Preyar Piyush | 63piyush63 - 300+ Cyber Security & AI Tools">
-<meta property="og:image" content="https://avatars.githubusercontent.com/63piyush63">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Preyar Piyush","alternateName":["63piyush63","Preyar","Piyush","Coding Expert","Cyber Security Expert","Ethical Hacker"],"jobTitle":"White Hat Ethical Hacker & Cyber Security Analyst & Coding Expert","url":"https://63piyush63.github.io","image":"https://avatars.githubusercontent.com/63piyush63","sameAs":["https://github.com/63piyush63","https://gitlab.com/63piyush63","https://www.linkedin.com/in/63piyush63","https://tryhackme.com/p/63piyush63","https://www.wikidata.org/wiki/User:63piyush63","https://me.developers.google.com/u/109809989349859704969","https://www.wikidata.org/wiki/Q141662462","https://wikidata.org/Q141662462"]}
-</script>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
-:root{--bg:#080114;--surface:#1a0e32;--surface2:#2e1a62;--neon-purple:#a855f7;--neon-pink:#ec4899;--neon-cyan:#22d3ee;--text:#e9d5ff;--text-dim:#a78bfa;}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'JetBrains Mono',monospace}
-html{scroll-behavior:smooth}
-body{background:radial-gradient(ellipse at top,#1a0e32 0%,#080114 100%);color:var(--text);overflow-x:hidden}
-#rain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.75}
-.container{position:relative;z-index:1;max-width:940px;margin:0 auto;padding:16px}
-.profile-card{background:linear-gradient(180deg,rgba(26,14,50,0.95),rgba(8,1,20,0.9));border:2px solid var(--neon-purple);border-radius:32px;padding:32px 20px;text-align:center;box-shadow:0 0 80px rgba(168,85,247,0.5);margin-top:28px;backdrop-filter:blur(16px)}
-.avatar-wrap{width:140px;height:140px;margin:0 auto 18px;position:relative}
-.avatar-wrap::before{content:'';position:absolute;inset:-6px;background:conic-gradient(from 0deg,var(--neon-purple),var(--neon-pink),var(--neon-cyan),var(--neon-purple));border-radius:50%;animation:spin 3s linear infinite;z-index:-1}
-.avatar{width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid var(--bg);background:#000;position:relative;z-index:1}
-@keyframes spin{to{transform:rotate(360deg)}}
-h1{font-size:34px;color:#fff;text-shadow:0 0 20px var(--neon-purple);letter-spacing:2px}
-.sub{color:var(--neon-cyan);font-size:12px;margin:12px 0;letter-spacing:1.5px;font-weight:600}
-.bio{color:var(--text-dim);font-size:13px;margin-top:16px;line-height:1.8}
-.links{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:22px}
-.links a{background:linear-gradient(135deg,var(--surface2),var(--surface));border:1.5px solid var(--neon-purple);padding:8px 16px;border-radius:28px;color:var(--text);text-decoration:none;font-size:11px;font-weight:600}
-.search-box{margin:26px 0;background:rgba(26,14,50,0.95);border:2px solid var(--neon-purple);border-radius:20px;padding:16px 20px;display:flex;gap:14px;position:sticky;top:14px;z-index:30;backdrop-filter:blur(20px)}
-.search-box input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:15px}
-.stats{display:flex;gap:12px;margin-bottom:18px}
-.stat{flex:1;background:linear-gradient(135deg,var(--surface),var(--surface2));border:1.5px solid #4c2a8a;border-radius:16px;padding:12px;text-align:center}
-.stat-num{color:var(--neon-cyan);font-size:20px;font-weight:800}
-.stat-label{color:var(--text-dim);font-size:9px;margin-top:4px}
-.section-title{color:var(--neon-cyan);font-size:16px;margin:24px 0 12px;font-weight:700}
-.tool-list{display:flex;flex-direction:column;gap:10px;padding-bottom:20px}
-.contact-card{background:linear-gradient(90deg,rgba(26,14,50,0.92),rgba(42,26,82,0.9));border:1.5px solid #4c2a8a;border-left:4px solid var(--neon-purple);border-radius:18px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:0.3s}
-.contact-card:hover{border-color:var(--neon-purple);transform:translateX(8px) scale(1.01);box-shadow:0 0 35px rgba(168,85,247,0.45)}
-.contact-left{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
-.contact-avatar{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--neon-purple),var(--neon-pink));display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;flex-shrink:0}
-.contact-name{color:#fff;font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.contact-desc{color:var(--text-dim);font-size:10.5px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.contact-meta{display:flex;gap:6px;margin-top:6px}
-.badge{background:rgba(168,85,247,0.18);border:1px solid rgba(168,85,247,0.4);padding:2px 8px;border-radius:12px;font-size:8.5px;color:#c084fc;font-weight:700}
-.badge.ai{background:rgba(34,211,238,0.15);border-color:rgba(34,211,238,0.4);color:#67e8f9}
-.contact-call{width:44px;height:44px;border-radius:50%;background:rgba(34,211,238,0.15);border:2px solid var(--neon-cyan);display:grid;place-items:center;color:var(--neon-cyan);font-size:20px;flex-shrink:0}
-footer{text-align:center;padding:32px 12px;color:#6b5a8a;font-size:10.5px;border-top:1px solid rgba(168,85,247,0.15);margin-top:30px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preyar Piyush | Cyber Security & AI Directory</title>
+    
+    <!-- SEO & Search Engine Keywords Injection -->
+    <meta name="description" content="Preyar Piyush - White Hat Ethical Hacker, Cyber Security Analyst, Programmer, Developer and Coding Expert from Lucknow, UP, India.">
+    <meta name="keywords" content="Preyar Piyush, Preyar, 63piyush63, Ethical Hacker, Cyber Security, Programmer, Coding, Developer, Lucknow Hacker, 63piyush63 github">
+    <meta name="author" content="Preyar Piyush">
+    <meta name="google-site-verification" content="BD3U4f2ta1xt2Du">
+    
+    <!-- Structured Data (JSON-LD SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Preyar Piyush",
+      "alternateName": ["63piyush63", "Preyar"],
+      "jobTitle": ["White Hat Ethical Hacker", "Cyber Security Analyst", "Programmer", "Developer", "Coding Expert"],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "GitHub / Freelance"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lucknow",
+        "addressRegion": "Uttar Pradesh",
+        "addressCountry": "India"
+      },
+      "url": "https://github.io",
+      "sameAs": [
+        "https://github.com",
+        "https://gitlab.com",
+        "https://linkedin.com",
+        "https://tryhackme.com",
+        "https://wikidata.org",
+        "https://google.com",
+        "https://wikidata.org"
+      ]
+    }
+    </script>
+
+    <style>
+        /* डार्क ब्लू साइबरपंक और प्ले स्टोर थीम वेरिएबल्स */
+        :root {
+            --bg-dark-blue: #020813;
+            --surface-blue: #0b1528;
+            --neon-cyan: #00f0ff;
+            --neon-blue: #0066ff;
+            --neon-red: #ff0055;
+            --text-main: #a2a8b0;
+            --text-white: #ffffff;
+        }
+
+        /* स्मूथ स्क्रॉलिंग और रिसेट */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark-blue);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: linear-gradient(135deg, rgba(11,21,40,0.8), rgba(2,8,19,0.9));
+            border: 2px solid #1a2c4c;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.2);
+        }
+
+        /* परफेक्ट राउंड प्रोफाइल पिक्चर सेक्शन */
+        .profile-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-blue));
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            background-color: var(--surface-blue);
+        }
+
+        .profile-name {
+            font-size: 28px;
+            color: var(--text-white);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .profile-subtitle {
+            font-size: 11px;
+            color: var(--neon-cyan);
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .profile-location {
+            font-size: 12px;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .profile-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        /* सोशल लिंक्स बटन */
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .social-btn {
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            color: var(--text-white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* सर्च बार */
+        .search-container {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(11, 21, 40, 0.6);
+            border: 1px solid #1a2c4c;
+            padding: 12px 15px;
+            border-radius: 10px;
+            color: var(--text-white);
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        /* डैशबोर्ड हेडर */
+        .dashboard-title {
+            font-size: 14px;
+            color: var(--text-white);
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+        }
+
+        /* टूल्स लिस्ट और लाजवाब स्मूथ स्क्रॉलिंग */
+        .tools-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        /* कस्टमाइज्ड स्क्रॉलबार */
+        .tools-list::-webkit-scrollbar {
+            width: 5px;
+        }
+        .tools-list::-webkit-scrollbar-thumb {
+            background: var(--neon-blue);
+            border-radius: 10px;
+        }
+
+        .tool-card {
+            background: rgba(11, 21, 40, 0.5);
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            border-radius: 12px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 0, 85, 0.15);
+        }
+
+        .tool-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+        }
+
+        .tool-number {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--text-main);
+            width: 20px;
+        }
+
+        .tool-icon-box {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            color: var(--text-white);
+        }
+
+        .icon-red { background-color: var(--neon-red); }
+        .icon-cyan { background-color: #00bcd4; }
+
+        .tool-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .tool-name {
+            font-size: 15px;
+            color: var(--text-white);
+            font-weight: 500;
+        }
+
+        .tool-desc {
+            font-size: 11px;
+            color: #7b869a;
+            max-width: 320px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .btn-open {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .btn-open:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark-blue);
+            box-shadow: 0 0 8px var(--neon-cyan);
+        }
+
+        /* Hidden Keyword Tags for Crawler Reference */
+        .seo-hidden-tags {
+            display: none !important;
+            visibility: hidden;
+        }
+    </style>
 </head>
 <body>
-<canvas id="rain"></canvas>
-<div class="container">
-<div class="profile-card">
-<div class="avatar-wrap"><img class="avatar" src="https://avatars.githubusercontent.com/63piyush63" alt="63piyush63 Preyar Piyush Round Profile"></div>
-<h1>Preyar Piyush</h1>
-<div class="sub">[ WHITE HAT ETHICAL HACKER & CYBER SECURITY ANALYST & CODING EXPERT ]<br>FROM LUCKNOW, UP, INDIA</div>
-<div class="bio">Cyber Security Specialist from India. Specializing in secure architectures, penetration testing, automated systems, and advanced AI directory engines.<br><br><b>63piyush63 | Preyar | Piyush | Preyar Piyush | Cyber Security | Ethical Hacker | Coding Expert</b></div>
-<div class="links">
-<a href="https://github.com/63piyush63" target="_blank">GitHub</a>
-<a href="https://gitlab.com/63piyush63" target="_blank">GitLab</a>
-<a href="https://www.linkedin.com/in/63piyush63" target="_blank">LinkedIn</a>
-<a href="https://tryhackme.com/p/63piyush63" target="_blank">TryHackMe</a>
-<a href="https://www.wikidata.org/wiki/User:63piyush63" target="_blank">Wikidata User</a>
-<a href="https://www.wikidata.org/wiki/Q141662462" target="_blank">Q141662462</a>
-<a href="https://me.developers.google.com/u/109809989349859704969" target="_blank">Google Dev</a>
-<a href="https://wikidata.org/Q141662462" target="_blank">Wikidata Entity</a>
-</div>
-</div>
-<div class="search-box">🔍 <input type="text" id="searchInput" placeholder="Enter Search Payload... Search 300+ Tools (Nmap, ChatGPT, Burp etc)"></div>
-<div class="stats">
-<div class="stat"><div class="stat-num">300+</div><div class="stat-label">TOTAL TOOLS</div></div>
-<div class="stat"><div class="stat-num" id="visibleCount">300</div><div class="stat-label">VISIBLE</div></div>
-<div class="stat"><div class="stat-num">150+150</div><div class="stat-label">HACKING + AI</div></div>
-<div class="stat"><div class="stat-num">100%</div><div class="stat-label">CLICK TO OPEN</div></div>
-</div>
-<div class="section-title">⚡ TOP HACKING SOFTWARE TOOLS - 150 Tools - Contact Style</div>
-<div class="tool-list" id="hackingList"></div>
-<div class="section-title">🤖 TOP AI TOOLS DIRECTORY - 150 Tools - Contact Style</div>
-<div class="tool-list" id="aiList"></div>
-<div id="noResult" style="text-align:center;padding:50px;color:#7c6aaa;display:none">No tools found</div>
-<footer>© 2026 Preyar Piyush aka 63piyush63 | Purple Theme • Slow Rain • Round DP • Bio • Search Icon • Contact List • 300+ Tools • All Open on Click • Smooth Scrolling</footer>
-</div>
-<script>
-const hackingData = [
-{name:"Aircrack-ng",desc:"WiFi security auditing suite for WEP WPA cracking",type:"Hacking Software"},
-{name:"Burp Suite Professional",desc:"Leading web application security testing platform",type:"Hacking Software"},
-{name:"Ghidra",desc:"NSA open source reverse engineering framework",type:"Hacking Software"},
-{name:"Hashcat",desc:"World fastest advanced password recovery utility",type:"Hacking Software"},
-{name:"Metasploit Framework",desc:"Advanced open source penetration testing framework",type:"Hacking Software"},
-{name:"Nmap",desc:"Network discovery and security auditing network mapper",type:"Hacking Software"},
-{name:"Sqlmap",desc:"Automatic SQL injection and database takeover tool",type:"Hacking Software"},
-{name:"Wireshark",desc:"World foremost network protocol analyzer",type:"Hacking Software"},
-{name:"John The Ripper",desc:"Fastest password cracker and hash breaking tool",type:"Hacking Software"},
-{name:"Hydra",desc:"Parallelized login cracker supports numerous protocols",type:"Hacking Software"},
-{name:"Nikto",desc:"Open source web server scanner for vulnerabilities",type:"Hacking Software"},
-{name:"OWASP ZAP",desc:"Free open source web app security scanner",type:"Hacking Software"},
-{name:"Kali Linux",desc:"Advanced penetration testing Linux distribution",type:"Hacking Software"},
-{name:"Shodan",desc:"Search engine for Internet connected devices",type:"Hacking Software"},
-{name:"Maltego",desc:"All in one link analysis and data mining tool",type:"Hacking Software"},
-{name:"Recon-ng",desc:"Full featured web reconnaissance framework",type:"Hacking Software"},
-{name:"SpiderFoot",desc:"Open source OSINT automation and intelligence",type:"Hacking Software"},
-{name:"TheHarvester",desc:"Gathering emails names subdomains from public sources",type:"Hacking Software"},
-{name:"Amass",desc:"In depth attack surface mapping and asset discovery",type:"Hacking Software"},
-{name:"Sublist3r",desc:"Fast subdomains enumeration tool for pentesters",type:"Hacking Software"},
-{name:"Nuclei",desc:"Fast customizable vulnerability scanner based on templates",type:"Hacking Software"},
-{name:"Ffuf",desc:"Fast web fuzzer written in Go for brute forcing",type:"Hacking Software"},
-{name:"Dirb",desc:"Web content scanner for hidden directories and files",type:"Hacking Software"},
-{name:"Gobuster",desc:"Directory file and DNS busting tool written in Go",type:"Hacking Software"},
-{name:"WFUZZ",desc:"Web application bruteforcer for hidden parameters",type:"Hacking Software"},
-{name:"Commix",desc:"Automated all in one OS command injection exploitation",type:"Hacking Software"},
-{name:"XSStrike",desc:"Most advanced XSS detection and exploitation suite",type:"Hacking Software"},
-{name:"Dalfox",desc:"Powerful open source XSS scanning and analysis tool",type:"Hacking Software"},
-{name:"BeEF Framework",desc:"Browser exploitation framework project",type:"Hacking Software"},
-{name:"SET Toolkit",desc:"Open source pen testing for social engineering",type:"Hacking Software"},
-{name:"Bettercap",desc:"Swiss army knife for network attacks and monitoring",type:"Hacking Software"},
-{name:"Ettercap",desc:"Comprehensive suite for man in the middle attacks",type:"Hacking Software"},
-{name:"Responder",desc:"LLMNR NBT-NS and MDNS poisoner",type:"Hacking Software"},
-{name:"BloodHound",desc:"Uses graph theory to reveal hidden AD relationships",type:"Hacking Software"},
-{name:"Mimikatz",desc:"Post exploitation tool to extract passwords",type:"Hacking Software"},
-{name:"Empire Framework",desc:"Post exploitation framework for Powershell",type:"Hacking Software"},
-{name:"Cobalt Strike",desc:"Commercial threat emulation and adversary simulation",type:"Hacking Software"},
-{name:"CrackMapExec",desc:"Swiss army knife for pentesting AD networks",type:"Hacking Software"},
-{name:"Impacket",desc:"Collection of Python classes for network protocols",type:"Hacking Software"},
-{name:"LinPEAS",desc:"Linux privilege escalation awesome script",type:"Hacking Software"},
-{name:"WinPEAS",desc:"Windows privilege escalation awesome script",type:"Hacking Software"},
-{name:"Linenum",desc:"Shell script for local Linux enumeration",type:"Hacking Software"},
-{name:"PEASS-ng",desc:"Privilege escalation awesome scripts suite",type:"Hacking Software"},
-{name:"Pspy",desc:"Unprivileged Linux process snooping tool",type:"Hacking Software"},
-{name:"Chisel",desc:"Fast TCP UDP tunnel over HTTP transport",type:"Hacking Software"},
-{name:"Socat",desc:"Multipurpose relay for bidirectional data transfer",type:"Hacking Software"},
-{name:"Netcat",desc:"Networking utility for reading writing connections",type:"Hacking Software"},
-{name:"Smbclient",desc:"Samba suite client to access SMB CIFS resources",type:"Hacking Software"},
-{name:"Enum4linux",desc:"Linux alternative to enum for Windows and Samba",type:"Hacking Software"},
-{name:"Ldapsearch",desc:"Tool for searching LDAP directories and enumeration",type:"Hacking Software"},
-{name:"Kerbrute",desc:"Quickly bruteforce and enumerate valid AD users",type:"Hacking Software"},
-{name:"Rubeus",desc:"C# toolset for raw Kerberos interaction and abuse",type:"Hacking Software"},
-{name:"SharpHound",desc:"C# data collector for BloodHound AD reconnaissance",type:"Hacking Software"},
-{name:"PowerView",desc:"PowerShell tool to gain network situational awareness",type:"Hacking Software"},
-{name:"PowerUpSQL",desc:"PowerShell toolkit for attacking SQL Server",type:"Hacking Software"},
-{name:"SQLNinja",desc:"Tool to exploit SQL Server vulnerabilities",type:"Hacking Software"},
-{name:"Cewl",desc:"Custom wordlist generator by spidering target website",type:"Hacking Software"},
-{name:"Crunch",desc:"Wordlist generator creates custom wordlists from charset",type:"Hacking Software"},
-{name:"Cuppy",desc:"User password profiler based on user profiling",type:"Hacking Software"},
-{name:"ExifTool",desc:"Library for reading writing metadata",type:"Hacking Software"},
-{name:"Binwalk",desc:"Tool for searching binary image for embedded files",type:"Hacking Software"},
-{name:"Foremost",desc:"Forensic program to recover files based on headers",type:"Hacking Software"},
-{name:"Volatility",desc:"Advanced memory forensics and analysis framework",type:"Hacking Software"},
-{name:"Autopsy",desc:"Digital forensics platform and graphical interface",type:"Hacking Software"},
-{name:"FTK Imager",desc:"Data preview and imaging tool for forensic analysis",type:"Hacking Software"},
-{name:"Wazuh",desc:"Free open source security monitoring and threat detection",type:"Hacking Software"},
-{name:"OSSEC",desc:"Open source host based intrusion detection system",type:"Hacking Software"},
-{name:"Snort",desc:"Open source intrusion prevention and detection",type:"Hacking Software"},
-{name:"Suricata",desc:"High performance IDS IPS and network security monitoring",type:"Hacking Software"},
-{name:"Zeek",desc:"Powerful network analysis framework formerly Bro",type:"Hacking Software"},
-{name:"OSQuery",desc:"SQL powered operating system instrumentation",type:"Hacking Software"},
-{name:"Velociraptor",desc:"Open source endpoint visibility and collection tool",type:"Hacking Software"},
-{name:"YARA",desc:"Tool for identifying and classifying malware samples",type:"Hacking Software"},
-{name:"ClamAV",desc:"Open source antivirus engine for detecting malware",type:"Hacking Software"},
-{name:"Lynis",desc:"Security auditing tool for Linux Unix hardening",type:"Hacking Software"},
-{name:"OpenVAS",desc:"Full featured open source vulnerability scanner",type:"Hacking Software"},
-{name:"Nessus",desc:"Industry leading vulnerability assessment scanner",type:"Hacking Software"},
-{name:"Qualys VMDR",desc:"Cloud based vulnerability management detection response",type:"Hacking Software"},
-{name:"Acunetix",desc:"Automated web vulnerability scanner for 7000+ vulns",type:"Hacking Software"},
-{name:"Netsparker",desc:"Proof based web application security scanner",type:"Hacking Software"},
-{name:"AppScan",desc:"Application security testing suite for web mobile",type:"Hacking Software"},
-{name:"SonarQube",desc:"Continuous inspection of code quality and security",type:"Hacking Software"},
-{name:"Semgrep",desc:"Fast lightweight static analysis for finding bugs",type:"Hacking Software"},
-{name:"TruffleHog",desc:"Searches through git repos for high entropy secrets",type:"Hacking Software"},
-{name:"Gitleaks",desc:"SAST tool for detecting hardcoded secrets",type:"Hacking Software"},
-{name:"Prowler",desc:"Open source AWS GCP Azure security assessment",type:"Hacking Software"},
-{name:"ScoutSuite",desc:"Open source multi cloud security auditing tool",type:"Hacking Software"},
-{name:"Pacu",desc:"Open source AWS exploitation framework",type:"Hacking Software"},
-{name:"Kube-hunter",desc:"Hunt for security weaknesses in Kubernetes",type:"Hacking Software"},
-{name:"Trivy",desc:"Simple comprehensive scanner for vulnerabilities in containers",type:"Hacking Software"},
-{name:"IDA Pro",desc:"State of the art disassembler and debugger",type:"Hacking Software"},
-{name:"Radare2",desc:"Open source Unix like reverse engineering framework",type:"Hacking Software"},
-{name:"Frida",desc:"Dynamic instrumentation toolkit for developers",type:"Hacking Software"},
-{name:"Pwntools",desc:"CTF framework and exploit development library",type:"Hacking Software"},
-{name:"Dirsearch",desc:"Advanced web path scanner for brute forcing",type:"Hacking Software"},
-{name:"ParamSpider",desc:"Mining parameters from dark corners of web archives",type:"Hacking Software"},
-{name:"Arjun",desc:"HTTP parameter discovery suite",type:"Hacking Software"},
-{name:"LinkFinder",desc:"Fast python script to find endpoints in JS files",type:"Hacking Software"},
-{name:"SecretFinder",desc:"Tool to find secrets API keys in JavaScript",type:"Hacking Software"},
-{name:"Subjack",desc:"Subdomain takeover vulnerability checker",type:"Hacking Software"},
-{name:"TestSSL.sh",desc:"Testing TLS SSL encryption anywhere on any port",type:"Hacking Software"},
-{name:"WhatWeb",desc:"Next generation web scanner identifies technologies",type:"Hacking Software"},
-{name:"Wappalyzer",desc:"Technology profiler shows what websites are built with",type:"Hacking Software"},
-{name:"Snyk",desc:"Open source security platform finds and fixes vulns",type:"Hacking Software"},
-{name:"Bandit",desc:"Security linter for Python code finds common issues",type:"Hacking Software"},
-{name:"Nuclei Templates",desc:"Community curated templates for Nuclei scanner",type:"Hacking Software"},
-{name:"HTTPx Toolkit",desc:"Fast multi purpose HTTP toolkit for pentesting",type:"Hacking Software"},
-{name:"Katana Crawler",desc:"Next generation crawling and spidering framework",type:"Hacking Software"},
-{name:"Gau GetAllUrls",desc:"Fetches known URLs from AlienVault OTX Wayback",type:"Hacking Software"},
-{name:"Waybackurls",desc:"Fetch all URLs known by Wayback Machine",type:"Hacking Software"},
-{name:"Airgeddon",desc:"Multi use bash script to audit wireless networks",type:"Hacking Software"},
-{name:"Fluxio
+
+    <!-- Hidden Search Crawler Injection -->
+    <div class="seo-hidden-tags">
+        Preyar Piyush Preyar 63piyush63 Ethical Hacker Cyber Security Programmer Coding Developer
+    </div>
+
+    <div class="container">
+        <!-- प्रोफाइल हेड (गोल फोटो के साथ) -->
+        <div class="profile-section">
+            <div class="avatar-container">
+                <img src="https://github.com.png" alt="Preyar Piyush" class="avatar-img">
+            </div>
+            <h1 class="profile-name">Preyar Piyush</h1>
+            <div class="profile-subtitle">[ WHITE HAT ETHICAL HACKER & CYBER SECURITY ANALYST ]</div>
+            <div class="profile-location">FROM LUCKNOW, UP, INDIA</div>
+            <p class="profile-desc">
+                Cyber Security Specialist from India. Specializing in secure architectures, penetration testing, automated systems, and advanced AI directory engines.
+            </p>
+        </div>
+
+        <div class="social-links">
+          
