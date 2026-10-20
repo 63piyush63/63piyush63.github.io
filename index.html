@@ -63,14 +63,22 @@
         }
 
         body, html {
-            background-color: var(--bg-dark-blue);
+            background: linear-gradient(45deg, #020813, #005577, #1a0033, #0b1528, #330022);
+background-size: 400% 400%;
+            animation: smoothNeonLights 6s ease infinite;
+            
             color: var(--text-main);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
             overflow-y: scroll;
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
         }
-
+@keyframes smoothNeonLights {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+        
         /* मैट्रिक्स एनीमेशन बैकग्राउंड */
         #matrix {
             position: fixed;
