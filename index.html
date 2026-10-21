@@ -51,7 +51,7 @@
             --neon-blue: #0066ff;
             --neon-red: #ff0055;
             --text-main: #e2e8f0;
-            --text-muted: #64748b;
+            --text-muted: #a1b1cc;
         }
 
         * {
@@ -128,7 +128,7 @@ background-size: 400% 400%;
 
         .profile-tagline {
             color: var(--neon-cyan);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: bold;
             letter-spacing: 2px;
             margin: 5px 0 12px 0;
@@ -157,7 +157,7 @@ background-size: 400% 400%;
             background: rgba(0, 102, 255, 0.1);
             border: 1px solid rgba(0, 102, 255, 0.2);
             text-decoration: none;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             padding: 6px 12px;
             border-radius: 20px;
             transition: all 0.2s;
@@ -179,7 +179,6 @@ background-size: 400% 400%;
             border-radius: 12px;
             font-size: 0.95rem;
             margin-bottom: 20px;
-            outline: none;
         }
 
         #toolSearch:focus {
@@ -216,13 +215,17 @@ background-size: 400% 400%;
         .tool-item:hover {
             border-color: rgba(0, 240, 255, 0.2);
             transform: translateY(-1px);
+            .tool-item:focus-visible {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 2px;
+            }
         }
 
         /* प्ले स्टोर टॉप चार्ट्स सीरियल नंबर */
         .tool-index {
             font-size: 1rem;
             font-weight: bold;
-            color: #a0aec0;
+            color: var(--text-main);
             width: 32px;
             flex-shrink: 0;
         }
@@ -254,8 +257,8 @@ background-size: 400% 400%;
         }
 
         .tool-desc {
-            font-size: 0.8rem;
-            color: #a0aec0;
+            font-size: 0.875rem;
+color: var(--text-muted);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -263,11 +266,11 @@ background-size: 400% 400%;
 
         .tool-action-btn {
             background-color: rgba(255, 255, 255, 0.05);
-            color: var(--neon-cyan);
+            color: #ffffff;
             border: none;
             padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
         }
@@ -304,7 +307,7 @@ background-size: 400% 400%;
         
 
         <!-- लाइव सर्च बार इंजन -->
-        <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="🔍 Enter Search Payload...">
+        <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="🔍 Enter Search Payload..." aria-label="Search Tools">
 
         <h2 class="section-title">⚡ Core Tools Dashboard</h2>
         
