@@ -48,7 +48,7 @@
   <p style="color: var(--text-muted, #a1b1cc);">Welcome to the ultimate resource hub. This dashboard contains a curated directory of over 300 tools for Ethical Hacking, Cyber Security Analytics, Penetration Testing, and Artificial Intelligence, including tools like Aircrack-ng, Midjourney models, and automated defense frameworks.</p>
 </div>
 
-    <!-- आवश्यक CSS फ्रेमवर्क और फोंट लोड करने के लिए -->
+       <!-- आवश्यक CSS फ्रेमवर्क और फोंट लोड करने के लिए -->
     <link href="https://jsdelivr.net" rel="stylesheet">
     <style>
         :root {
@@ -61,17 +61,34 @@
             --text-main: #e2e8f0;
             --text-muted: #a1b1cc;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
         body, html {
             background: linear-gradient(to bottom, var(--bg-top) 0%, var(--bg-mid) 25%, var(--bg-deep) 60%, var(--bg-bottom) 100%) !important;
             color: var(--text-main);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
             min-height: 100vh;
         }
-        #matrix { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.05; pointer-events: none; }
-        .terminal-overlay { position: relative; z-index: 2; max-w: 600px; margin: 0 auto; padding: 15px; }
-        
-        /* स्क्रीनशॉट के अनुसार प्रोफाइल कार्ड और टूल्स का बिल्कुल सेम स्टाइल */
+        #matrix { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: 1; 
+            opacity: 0.05; 
+            pointer-events: none; 
+        }
+        .terminal-overlay { 
+            position: relative; 
+            z-index: 2; 
+            max-w: 600px; 
+            margin: 0 auto; 
+            padding: 15px; 
+        }
         .profile-header {
             padding: 40px 20px;
             text-align: center;
@@ -121,8 +138,15 @@
             border-color: var(--neon-cyan); 
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); 
         }
-        .star-input { font-size: 2.2rem; color: rgba(255, 255, 255, 0.15); cursor: pointer; }
-        .star-input.active { color: #fbbf24; text-shadow: 0 0 10px #fbbf24; }
+        .star-input { 
+            font-size: 2.2rem; 
+            color: rgba(255, 255, 255, 0.15); 
+            cursor: pointer; 
+        }
+        .star-input.active { 
+            color: #fbbf24; 
+            text-shadow: 0 0 10px #fbbf24; 
+        }
     </style>
 </head>
 <body>
@@ -134,7 +158,7 @@
             <div class="profile-avatar">
                 <span class="text-3xl">👨‍💻</span> 
             </div>
-            <h1 class="text-2xl font-bold text-white tracking-wide mb-1" style="font-family: inherit;">Preyar Piyush</h1>
+            <h1 class="text-2xl font-bold text-white tracking-wide mb-1">Preyar Piyush</h1>
             <div class="text-[11px] font-bold uppercase tracking-widest mb-4" style="color: #00bfff; font-family: monospace;">[ ETHICAL HACKER & CYBER SECURITY ANALYST ]</div>
             <p class="text-xs leading-relaxed mx-auto max-w-md" style="color: var(--text-muted);">
                 Cyber Security Expert from India. Specializing in secure architectures, penetration testing, automated defense systems, and advanced AI directory engines.
@@ -156,19 +180,25 @@
 
         <!-- आइसबर्ग लेवल 1 -->
         <div class="mb-10">
-            <div class="text-center mb-5"><span class="bg-white/10 border border-white/20 text-white text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider">▲ Level 1: Surface & OS Layers</span></div>
+            <div class="text-center mb-5">
+                <span class="bg-white/10 border border-white/20 text-white text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider">▲ Level 1: Surface & OS Layers</span>
+            </div>
             <div id="toolsSurface" class="grid grid-cols-1 gap-3"></div>
         </div>
 
         <!-- आइसबर्ग लेवल 2 -->
         <div class="mb-10">
-            <div class="text-center mb-5"><span class="bg-white/10 border border-white/20 text-white text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider">🌊 Level 2: Mid-Ocean Auditing & Bounty Hub</span></div>
+            <div class="text-center mb-5">
+                <span class="bg-white/10 border border-white/20 text-white text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider">🌊 Level 2: Mid-Ocean Auditing & Bounty Hub</span>
+            </div>
             <div id="toolsIntermediate" class="grid grid-cols-1 gap-3"></div>
         </div>
 
         <!-- आइसबर्ग लेवल 3 -->
         <div class="mb-10">
-            <div class="text-center mb-5"><span class="bg-black/60 border border-cyan-400/50 text-cyan-400 text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider">⚓ Level 3: Deep Ocean Hardware & AI</span></div>
+            <div class="text-center mb-5">
+                <span class="bg-black/60 border border-cyan-400/50 text-cyan-400 text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider">⚓ Level 3: Deep Ocean Hardware & AI</span>
+            </div>
             <div id="toolsAdvanced" class="grid grid-cols-1 gap-3"></div>
         </div>
 
@@ -197,21 +227,42 @@
                 </div>
                 <textarea id="userComment" rows="2" placeholder="Write review here (Optional)..." class="w-full bg-black/60 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none resize-none"></textarea>
                 <button onclick="submitRating()" class="w-full bg-emerald-400 text-black text-xs font-bold py-2.5 rounded-xl uppercase">Submit Review</button>
-                <div id="userDeleteOption" class="hidden text-center"><button onclick="deleteOwnRating()" class="text-[11px] text-red-400 font-bold underline">❌ Delete My Rating</button></div>
+                <div id="userDeleteOption" class="hidden text-center">
+                    <button onclick="deleteOwnRating()" class="text-[11px] text-red-400 font-bold underline">❌ Delete My Rating</button>
+                </div>
                 <p id="ratingStatus" class="text-[11px] text-center font-medium"></p>
             </div>
         </div>
     </div>
 
     <script>
-        // सभी 52 प्रमाणित और असली टूल्स की डेटा लिस्ट
+        // सभी 52 प्रमाणित और असली टूल्स की विस्तृत सूची (खुला हुआ कोड)
         const toolsData = [
-            { name: "Kali Linux", desc: "Advanced penetration testing Linux OS.", url: "https://kali.org", icon: "🐧", level: 1 },
-            { name: "Ubuntu Linux", desc: "Open-source Linux OS for cloud architectures.", url: "https://ubuntu.com", icon: "💻", level: 1 },
-            { name: "Parrot Security OS", desc: "Lightweight cloud security GNU/Linux.", url: "https://parrotsec.org", icon: "🦜", level: 1 },
-            { name: "BlackArch Linux", desc: "Arch distribution with 2800+ pre-installed tools.", url: "https://blackarch.org", icon: "🦅", level: 1 },
-            { name: "Maltego", desc: "Data visualization for link analysis & OSINT.", url: "https://maltego.com", icon: "🔍", level: 1 },
-            { name: "TheHarvester", desc: "Gathers emails and subdomains from public sources.", url: "https://github.com", icon: "🌾", level: 1 },
-            { name: "Sherlock", desc: "Find social accounts by username across networks.", url: "https://github.io", icon: "🕵️", level: 1 },
-            { name: "Spiderfoot", desc: "Automating OSINT collection from public channels.", url: "https://spiderfoot.net", icon: "🕷️", level: 1 },
-        
+            { 
+                name: "Kali Linux", 
+                desc: "Advanced penetration testing Linux OS.", 
+                url: "https://kali.org", 
+                icon: "🐧", 
+                level: 1 
+            },
+            { 
+                name: "Ubuntu Linux", 
+                desc: "Open-source Linux OS for cloud architectures.", 
+                url: "https://ubuntu.com", 
+                icon: "💻", 
+                level: 1 
+            },
+            { 
+                name: "Parrot Security OS", 
+                desc: "Lightweight cloud security GNU/Linux.", 
+                url: "https://parrotsec.org", 
+                icon: "🦜", 
+                level: 1 
+            },
+            { 
+                name: "BlackArch Linux", 
+                desc: "Arch distribution with 2800+ pre-installed tools.", 
+                url: "https://blackarch.org", 
+                icon: "🦅", 
+                level: 1 
+            },
