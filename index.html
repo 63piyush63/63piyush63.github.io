@@ -48,234 +48,311 @@
   <p style="color: var(--text-muted, #a1b1cc);">Welcome to the ultimate resource hub. This dashboard contains a curated directory of over 300 tools for Ethical Hacking, Cyber Security Analytics, Penetration Testing, and Artificial Intelligence, including tools like Aircrack-ng, Midjourney models, and automated defense frameworks.</p>
 </div>
 
-    <style>
-        /* ==========================================================================
-           ICEBERG THEME CORE STYLING (Line 51 Onwards)
-           ========================================================================== */
-        :root {
-            --bg-dark: #020813;
-            --surface-blue: #0b1528;
-            --neon-cyan: #00f0ff;
-            --neon-blue: #0065ff;
-            --neon-purple: #8b5cf6;
-            --neon-red: #ff0055;
-            --text-main: #e2e8f0;
-            --text-muted: #a1b1cc;
-            --star-color: #ffd700;
-        }
+    <!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preyar Piyush | Ethical Hacker &amp; Cyber Security Analyst</title>
+<meta name="description" content="Preyar Piyush (63piyush63) - Ethical Hacker and Cyber Security Analyst from Lucknow, India. Photo and video quality upscaler, cyber tools directory, bug bounty and learning platforms.">
+<meta name="keywords" content="Preyar Piyush, 63piyush63, Ethical Hacker, Cyber Security, Bug Bounty, Image Upscaler, Video Upscaler, Cyber Tools">
+<meta name="author" content="Preyar Piyush">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#031a4a">
+<meta property="og:title" content="Preyar Piyush | Ethical Hacker &amp; Cyber Security Analyst">
+<meta property="og:description" content="Cyber Security Expert from India. Photo and video upscaler plus cyber tools directory.">
+<meta property="og:image" content="https://github.com/63piyush63.png?size=400">
+<meta property="og:url" content="https://63piyush63.github.io">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Preyar Piyush",
+  "alternateName": "63piyush63",
+  "jobTitle": "Ethical Hacker & Cyber Security Analyst",
+  "worksFor": { "@type": "Organization", "name": "GitHub / Freelance" },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lucknow",
+    "addressRegion": "Uttar Pradesh",
+    "addressCountry": "India"
+  },
+  "url": "https://63piyush63.github.io",
+  "image": "https://github.com/63piyush63.png",
+  "sameAs": [
+    "https://github.com/63piyush63",
+    "https://gitlab.com/63piyush63",
+    "https://www.linkedin.com/in/63piyush63",
+    "https://tryhackme.com/p/63piyush63",
+    "https://hackthebox.com/63piyush63",
+    "https://www.wikidata.org/wiki/User:63piyush63"
+  ]
+}
+</script>
 
-        body {
-            background: linear-gradient(180deg, #020813 0%, #0b1528 35%, #052e42 65%, #010409 100%);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow-x: hidden;
-            padding: 20px;
-        }
+<style>
+  :root{--bg:#031a4a;--card:rgba(6,34,88,.55);--fg:#eaf4ff;--mut:#9cc0e8;--acc:#2fd0c8;--ok:#2fd0c8;--err:#ff8080;--teal:#35e0d2}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#031a4a;color:var(--fg);
+    padding:16px;max-width:760px;margin-inline:auto;position:relative;min-height:100vh}
 
-        /* Iceberg Roadmap Containers */
-        .iceberg-wrapper {
-            max-width: 1200px;
-            margin: 0 auto 100px auto;
-        }
+  /* ===== Iceberg / Ocean background ===== */
+  body::before{content:"";position:fixed;inset:0;z-index:-2;
+    background:linear-gradient(180deg,#6db4e6 0,#a9d4f0 5%,#2f7fc0 14%,#0b4a92 22%,#08306c 45%,#04204f 75%,#020f2e 100%)}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 800' preserveAspectRatio='xMidYMin slice'><defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23ffffff'/><stop offset='.25' stop-color='%23dff3ff'/><stop offset='1' stop-color='%234aa8e8' stop-opacity='.2'/></linearGradient></defs><polygon points='150,95 185,45 205,70 225,30 255,100 270,110 330,110 300,250 280,420 245,640 205,790 170,640 120,420 95,250 70,110 130,110' fill='url(%23g)'/></svg>") center top/cover no-repeat}
 
-        .iceberg-tier {
-            margin: 50px 0;
-            padding: 35px 25px;
-            background: rgba(11, 21, 40, 0.65);
-            border-radius: 16px;
-            border: 1px solid rgba(0, 240, 255, 0.05);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
+  h1{text-align:center;font-size:1.8rem;font-weight:900;letter-spacing:.04em;margin:22px 0 2px;color:#fff;text-shadow:0 2px 12px rgba(0,30,80,.6)}
+  h1 span{color:var(--teal)}
+  .sub{text-align:center;letter-spacing:.25em;font-size:.72rem;color:#e6f4ff;margin:0 0 20px;text-shadow:0 1px 6px rgba(0,30,80,.7)}
 
-        .tier-beginner { border-top: 4px solid var(--neon-cyan); box-shadow: 0 0 30px rgba(0, 240, 255, 0.05); }
-        .tier-intermediate { border-top: 4px solid var(--neon-blue); box-shadow: 0 0 30px rgba(0, 101, 255, 0.05); }
-        .tier-advanced { border-top: 4px solid var(--neon-purple); box-shadow: 0 0 30px rgba(139, 92, 246, 0.05); }
+  .card{background:var(--card);border-radius:16px;padding:16px;margin-bottom:16px;border:1px solid rgba(160,210,255,.22);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 30px rgba(0,10,40,.35)}
 
-        .tier-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-transform: uppercase;
-        }
+  /* ===== Profile ===== */
+  .profile{text-align:center;padding:26px 16px;background:rgba(3,12,36,.78);border:1px solid rgba(53,224,210,.35);
+    box-shadow:0 0 30px rgba(53,224,210,.15),0 8px 30px rgba(0,10,40,.45)}
+  #pfAvatar{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto;display:block;background:#0a1f4d;
+    border:3px solid var(--teal);box-shadow:0 0 0 3px #b02aff,0 0 26px rgba(53,224,210,.7)}
+  .pfName{font-size:1.8rem;font-weight:800;margin-top:14px;color:#fff;text-shadow:0 0 14px rgba(53,224,210,.6)}
+  .pfAlias{color:var(--mut);font-size:.85rem;font-family:ui-monospace,monospace;margin-top:2px}
+  .pfRole{margin-top:8px;font-size:.76rem;letter-spacing:.16em;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace}
+  .pfBio{margin:12px 0 0;color:#cfe3f8;font-size:.92rem;line-height:1.55}
+  .pfStats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+  .pfStats span{background:rgba(53,224,210,.1);border:1px solid rgba(53,224,210,.35);border-radius:999px;padding:5px 12px;font-size:.8rem;color:#bff6f1}
+  .pfLinks{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
+  .pfLinks a{padding:9px 16px;border-radius:999px;background:#07163a;border:1px solid rgba(160,210,255,.35);
+    color:#fff;text-decoration:none;font-size:.85rem;font-family:ui-monospace,monospace}
+  .pfLinks a:active{background:#0e2a66}
 
-        .tier-beginner .tier-title { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 240, 255, 0.2); }
-        .tier-intermediate .tier-title { color: var(--neon-blue); text-shadow: 0 0 10px rgba(0, 101, 255, 0.2); }
-        .tier-advanced .tier-title { color: var(--neon-purple); text-shadow: 0 0 10px rgba(139, 92, 246, 0.2); }
+  /* ===== Tabs and forms ===== */
+  .tabs{display:flex;gap:8px;margin-bottom:16px}
+  .tabs button{flex:1;padding:12px;border:0;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:1rem;font-weight:700}
+  .tabs button.on{background:#fff;color:#031a4a;font-weight:800}
+  label{display:block;margin:12px 0 4px;color:var(--mut);font-size:.9rem}
+  select,input[type=file],#toolSearch{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(160,210,255,.25);background:rgba(2,15,46,.55);color:var(--fg)}
+  #toolSearch{padding:12px;border-radius:10px;margin:10px 0;font-size:1rem}
+  button.go{width:100%;margin-top:14px;padding:14px;border:0;border-radius:999px;background:#2fd0c8;color:#032033;font-weight:800;font-size:1rem}
+  button.go:disabled{opacity:.5}
+  progress{width:100%;margin-top:12px;height:14px}
+  #log{font-size:.8rem;color:var(--mut);white-space:pre-wrap;margin-top:8px;max-height:160px;overflow:auto}
+  .card img.res,video{max-width:100%;border-radius:10px;margin-top:12px}
+  a.dl{display:block;text-align:center;margin-top:12px;padding:12px;border-radius:999px;background:#fff;color:#031a4a;font-weight:700;text-decoration:none}
+  .hide{display:none}
+  .note{color:var(--mut);font-size:.85rem;margin-top:8px}
+  .err{color:var(--err)}
 
-        /* Tools Grid Layout */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
+  /* ===== Directory (contact-list style) ===== */
+  #tools h2{font-size:1.15rem;margin:0 0 4px}
+  .tl{max-height:70vh;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;overscroll-behavior:contain}
+  .tl h3{position:sticky;top:0;margin:0;padding:8px 4px;background:#072a63;color:var(--teal);letter-spacing:.12em;font-size:.95rem;z-index:1}
+  .row{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px solid rgba(160,210,255,.15);text-decoration:none;color:var(--fg)}
+  .row:active{background:rgba(255,255,255,.1)}
+  .row .n{width:34px;text-align:right;color:var(--mut);font-size:.85rem;flex:none}
+  .row img{width:42px;height:42px;border-radius:50%;margin:0;background:#fff;object-fit:contain;padding:4px;flex:none;box-shadow:0 0 0 2px rgba(255,255,255,.35)}
+  .row .t{flex:1;min-width:0}
+  .row .t b{display:block;font-weight:600}
+  .row .t small{color:var(--mut);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .row .go2{color:var(--teal);font-size:1.2rem}
+  #toTop{display:block;text-align:center;margin-top:10px;color:var(--teal);text-decoration:none}
+  footer{text-align:center;color:var(--mut);font-size:.8rem;padding:10px 0 24px}
+</style>
+</head>
+<body>
 
-        /* Tool Cards */
-        .tool-card {
-            background: rgba(2, 8, 19, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
+<!-- ================= PROFILE (TOP) ================= -->
+<section class="profile card" id="profile">
+  <img id="pfAvatar" alt="Preyar Piyush" src="https://63piyush63.github.com/63piyush63.png?size=240">
+  <div class="pfName">Preyar Piyush</div>
+  <div class="pfAlias">@63piyush63</div>
+  <div class="pfRole">[ ETHICAL HACKER &amp; CYBER SECURITY ANALYST ]</div>
+  <p class="pfBio">Cyber Security Expert from India. Specializing in secure architectures, penetration testing, automated systems, and advanced AI directory engines.</p>
+  <div class="pfStats" id="pfStats">
+    <span>&#128205; Lucknow, Uttar Pradesh, India</span>
+    <span>&#128188; GitHub / Freelance</span>
+  </div>
+  <div class="pfLinks">
+    <a href="https://github.com/63piyush63" target="_blank" rel="noopener noreferrer">&#128187; GitHub</a>
+    <a href="https://gitlab.com/63piyush63" target="_blank" rel="noopener noreferrer">&#129418; GitLab</a>
+    <a href="https://www.linkedin.com/in/63piyush63" target="_blank" rel="noopener noreferrer">&#128279; LinkedIn</a>
+    <a href="https://tryhackme.com/p/63piyush63" target="_blank" rel="noopener noreferrer">&#128128; TryHackMe</a>
+    <a href="https://hackthebox.com/63piyush63" target="_blank" rel="noopener noreferrer">&#128230; HackTheBox</a>
+    <a href="https://www.wikidata.org/wiki/User:63piyush63" target="_blank" rel="noopener noreferrer">&#127760; Wikidata</a>
+  </div>
+</section>
 
-        .tool-card:hover {
-            transform: translateY(-5px);
-            background: rgba(11, 21, 40, 0.9);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-        }
+<h1>QUALITY <span>UPSCALER</span></h1>
+<div class="sub">LEARN &bull; BUILD &bull; BUILD THE FUTURE</div>
 
-        .tier-beginner .tool-card:hover { border-color: var(--neon-cyan); }
-        .tier-intermediate .tool-card:hover { border-color: var(--neon-blue); }
-        .tier-advanced .tool-card:hover { border-color: var(--neon-purple); }
+<div class="tabs">
+  <button id="tImg" class="on">Photo</button>
+  <button id="tVid">Video</button>
+</div>
 
-        .tool-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
+<!-- ================= PHOTO ================= -->
+<section id="pImg" class="card">
+  <label>Photo chunein</label>
+  <input type="file" id="imgIn" accept="image/*">
+  <label>Method</label>
+  <select id="imgMode">
+    <option value="ai">AI Upscale (sabse best, thoda slow)</option>
+    <option value="smooth">Smooth Fast (Lanczos + sharpen)</option>
+  </select>
+  <label>Scale</label>
+  <select id="imgScale">
+    <option value="2">2x</option>
+    <option value="4">4x</option>
+  </select>
+  <button class="go" id="imgGo" disabled>Quality Badhao</button>
+  <progress id="imgProg" class="hide" max="100" value="0"></progress>
+  <div id="imgMsg" class="note"></div>
+  <img id="imgOut" class="res hide" alt="Result">
+  <a id="imgDl" class="dl hide" download="upscaled.png">Download</a>
+  <div class="note">AI mode chal na paaye ya photo bahut badi ho, toh site apne aap Smooth mode use kar leti hai.</div>
+</section>
 
-        .tool-header i {
-            font-size: 1.5rem;
-            min-width: 30px;
-            text-align: center;
-        }
+<!-- ================= VIDEO ================= -->
+<section id="pVid" class="card hide">
+  <label>Video chunein (3gp, mp4, mov, mkv, webm... max 5 minute)</label>
+  <input type="file" id="vidIn" accept="video/*,.3gp">
+  <label>Output quality</label>
+  <select id="vidRes">
+    <option value="1280:720">720p HD</option>
+    <option value="1920:1080" selected>1080p Full HD</option>
+    <option value="3840:2160">4K (bahut slow)</option>
+  </select>
+  <label>Smoothness (FPS)</label>
+  <select id="vidFps">
+    <option value="keep">Original FPS</option>
+    <option value="30">30 FPS</option>
+    <option value="60">60 FPS (motion smooth, slow)</option>
+  </select>
+  <button class="go" id="vidGo" disabled>Video Upgrade Karo</button>
+  <progress id="vidProg" class="hide" max="100" value="0"></progress>
+  <div id="vidMsg" class="note"></div>
+  <div id="log"></div>
+  <video id="vidOut" class="hide" controls playsinline></video>
+  <a id="vidDl" class="dl hide" download="upscaled.mp4">Download MP4</a>
+  <div class="note">Yeh browser mein chalta hai, isliye phone par 1-3 minute ki video best hai. Processing mein kai minute lag sakte hain, page band na karein. 8K aur 3 ghante ki video ke liye GPU server chahiye.</div>
+</section>
 
-        .tier-beginner .tool-header i { color: var(--neon-cyan); }
-        .tier-intermediate .tool-header i { color: var(--neon-blue); }
-        .tier-advanced .tool-header i { color: var(--neon-purple); }
+<!-- ================= DIRECTORY ================= -->
+<section id="tools" class="card">
+  <h2>Cyber Tools aur Learning Directory</h2>
+  <div class="note">Sab official links hain. Sirf legal aur authorized testing ke liye use karein.</div>
+  <input id="toolSearch" type="search" placeholder="Tool ya platform ka naam khojein...">
+  <div class="tl" id="toolList"></div>
+  <a id="toTop" href="#profile">Upar jayein</a>
+</section>
 
-        .tool-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #ffffff;
-        }
+<footer>&copy; Preyar Piyush (63piyush63)</footer>
 
-        /* Live Interative Star Ratings */
-        .rating-container {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin: 12px 0;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
+<!-- ============ Profile: photo fallback + GitHub stats ============ -->
+<script>
+(function(){
+  const USER = '63piyush63';
+  const av = document.getElementById('pfAvatar');
+  let tried = 0;
+  av.onerror = function(){
+    if (tried++ === 0) this.src = 'https://avatars.githubusercontent.com/' + USER + '?s=240';
+    else this.style.display = 'none';
+  };
+  const box = document.getElementById('pfStats');
+  function chip(t){ const s = document.createElement('span'); s.textContent = t; box.appendChild(s); }
+  fetch('https://api.github.com/users/' + USER)
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(d => {
+      chip('\uD83D\uDCE6 ' + d.public_repos + ' Repos');
+      chip('\uD83D\uDC65 ' + d.followers + ' Followers');
+      chip('\u27A1\uFE0F ' + d.following + ' Following');
+      if (d.created_at) chip('\uD83D\uDCC5 Since ' + new Date(d.created_at).getFullYear());
+    }).catch(() => {});
+})();
+</script>
 
-        .stars {
-            display: flex;
-            gap: 2px;
-        }
+<!-- ============ Directory list ============ -->
+<script>
+(function(){
+  const software = [
+    ["Kali Linux","https://www.kali.org"],["Nmap","https://nmap.org"],["Wireshark","https://www.wireshark.org"],
+    ["Burp Suite","https://portswigger.net/burp"],["OWASP ZAP","https://www.zaproxy.org"],["Metasploit","https://www.metasploit.com"],
+    ["Nikto","https://github.com/sullo/nikto"],["Nessus","https://www.tenable.com/products/nessus"],["OpenVAS","https://www.openvas.org"],
+    ["SQLMap","https://sqlmap.org"],["Hydra","https://github.com/vanhauser-thc/thc-hydra"],["John the Ripper","https://www.openwall.com/john/"],
+    ["Hashcat","https://hashcat.net"],["Aircrack-ng","https://www.aircrack-ng.org"],["Reaver","https://github.com/t6x/reaver-wps-fork-t6x"],
+    ["Wifite","https://github.com/derv82/wifite2"],["CrackMapExec","https://github.com/byt3bl33d3r/CrackMapExec"],
+    ["Responder","https://github.com/lgandx/Responder"],["Bettercap","https://www.bettercap.org"],["Netcat","http://netcat.sourceforge.net"],
+    ["BeEF","https://beefproject.com"],["SET Toolkit","https://github.com/trustedsec/social-engineer-toolkit"],
+    ["Social-Engineer Toolkit","https://www.trustedsec.com/resources/tools/the-social-engineer-toolkit-set"],
+    ["Maltego","https://www.maltego.com"],["TheHarvester","https://github.com/laramies/theHarvester"],["Shodan","https://www.shodan.io"],
+    ["Recon-ng","https://github.com/lanmaster53/recon-ng"],["SpiderFoot","https://www.spiderfoot.net"],["Gobuster","https://github.com/OJ/gobuster"],
+    ["Dirb","https://dirb.sourceforge.net"],["WFuzz","https://github.com/xmendez/wfuzz"],["CeWL","https://digi.ninja/projects/cewl.php"],
+    ["FFUF","https://github.com/ffuf/ffuf"],["Sublist3r","https://github.com/aboul3la/Sublist3r"],["Amass","https://github.com/owasp-amass/amass"],
+    ["Masscan","https://github.com/robertdavidgraham/masscan"],["Enum4linux","https://github.com/CiscoCXSecurity/enum4linux"],
+    ["Impacket","https://github.com/fortra/impacket"],["DumpsterDiver","https://github.com/securing/DumpsterDiver"],
+    ["OSINT Tools","https://osintframework.com"],["Tor","https://www.torproject.org"],["GitHub Dorks","https://github.com"],
+    ["Google Dorking","https://www.exploit-db.com/google-hacking-database"],["VirusTotal","https://www.virustotal.com"],
+    ["Have I Been Pwned","https://haveibeenpwned.com"],["Censys","https://censys.io"],["Nuclei","https://github.com/projectdiscovery/nuclei"],
+    ["ParamSpider","https://github.com/devanshbatham/ParamSpider"],["AssetFinder","https://github.com/tomnomnom/assetfinder"],
+    ["WhatWeb","https://www.morningstarsecurity.com/research/whatweb"],["CMSMap","https://github.com/Dionach/CMSmap"],
+    ["Postman","https://www.postman.com"],["Insomnia","https://insomnia.rest"],["Fiddler","https://www.telerik.com/fiddler"],
+    ["Charles Proxy","https://www.charlesproxy.com"],["Suricata","https://suricata.io"],["Snort","https://www.snort.org"],
+    ["Autopsy","https://www.autopsy.com"],["Volatility","https://www.volatilityfoundation.org"],["Binwalk","https://github.com/ReFirmLabs/binwalk"],
+    ["ExifTool","https://exiftool.org"],["Steghide","https://steghide.sourceforge.net"]
+  ];
+  const hardware = [
+    ["Raspberry Pi","https://www.raspberrypi.com"],["Arduino","https://www.arduino.cc"],["ESP32","https://www.espressif.com/en/products/socs/esp32"],
+    ["ESP8266","https://www.espressif.com/en/products/socs/esp8266"],["M5StickC Plus2","https://shop.m5stack.com"],
+    ["Flipper Zero","https://flipperzero.one"],["Digispark","https://digistump.com"],
+    ["USB Rubber Ducky","https://shop.hak5.org/products/usb-rubber-ducky"],["Wi-Fi Adapter (ALFA)","https://www.alfa.com.tw"],
+    ["RTL-SDR","https://www.rtl-sdr.com"],["TP-Link T3U","https://www.tp-link.com"],["Wi-Fi Pineapple","https://shop.hak5.org"],
+    ["LAN Turtle","https://shop.hak5.org"],["Proxmark3","https://proxmark.com"],["YubiKey","https://www.yubico.com"],
+    ["HackRF One","https://greatscottgadgets.com/hackrf/"],["Bus Pirate","https://buspirate.com"],["NRF24L01","https://www.nordicsemi.com"],
+    ["RFID Reader","https://www.elechouse.com"]
+  ];
+  const bounty = [
+    ["HackerOne","https://www.hackerone.com"],["Bugcrowd","https://www.bugcrowd.com"],["Intigriti","https://www.intigriti.com"],
+    ["Open Bug Bounty","https://www.openbugbounty.org"],["YesWeHack","https://www.yeswehack.com"],["Synack","https://www.synack.com"],
+    ["HackenProof","https://hackenproof.com"],["Cobalt","https://www.cobalt.io"],["Google Bug Hunters (VRP)","https://bughunters.google.com"],
+    ["Standoff 365 Bug Bounty","https://bugbounty.standoff365.com"]
+  ];
+  const labs = [
+    ["TryHackMe","https://tryhackme.com"],["Hack The Box","https://www.hackthebox.com"],
+    ["PortSwigger Web Security Academy","https://portswigger.net/web-security"],["Hacker101","https://www.hacker101.com"],
+    ["OverTheWire","https://overthewire.org"],["PicoCTF","https://picoctf.org"],["VulnHub","https://www.vulnhub.com"],
+    ["PentesterLab","https://pentesterlab.com"],["Root Me","https://www.root-me.org"],["HackThisSite","https://www.hackthissite.org"],
+    ["CTFtime","https://ctftime.org"],["CyberDefenders","https://cyberdefenders.org"],["Blue Team Labs Online","https://blueteamlabs.online"],
+    ["LetsDefend","https://letsdefend.io"],["RangeForce","https://www.rangeforce.com"],["OWASP Juice Shop","https://owasp-juice.shop"],
+    ["OWASP WebGoat","https://github.com/WebGoat/WebGoat"],["DVWA","https://github.com/digininja/DVWA"],
+    ["Bugcrowd University","https://www.bugcrowd.com/hackers/bugcrowd-university/"]
+  ];
+  const courses = [
+    ["Offensive Security (OSCP)","https://www.offsec.com"],["EC-Council (CEH)","https://www.eccouncil.org"],
+    ["SANS Institute","https://www.sans.org"],["CompTIA","https://www.comptia.org"],["INE / eLearnSecurity","https://ine.com"],
+    ["TCM Security","https://tcm-sec.com"],["Cybrary","https://www.cybrary.it"],["Google Cybersecurity Certificate","https://grow.google/certificates/cybersecurity/"],
+    ["Coursera","https://www.coursera.org"],["Udemy","https://www.udemy.com"],["edX","https://www.edx.org"],
+    ["Cisco Networking Academy","https://www.netacad.com"],["ISC2","https://www.isc2.org"]
+  ];
 
-        .stars i {
-            cursor: pointer;
-            color: #334155;
-            font-size: 0.95rem;
-            transition: color 0.15s ease;
-        }
+  function logo(url){
+    const u = new URL(url);
+    if (u.hostname === 'github.com'){
+      const o = u.pathname.split('/')[1];
+      if (o) return 'https://github.com/' + o + '.png?size=96';
+    }
+    return 'https://www.google.com/s2/favicons?domain=' + u.hostname + '&sz=128';
+  }
+  const list = document.getElementById('toolList');
+  let n = 0;
+  function section(title, arr){
+    const h = document.createElement('h3'); h.textContent = title; list.appendChild(h);
+    arr.forEach(([name, url]) => {
+      n++;
+      const a = document.createElement('a');
+      a.className = 'row'; a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      a.dataset.name = name.toLowerCase();
+      a.innerHTML = '<span class="n">' + n + '.</span><img loading="lazy" alt="" src="' + logo(url) + '"><span class="t"><b></b><small></small></span><span class="go2">&rsaquo;</span>';
+      a.querySelector('b').textContent = name;
+      a.querySelector('small').textContent 
 
-        .stars i.active {
-            color: var(--star-color);
-            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
-        }
-
-        .rating-meta {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Direct Instant Access Anchor Links */
-        .direct-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--text-main);
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .tier-beginner .direct-link:hover { background: var(--neon-cyan); color: #020813; font-weight: 600; }
-        .tier-intermediate .direct-link:hover { background: var(--neon-blue); color: #ffffff; font-weight: 600; }
-        .tier-advanced .direct-link:hover { background: var(--neon-purple); color: #ffffff; font-weight: 600; }
-    </style>
-
-    <!-- FontAwesome Library For High-Quality Branding Icons -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-
-    <!-- MAIN CORE UI VIEW -->
-    <div class="iceberg-wrapper">
-        
-        <!-- LEVEL 1: SURFACE / LEARNING / PLATFORMS -->
-        <section class="iceberg-tier tier-beginner">
-            <h2 class="tier-title"><i class="fa-solid fa-cloud-sun"></i> Beginner Ecosystem & Platforms</h2>
-            <div class="tools-grid" id="layer-beginner"></div>
-        </section>
-
-        <!-- LEVEL 2: DEEP SOFTWARE ASSESSMENT -->
-        <section class="iceberg-tier tier-intermediate">
-            <h2 class="tier-title"><i class="fa-solid fa-water"></i> Intermediate Security Software</h2>
-            <div class="tools-grid" id="layer-intermediate"></div>
-        </section>
-
-        <!-- LEVEL 3: ABYSS HARDWARE & ADVANCED SYSTEMS -->
-        <section class="iceberg-tier tier-advanced">
-            <h2 class="tier-title"><i class="fa-solid fa-shield-virus"></i> Advanced Infrastructure Tools</h2>
-            <div class="tools-grid" id="layer-advanced"></div>
-        </section>
-
-    </div>
-
-    <!-- OBJECT ARCHITECTURE AND LOGIC CONTROL -->
-    <script>
-        // Clean Direct Map Arrays containing exact requested target links
-        const database = [
-            // --- Beginner / Bug Bounty / Learning ---
-            { name: "HackerOne", url: "https://hackerone.com", icon: "fa-solid fa-bug", tier: "beginner" },
-            { name: "Bugcrowd", url: "https://bugcrowd.com", icon: "fa-solid fa-shield-halved", tier: "beginner" },
-            { name: "Intigriti", url: "https://intigriti.com", icon: "fa-solid fa-terminal", tier: "beginner" },
-            { name: "Open Bug Bounty", url: "https://openbugbounty.org", icon: "fa-solid fa-unlock-keyhole", tier: "beginner" },
-            { name: "PortSwigger Web Academy", url: "https://portswigger.net", icon: "fa-solid fa-graduation-cap", tier: "beginner" },
-            { name: "TryHackMe", url: "https://tryhackme.com", icon: "fa-solid fa-gamepad", tier: "beginner" },
-            { name: "OverTheWire", url: "https://overthewire.org", icon: "fa-solid fa-code", tier: "beginner" },
-            { name: "Nmap", url: "https://nmap.org", icon: "fa-solid fa-network-wired", tier: "beginner" },
-            { name: "Wireshark", url: "https://wireshark.org", icon: "fa-solid fa-file-wave", tier: "beginner" },
-            { name: "OWASP ZAP", url: "https://zaproxy.org", icon: "fa-solid fa-user-secret", tier: "beginner" },
-            { name: "Tor Project", url: "https://torproject.org", icon: "fa-solid fa-circle-nodes", tier: "beginner" },
-            { name: "VirusTotal", url: "https://virustotal.com", icon: "fa-solid fa-virus", tier: "beginner" },
-            { name: "Have I Been Pwned", url: "https://haveibeenpwned.com", icon: "fa-solid fa-key", tier: "beginner" },
-            { name: "Postman", url: "https://postman.com", icon: "fa-solid fa-server", tier: "beginner" },
-            { name: "ExifTool", url: "https://exiftool.org", icon: "fa-solid fa-image", tier: "beginner" },
-
-            // --- Intermediate PenTesting Suite ---
-            { name: "Kali Linux", url: "https://kali.org", icon: "fa-brands fa-linux", tier: "intermediate" },
-            { name: "Burp Suite", url: "https://portswigger.net", icon: "fa-solid fa-box-open", tier: "intermediate" },
-            { name: "Metasploit", url: "https://metasploit.com", icon: "fa-solid fa-fire", tier: "intermediate" },
-            { name: "Nikto", url: "https://github.com", icon: "fa-solid fa-eye", tier: "intermediate" },
-            { name: "SQLMap", url: "https://sqlmap.org", icon: "fa-solid fa-database", tier: "intermediate" },
-            { name: "Hydra", url: "https://github.com", icon: "fa-solid fa-dragon", tier: "intermediate" },
-            { name: "John the Ripper", url: "https://openwall.com", icon: "fa-solid fa-gavel", tier: "intermediate" },
-            { name: "Hashcat", url: "https://hashcat.net", icon: "fa-solid fa-hashtag", tier: "intermediate" },
-        
