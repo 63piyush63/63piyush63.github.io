@@ -1,28 +1,61 @@
-// Global AI Tools Database - 200 Highly Useful Tools (Hacking Priority)
-const aiToolsData = [
-    // === CATEGORY: CYBER SECURITY & HACKING ===
-    { name: "WormGPT", category: "hacking", desc: "साइबर थ्रेट इंटेलिजेंस और मालवेयर एनालिसिस के लिए डिज़ाइन किया गया AI मॉडल।", link: "https://wormgpt.ai" },
-    { name: "PentestGPT", category: "hacking", desc: "पेनिट्रेशन TESTING (Penetration Testing) को ऑटोमेट करने वाला एडवांस्ड AI हैकिंग टूल।", link: "https://github.com" },
-    { name: "Burp Suite AI Extension", category: "hacking", desc: "वेब एप्लीकेशन हैकिंग और वल्नेरेबिलिटी स्कैनिंग के लिए AI-संचालित एक्सटेंशन।", link: "https://portswigger.net" },
-    { name: "Security Copilot", category: "hacking", desc: "माइक्रोसॉफ्ट का ऑफिशियल AI जो खतरों को तुरंत डिटेक्ट करने और रिस्पॉन्ड करने में मदद करता है।", link: "https://microsoft.com" },
-    { name: "VirusTotal Code Insight", category: "hacking", desc: "संदिग्ध फाइलों और मालवेयर के सोर्स कोड का AI के जरिए तुरंत विश्लेषण करने वाला टूल।", link: "https://virustotal.com" },
-    { name: "PhishER AI", category: "hacking", desc: "फिशिंग ईमेल हमलों को रोकने और संदिग्ध मेल्स को ऑटो-आइसोलेट करने वाला सिक्योरिटी AI टूल।", link: "https://knowbe4.com" },
+// tools-data.js - 52 Verified Cyber, OS, Bug Bounty & AI Platforms
+const originalTools = [
+    // LEVEL 1: SURFACE (Linux OS + Discovery)
+    { name: "Kali Linux", desc: "Advanced penetration testing Linux distribution.", url: "https://kali.org", icon: "🐧", level: 1 },
+    { name: "Ubuntu Linux", desc: "Open-source Linux OS for cloud architecture deployment.", url: "https://ubuntu.com", icon: "💻", level: 1 },
+    { name: "Parrot Security OS", desc: "Lightweight, cloud-friendly security focused GNU/Linux distribution.", url: "https://parrotsec.org", icon: "🦜", level: 1 },
+    { name: "BlackArch Linux", desc: "Arch-based distribution containing over 2800+ pre-installed tools.", url: "https://blackarch.org", icon: "🦅", level: 1 },
+    { name: "Maltego", desc: "Graph-based data visualization tool for link analysis & OSINT.", url: "https://maltego.com", icon: "🔍", level: 1 },
+    { name: "TheHarvester", desc: "Gathers emails, subdomains, hosts from public sources.", url: "https://github.com", icon: "🌾", level: 1 },
+    { name: "Sherlock", desc: "Hunt down social media accounts by username across networks.", url: "https://github.io", icon: "🕵️", level: 1 },
+    { name: "Spiderfoot", desc: "Automates OSINT collections from over 100 public data sources.", url: "https://spiderfoot.net", icon: "🕷️", level: 1 },
+    { name: "Recon-ng", desc: "Web-Based Information Gathering Framework written in Python.", url: "https://github.com", icon: "🛰️", level: 1 },
+    { name: "Nmap", desc: "Free utility for network discovery and security auditing.", url: "https://nmap.org", icon: "🗺️", level: 1 },
+    { name: "Wireshark", desc: "The world's foremost network protocol analyzer.", url: "https://wireshark.org", icon: "🦈", level: 1 },
+    { name: "Subfinder", desc: "Fast passive subdomain discovery isolation engine.", url: "https://github.com", icon: "🌐", level: 1 },
+    { name: "Amass", desc: "In-depth network mapping and open-source attack surface intelligence.", url: "https://github.com", icon: "🗺️", level: 1 },
 
-    // === CATEGORY: CODING & DEV ===
-    { name: "Cursor", category: "code", desc: "डेवलपर्स का पसंदीदा AI कोड एडिटर जो पूरे प्रोजेक्ट को एक साथ समझता है।", link: "https://cursor.com" },
-    { name: "Github Copilot", category: "code", desc: "VS Code के साथ कोड को ऑटो-कंप्लीट करने वाला दुनिया का पहला कोडिंग AI।", link: "https://github.com" },
-    { name: "v0 by Vercel", category: "code", desc: "सिर्फ टेक्स्ट प्रॉम्प्ट देकर यूज़र इंटरफेस (UI) कोड जेनरेट करने वाला शानदार टूल।", link: "https://v0.dev" },
-    { name: "Replit Agent", category: "code", desc: "प्रॉम्प्ट से पूरी की पूरी वेब एप्लीकेशन बनाने और उसे तुरंत लाइव होस्ट करने वाला AI।", link: "https://replit.com" },
-    { name: "Lovable", category: "code", desc: "फुल-स्टैक वेब ऐप्स को बिना कोड लिखे सीधे हिंदी या इंग्लिश में तैयार करने वाला एडवांस्ड AI डेवलपर।", link: "https://lovable.dev" },
+    // LEVEL 2: MID-OCEAN (Core Auditing, Cracking & Portals)
+    { name: "Burp Suite", desc: "Industry-standard web application vulnerability testing framework.", url: "https://portswigger.net", icon: "🪰", level: 2 },
+    { name: "Metasploit", desc: "Penetration testing system to exploit and validate flaws.", url: "https://metasploit.com", icon: "🎯", level: 2 },
+    { name: "Sqlmap", desc: "Automatic SQL injection and database takeover infrastructure.", url: "https://sqlmap.org", icon: "🛢️", level: 2 },
+    { name: "OWASP ZAP", desc: "The world's most widely deployed core web app scanner.", url: "https://zaproxy.org", icon: "🛡️", level: 2 },
+    { name: "John the Ripper", desc: "Fast open-source password strength auditing and cracker tool.", url: "https://openwall.com", icon: "☠️", level: 2 },
+    { name: "Hashcat", desc: "Advanced, highly multi-threaded GPU password cracker framework.", url: "https://hashcat.net", icon: "🐈", level: 2 },
+    { name: "Ghidra", desc: "Software reverse engineering suite developed by the NSA.", url: "https://ghidra-sre.org", icon: "🐉", level: 2 },
+    { name: "Gobuster", desc: "Directory/File, DNS and VHost busting tool written in Go.", url: "https://github.com", icon: "🚪", level: 2 },
+    { name: "Dirsearch", desc: "Advanced CLI tool designed to brute force directories.", url: "https://github.com", icon: "📂", level: 2 },
+    { name: "Nikto", desc: "Comprehensive web server deployment security scanner.", url: "https://github.com", icon: "🧪", level: 2 },
+    { name: "Wfuzz", desc: "Web application parameters brute force fuzzing engine.", url: "https://github.com", icon: "💥", level: 2 },
+    { name: "WPScan", desc: "Black box WordPress ecosystem vulnerability scanner.", url: "https://wpscan.com", icon: "📝", level: 2 },
+    { name: "Bettercap", desc: "The Swiss Army knife for 802.11, BLE and Ethernet recon.", url: "https://bettercap.org", icon: "⚔️", level: 2 },
+    { name: "Responder", desc: "LLMNR, NBT-NS and MDNS poisoner capturing local hashes.", url: "https://github.com", icon: "📥", level: 2 },
+    { name: "Airgeddon", desc: "Multi-use bash script for wireless evil-twin vectors.", url: "https://github.com", icon: "🌪️", level: 2 },
+    { name: "Kismet", desc: "Wireless network device detector, sniffer, and wardriving.", url: "https://kismetwireless.net", icon: "📡", level: 2 },
+    { name: "Zphisher", desc: "Automated phishing tool with 30+ pre-built premium tracking modules.", url: "https://github.com", icon: "🎣", level: 2 },
+    { name: "PyPhisher", desc: "Easy-to-use phishing automation with tunneling integrations.", url: "https://github.com", icon: "🐍", level: 2 },
+    { name: "HackerOne", desc: "Leading global VDP and Bug Bounty hunter platform portal.", url: "https://hackerone.com", icon: "🎯", level: 2 },
+    { name: "Bugcrowd", desc: "Crowdsourced security platform for high-tier bounty hunt deployments.", url: "https://bugcrowd.com", icon: "🦅", level: 2 },
+    { name: "Intigriti", desc: "Europe's leading ethical hacking agile bug bounty network.", url: "https://intigriti.com", icon: "🛑", level: 2 },
+    { name: "Open Bug Bounty", desc: "Coordinated web vulnerability disclosure system archive.", url: "https://openbugbounty.org", icon: "🌐", level: 2 },
+    { name: "TryHackMe", desc: "Hands-on cyber security training through interactive labs.", url: "https://tryhackme.com", icon: "🎮", level: 2 },
+    { name: "Hack The Box", desc: "Massive gamified hacking sandbox to test penetration limits.", url: "https://hackthebox.com", icon: "📦", level: 2 },
+    { name: "PortSwigger Web Academy", desc: "Free interactive training blueprints on web security flaws.", url: "https://portswigger.net", icon: "🎓", level: 2 },
+    { name: "SANS Cyber Aces", desc: "Free foundation courses covering open informational security vectors.", url: "https://cyberaces.org", icon: "📜", level: 2 },
+    { name: "Coursera Security Hub", desc: "Global online training systems and professional degrees.", url: "https://coursera.org", icon: "🏫", level: 2 },
 
-    // === CATEGORY: TEXT & CHAT ===
-    { name: "ChatGPT", category: "text", desc: "सर्च राइटिंग, रिसर्च और कोडिंग के लिए दुनिया का सबसे लोकप्रिय AI चैटबॉट।", link: "https://chatgpt.com" },
-    { name: "Claude AI", category: "text", desc: "गणित, तर्क और डेटा एनालिसिस की कोडिंग के लिए सबसे सटीक AI।", link: "https://claude.ai" },
-    { name: "DeepSeek", category: "text", desc: "रीज़निंग और कॉम्प्लेक्स कोडिंग के लिए बेहद शक्तिशाली और तेज़ AI मॉडल।", link: "https://deepseek.com" },
-    { name: "Perplexity AI", category: "text", desc: "सटीक सोर्स लिंक्स के साथ रियल-टाइम सर्च करने वाला दुनिया का पहला AI सर्च इंजन।", link: "https://perplexity.ai" },
-
-    // === CATEGORY: IMAGE & DESIGN ===
-    { name: "Midjourney", category: "image", desc: "टेक्स्ट प्रॉम्प्ट से सबसे ज्यादा रियलिस्टिक और आर्टिस्टिक तस्वीरें बनाने वाला टूल।", link: "https://midjourney.com" },
-    { name: "DALL-E 3", category: "image", desc: "ओपन-एआई का इमेज जनरेटर जो बारीकियों और टेक्स्ट स्पेलिंग्स को सटीक बनाता है।", link: "https://openai.com" },
-    { name: "Canva AI", category: "image", desc: "ग्राफिक डिजाइनिंग, प्रेजेंटेशन और सोशल मीडिया पोस्ट्स के लिए मैजिक टूल्स।", link: "https://canva.com" }
+    // LEVEL 3: DEEP OCEAN (Hardware, Forensics & AI)
+    { name: "SET (Social-Engineer Toolkit)", desc: "Open-source frame focused completely on custom targeted engineering.", url: "https://github.com", icon: "⚙️", level: 3 },
+    { name: "Gophish", desc: "Internal organizational phishing awareness simulation suite.", url: "https://getgophish.com", icon: "🐟", level: 3 },
+    { name: "Autopsy", desc: "Graphical interface for hard drive digital forensic artifact parsing.", url: "https://autopsy.com", icon: "🔎", level: 3 },
+    { name: "Volatility", desc: "Advanced volatile memory extraction data framework.", url: "https://volatilityfoundation.org", icon: "🧠", level: 3 },
+    { name: "Radare2", desc: "Unix-like reverse engineering command-line binary engine editor.", url: "https://radare.org", icon: "🧭", level: 3 },
+    { name: "Binwalk", desc: "Fast signature tool for reverse engineering embedded firmware files.", url: "https://github.com", icon: "📦", level: 3 },
+    { name: "Raspberry Pi", desc: "Single-board computer for small portable automated hardware rigs.", url: "https://raspberrypi.com", icon: "🍓", level: 3 },
+    { name: "Flipper Zero", desc: "Multi-tool hardware gadget for physical layer exploration.", url: "https://flipperzero.one", icon: "🐬", level: 3 },
+    { name: "USB Rubber Ducky", desc: "The legendary keystroke injection automation tool by Hak5.", url: "https://hak5.org", icon: "🦆", level: 3 },
+    { name: "HackRF One", desc: "Software Defined Radio capable of transmitting/receiving signals.", url: "https://greatscottgadgets.com", icon: "📻", level: 3 },
+    { name: "ChatGPT", desc: "Advanced AI architecture for instant payload & script analysis.", url: "https://chatgpt.com", icon: "🧠", level: 3 },
+    { name: "Claude AI", desc: "Anthropic's processing system for complex secure code evaluation.", url: "https://claude.ai", icon: "🤖", level: 3 },
+    { name: "DeepSeek AI", desc: "High-performance open-source logical and execution AI model.", url: "https://deepseek.com", icon: "⚡", level: 3 }
 ];
