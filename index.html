@@ -49,15 +49,13 @@
 </div>
 
     <style>
-        /* डार्क ब्लू साइबरपंक और प्ले स्टोर थीम वेरिएबल्स */
         :root {
-            --bg-dark-blue: #020813;
-            --surface-blue: #0b1528;
-            --neon-cyan: #00f0ff;
-            --neon-blue: #0066ff;
-            --neon-red: #ff0055;
-            --text-main: #e2e8f0;
-            --text-muted: #a1b1cc;
+            --bg-top: #4fa3d1;
+            --bg-mid: #1d5b91;
+            --bg-deep: #061a37;
+            --bg-bottom: #020b18;
+            --neon-cyan: #22d3ee;
+            --text-main: #f1f5f9;
         }
 
         * {
@@ -65,388 +63,227 @@
             padding: 0;
             box-sizing: border-box;
             scrollbar-width: thin;
-            scrollbar-color: var(--neon-cyan) var(--bg-dark-blue);
+            scrollbar-color: var(--neon-cyan) var(--bg-bottom);
         }
 
+        /* असली आइसबर्ग वर्टिकल ग्रेडिएंट */
         body, html {
-            background: linear-gradient(45deg, #020813, #005577, #1a0033, #0b1528, #330022);
-background-size: 400% 400%;
-            animation: smoothNeonLights 6s ease infinite;
-            
+            background: linear-gradient(to bottom, var(--bg-top) 0%, var(--bg-mid) 25%, var(--bg-deep) 60%, var(--bg-bottom) 100%);
+            background-attachment: scroll;
             color: var(--text-main);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
-            overflow-y: scroll;
+            overflow-x: hidden;
             scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
+            min-h-screen;
         }
-@keyframes smoothNeonLights {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-        
-        /* मैट्रिक्स एनीमेशन बैकग्राउंड */
+
         #matrix {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            opacity: 0.08; /* डार्क ब्लू को निखारने के लिए हल्का रखा है */
+            z-index: 1;
+            opacity: 0.05;
             pointer-events: none;
         }
 
         .terminal-overlay {
             position: relative;
             z-index: 2;
-            max-width: 600px; /* प्ले स्टोर मोबाइल व्यू के लिए परफेक्ट चौड़ाई */
-            margin: 0 auto;
-            padding: 15px;
+            max-w-5xl mx-auto;
+            padding: 24px;
         }
 
-        /* 1. प्रोफाइल सेक्शन (सबसे ऊपर) */
-        .profile-header {
-            padding: 40px 20px;
-            text-align: center;
-            background: linear-gradient(180deg, var(--surface-blue) 0%, var(--bg-dark-blue) 100%);
-            border-radius: 16px;
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            margin-bottom: 25px;
-            margin-top: 15px;
+        /* आइसबर्ग फ्लोटिंग साइबर कार्ड्स */
+        .cyber-card {
+            background: rgba(2, 11, 24, 0.6);
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 15px var(--neon-blue);
-            margin: 0 auto 15px auto;
+        .cyber-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 25px rgba(34, 211, 238, 0.3);
+            transform: translateY(-3px);
         }
 
-        .profile-name {
-            font-size: 2rem;
-            font-weight: 700;
+        .level-header {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        #toolSearch {
+            width: 100%;
+            background: rgba(2, 11, 24, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 16px 22px;
             color: #fff;
-            text-shadow: 0 0 10px var(--neon-blue);
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .profile-tagline {
-            color: var(--neon-cyan);
-            font-size: 0.9rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin: 5px 0 12px 0;
-            text-transform: uppercase;
+        #toolSearch:focus {
+            outline: none;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
         }
 
-        .profile-bio {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* सोशल लिंक्स ग्रिड */
         .badge-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 16px;
         }
 
         .badge {
             color: var(--text-main);
-            background: rgba(0, 102, 255, 0.1);
-            border: 1px solid rgba(0, 102, 255, 0.2);
+            background: rgba(2, 11, 24, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-decoration: none;
-            font-size: 0.85rem;
-            padding: 6px 12px;
+            font-size: 12px;
+            padding: 8px 16px;
             border-radius: 20px;
             transition: all 0.2s;
         }
 
         .badge:hover {
             background: var(--neon-cyan);
-            color: var(--bg-dark-blue);
-            box-shadow: 0 0 8px var(--neon-cyan);
-        }
-
-        /* 2. लाइव सर्च पेलोड बार */
-        #toolSearch {
-            width: 100%;
-            padding: 14px;
-            background: var(--surface-blue);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            color: #fff;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        #toolSearch:focus {
+            color: var(--bg-bottom);
+            box-shadow: 0 0 15px var(--neon-cyan);
             border-color: var(--neon-cyan);
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
         }
 
-        .section-title {
-            font-size: 1.1rem;
-            color: var(--neon-cyan);
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* 3. कॉन्टैक्ट लिस्ट स्टाइल रो (Row) सिस्टम */
-        .tools-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px; /*緊湊型 पैडिंग जिससे कॉन्टैक्ट नंबर जैसा फील आए */
-        }
-
-        .tool-item {
-            display: flex;
-            align-items: center;
-            background-color: var(--surface-blue);
-            padding: 10px 14px;
-            border-radius: 12px;
-            transition: all 0.15s ease;
+        .star-input {
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.15);
             cursor: pointer;
-            border: 1px solid transparent;
+            transition: color 0.15s ease, transform 0.1s ease;
         }
-
-        .tool-item:hover {
-            border-color: rgba(0, 240, 255, 0.2);
-            transform: translateY(-1px);
-            .tool-item:focus-visible {
-    outline: 2px solid var(--neon-cyan);
-    outline-offset: 2px;
-            }
+        .star-input:hover {
+            transform: scale(1.2);
         }
-
-        /* प्ले स्टोर टॉप चार्ट्स सीरियल नंबर */
-        .tool-index {
-            font-size: 1rem;
-            font-weight: bold;
-            color: var(--text-main);
-            width: 32px;
-            flex-shrink: 0;
+        .star-input.active {
+            color: #fbbf24;
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
         }
-
-        /* टूल आइकॉन */
-        .tool-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            background: #121d33;
-            margin-right: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        .tool-details {
-            flex-grow: 1;
-            min-width: 0;
-        }
-
-        .tool-name {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 2px;
-        }
-
-        .tool-desc {
-            font-size: 0.875rem;
-color: var(--text-muted);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .tool-action-btn {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .tool-item:hover .tool-action-btn {
-            background-color: var(--neon-cyan);
-            color: var(--bg-dark-blue);
-        }
-        @media (prefers-reduced-motion: reduce) { body, html { animation: none !important; background-size: auto !important; } }
-        
     </style>
 </head>
 <body>
 
-    <!-- मैट्रिक्स एनीमेशन -->
     <canvas id="matrix"></canvas>
-
-    <div class="terminal-overlay">
+    
+    <div class="terminal-overlay max-w-5xl mx-auto px-4 py-8">
         
-                <!-- PROFILE SECTION IN ENGLISH -->
-        <header class="profile-header">
-<div class="profile-avatar" style="background: url('https://github.com/63piyush63.png') center/cover;"></div>
-            <h1 class="profile-name">Preyar Piyush</h1>
-            <div class="profile-tagline">[ Ethical Hacker & Cyber Security Analyst ]</div>
-            <p class="profile-bio">Cyber Security Expert from India. Specializing in secure architectures, penetration testing, automated systems, and advanced AI directory engines.</p>
+        <!-- टॉप रनिंग इंफो स्ट्रिप -->
+        <div class="w-full text-center py-2.5 mb-10 bg-black/40 border border-white/10 text-xs tracking-widest uppercase text-cyan-300 rounded-xl backdrop-blur-md">
+            🛡️ Preyar Piyush Cyber Security & AI Iceberg Directory Hub
+        </div>
+
+        <!-- हीरो प्रोफाइल कार्ड -->
+        <div class="cyber-card rounded-3xl p-8 text-center max-w-2xl mx-auto mb-14 relative overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl"></div>
             
+            <div class="relative w-24 h-24 mx-auto mb-4 rounded-full p-1 bg-gradient-to-tr from-cyan-400 to-blue-500 shadow-xl overflow-hidden">
+                <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center">
+                    <span class="text-3xl">👨‍💻</span>
+                </div>
+            </div>
+
+            <h1 class="text-3xl font-black tracking-tight text-white mb-1">Preyar Piyush</h1>
+            <div class="text-xs font-bold tracking-widest text-cyan-300 uppercase mb-4 font-mono">[ Ethical Hacker & Cyber Security Analyst ]</div>
+            <p class="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                Cyber Security Expert from India. Specializing in secure architectures, penetration testing, automated defense systems, and advanced AI directory engines.
+            </p>
+
             <div class="badge-grid">
-                <a href="https://github.com/63piyush63" class="badge" target="_blank">💻 GitHub</a>
-                <a href="https://www.linkedin.com/in/63piyush63" class="badge" target="_blank">🔗 LinkedIn</a>
-                <a href="https://tryhackme.com/p/63piyush63" class="badge" target="_blank">💀 TryHackMe</a>
-                <a href="https://gitlab.com/63piyush63" class="badge" target="_blank">🦊 GitLab</a>
+                <a href="https://github.com" class="badge" target="_blank">GitHub</a>
+                <a href="https://linkedin.com" class="badge" target="_blank">LinkedIn</a>
+                <a href="https://tryhackme.com" class="badge" target="_blank">TryHackMe</a>
+                <a href="https://gitlab.com" class="badge" target="_blank">GitLab</a>
             </div>
-        </header>
-        
-
-        <!-- लाइव सर्च बार इंजन -->
-        <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="🔍 Enter Search Payload..." aria-label="Search Tools">
-
-        <h2 class="section-title">⚡ Core Tools Dashboard</h2>
-        
-        <!-- 20+ पेज की कॉन्टैक्ट स्क्रॉलिंग डायरेक्टरी -->
-        <div class="tools-list" id="toolsListContainer"></div>
-
-    </div>
-
-
-    <!-- टूल्स जनरेटर और सर्च स्क्रिप्ट -->
-<script>
-    // A to Z सॉर्टेड हैकिंग टूल्स डेटाबेस
-const baseHacking = [
-    { name: "Aircrack-ng", desc: "WiFi network security assessment & auditing tool", url: "https://aircrack-ng.org", icon: "f1eb" },
-    { name: "Burp Suite", desc: "Web application security testing & vulnerability scanning", url: "https://portswigger.net", icon: "f121" },
-    { name: "Ghidra", desc: "NSA reverse engineering software analysis framework", url: "https://ghidra-sre.org", icon: "f085" },
-    { name: "Hashcat", desc: "Advanced and fastest password cracking utility", url: "https://hashcat.net", icon: "f084" },
-    { name: "Metasploit", desc: "Penetration testing and exploit development framework", url: "https://metasploit.com", icon: "f120" },
-    { name: "Nmap", desc: "Network mapper and security vulnerability scanner", url: "https://nmap.org", icon: "f0ac" },
-    { name: "Sqlmap", desc: "Automatic SQL injection and database takeover tool", url: "https://sqlmap.org", icon: "f1c0" },
-    { name: "Wireshark", desc: "Interactive network packet analyzer and sniffer", url: "https://wireshark.org", icon: "f1e2" }
-];
-
-const baseAI = [
-    { name: "ChatGPT", desc: "Conversational intelligence & advanced scripting assist", url: "https://chatgpt.com" },
-    { name: "Claude AI", desc: "Advanced code review and structural logic analysis", url: "https://claude.ai" },
-    { name: "Google Gemini", desc: "Google's powerful multimodal AI ecosystem", url: "https://google.com" },
-    { name: "GitHub Copilot", desc: "AI pair programmer for swift execution", url: "https://github.com" },
-    { name: "DeepSeek", desc: "High-performance AI model specialized in reasoning", url: "https://deepseek.com" },
-    { name: "Midjourney", desc: "High-fidelity conceptual graphic generation engine", url: "https://midjourney.com" }
-];
-
-const hackingTools = [];
-const aiTools = [];
-
-for (let i = 0; i < 150; i++) {
-    const base = baseHacking[i % baseHacking.length];
-    hackingTools.push({
-        name: `${base.name} Sec-${Math.floor(i / baseHacking.length) + 1}`,
-        desc: `${base.desc} (Node-${i + 1})`,
-        url: base.url,
-        icon: base.icon
-    });
-}
-
-for (let i = 0; i < 150; i++) {
-    const base = baseAI[i % baseAI.length];
-    aiTools.push({
-        name: `${base.name} v${Math.floor(i / baseAI.length) + 1}`,
-        desc: `${base.desc} (Layer-${i + 1})`,
-        url: base.url
-    });
-}
-
-const container = document.getElementById('toolsListContainer');
-let htmlContent = "";
-let currentGlobalIndex = 1;
-
-hackingTools.sort((a, b) => a.name.localeCompare(b.name));
-aiTools.sort((a, b) => a.name.localeCompare(b.name));
-
-if (container) {
-    container.style.maxHeight = "75vh";
-    container.style.overflowY = "auto";
-    container.style.webkitOverflowScrolling = "touch";
-    container.style.scrollBehavior = "smooth";
-}
-
-hackingTools.forEach(tool => {
-    htmlContent += `
-        <div class="tool-item" style="border-left: 5px solid var(--neon-red); cursor: pointer;" onclick="window.open('${tool.url}', '_blank')">
-            <div class="tool-index">${currentGlobalIndex++}</div>
-            <div class="tool-icon" style="color: var(--neon-red);">&#x${tool.icon};</div>
-            <div class="tool-details">
-                <div class="tool-name">${tool.name}</div>
-                <div class="tool-desc">${tool.desc}</div>
-            </div>
-            <button class="tool-action-btn" style="color: var(--neon-red);" onclick="event.stopPropagation(); window.open('${tool.url}', '_blank')">Open</button>
         </div>
-    `;
-});
 
-aiTools.forEach(tool => {
-    htmlContent += `
-        <div class="tool-item" style="cursor: pointer;" onclick="window.open('${tool.url}', '_blank')">
-            <div class="tool-index">${currentGlobalIndex++}</div>
-            <div class="tool-icon" style="color: var(--neon-cyan);">${tool.name.substring(0,2)}</div>
-            <div class="tool-details">
-                <div class="tool-name">${tool.name}</div>
-                <div class="tool-desc">${tool.desc}</div>
-            </div>
-            <button class="tool-action-btn" onclick="event.stopPropagation(); window.open('${tool.url}', '_blank')">Open</button>
+        <!-- लाइव सर्च बार -->
+        <div class="max-w-xl mx-auto mb-16">
+            <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="🔍 Search across all 52 verified tools and systems..." aria-label="Search tools">
         </div>
-    `;
-});
 
-if (container) {
-    container.innerHTML = htmlContent;
-}
+        <!-- ================= ICEBERG INTERFACE LAYOUT ================= -->
+        
+        <!-- LEVEL 1: SURFACE LEVEL (Top of Iceberg) -->
+        <div class="mb-16" id="level1-container">
+            <div class="text-center mb-8">
+                <span class="level-header text-white text-sm font-black px-8 py-3 rounded-full uppercase tracking-widest">
+                    ▲ Level 1: Surface & OS Layers
+                </span>
+            </div>
+            <div id="toolsSurface" class="tool-grid"></div>
+        </div>
 
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+        <!-- LEVEL 2: DEEP WATER LEVEL (Middle of Iceberg) -->
+        <div class="mb-16" id="level2-container">
+            <div class="text-center mb-8">
+                <span class="level-header text-white text-sm font-black px-8 py-3 rounded-full uppercase tracking-widest">
+                    🌊 Level 2: Mid-Ocean Auditing & Bounty Hub
+                </span>
+            </div>
+            <div id="toolsIntermediate" class="tool-grid"></div>
+        </div>
 
-const katakana = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-const alphabet = katakana.split('');
-const fontSize = 16;
-const columns = canvas.width / fontSize;
-const rainDrops = Array.from({ length: columns }).fill(1);
+        <!-- LEVEL 3: DEEP OCEAN BED (Bottom of Iceberg) -->
+        <div class="mb-16" id="level3-container">
+            <div class="text-center mb-8">
+                <span class="level-header text-cyan-300 text-sm font-black px-8 py-3 rounded-full uppercase tracking-widest" style="background: rgba(2,11,24,0.8); border-color: var(--neon-cyan)">
+                    ⚓ Level 3: Deep Ocean Hardware & Intelligence
+                </span>
+            </div>
+            <div id="toolsAdvanced" class="tool-grid"></div>
+        </div>
 
-const drawMatrix = () => {
-    ctx.fillStyle = 'rgba(10, 25, 47, 0.08)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#00f0ff';
-    ctx.font = fontSize + 'px monospace';
+        <!-- ================= SECURE RATING & FEEDBACK CENTER ================= -->
+        <div class="cyber-card rounded-2xl p-6 max-w-xl mx-auto mt-24 border border-cyan-500/30 shadow-2xl relative">
+            <div class="text-center mb-6">
+                <h3 class="text-xl font-black text-white tracking-wide uppercase">Secure Feedback Engine</h3>
+                <p class="text-xs text-slate-400 mt-1">लॉगिन करें और इस वेबसाइट को रेट या कमेंट करें</p>
+            </div>
 
-    for (let i = 0; i < rainDrops.length; i++) {
-        const text = alphabet[Math.floor(Math.random() * alphabet.length)];
-        ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-        if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-            rainDrops[i] = 0;
-        }
-        rainDrops[i]++;
-    }
-};
+            <!-- स्टेप 1: ऑटो ईमेल लॉगिन -->
+            <div id="loginSection" class="space-y-4">
+                <input type="email" id="userEmail" placeholder="Enter your email for instant auto-login..." class="w-full bg-black/60 border border-slate-800 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none transition-all">
+                <button onclick="handleAutoLogin()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-slate-950 font-black py-3.5 rounded-xl text-xs uppercase tracking-widest transition-all">
+                    Verify & Access Rating
+                </button>
+                <p id="loginError" class="text-xs text-rose-400 text-center h-4"></p>
+            </div>
 
-setInterval(drawMatrix, 30);
+            <!-- स्टेप 2: रेटिंग इनपुट -->
+            <div id="ratingSection" class="hidden space-y-4">
+                <div class="flex items-center justify-between bg-black/40 border border-slate-800 p-3 rounded-xl">
+                    <span id="welcomeUser" class="text-xs text-cyan-400 font-mono"></span>
+                    <button onclick="handleLogout()" class="text-[10px] text-rose-400 uppercase tracking-wider font-bold underline">Logout</button>
+                </div>
 
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-</script>
-</body>
-</html>
+                <div class="flex justify-center gap-2 py-1" id="starInputContainer">
+                    <span class="star-input" onclick="selectStar(1)">★</span>
+                    <span class="star-input" onclick="selectStar(2)">★</span>
+                    <span class="star-input" onclick="selectStar(3)">★</span>
+                    <span class="star-input" onclick="selectStar(4)">★</span>
+                    <span class="star-input" onclick="selectStar(5)">★</span>
+                </div>
+
+                
