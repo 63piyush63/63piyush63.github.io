@@ -48,221 +48,347 @@
   <p style="color: var(--text-muted, #a1b1cc);">Welcome to the ultimate resource hub. This dashboard contains a curated directory of over 300 tools for Ethical Hacking, Cyber Security Analytics, Penetration Testing, and Artificial Intelligence, including tools like Aircrack-ng, Midjourney models, and automated defense frameworks.</p>
 </div>
 
-       <!-- आवश्यक CSS फ्रेमवर्क और फोंट लोड करने के लिए -->
-    <link href="https://jsdelivr.net" rel="stylesheet">
-    <style>
+      <style>
+        /* आपका पुराना और ओरिजिनल CSS वेरिएबल्स थीम */
         :root {
-            --bg-top: #4fa3d1;
-            --bg-mid: #1d5b91;
-            --bg-deep: #061a37;
-            --bg-bottom: #020b18;
-            --neon-cyan: #00ffff;
+            --bg-dark-blue: #020813;
             --surface-blue: #0b1528;
+            --neon-cyan: #00ffff;
+            --neon-blue: #0065ff;
+            --neon-red: #ff0055;
             --text-main: #e2e8f0;
             --text-muted: #a1b1cc;
         }
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: var(--neon-cyan) var(--bg-dark-blue);
         }
+
         body, html {
-            background: linear-gradient(to bottom, var(--bg-top) 0%, var(--bg-mid) 25%, var(--bg-deep) 60%, var(--bg-bottom) 100%) !important;
+            background: linear-gradient(135deg, #020813, #005577, #1a0033, #0b1528, #330022);
+            background-size: 400% 400%;
+            animation: smoothNeonLights 6s ease infinite;
             color: var(--text-main);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
-            min-height: 100vh;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
         }
-        #matrix { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            z-index: 1; 
-            opacity: 0.05; 
-            pointer-events: none; 
+
+        @keyframes smoothNeonLights {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .terminal-overlay { 
-            position: relative; 
-            z-index: 2; 
-            max-w: 600px; 
-            margin: 0 auto; 
-            padding: 15px; 
+
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.08;
+            pointer-events: none;
         }
+
+        .terminal-overlay {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* 1. प्रोफाइल सेक्शन (सबसे ऊपर) */
         .profile-header {
             padding: 40px 20px;
             text-align: center;
-            background: linear-gradient(180deg, var(--surface-blue) 0%, var(--bg-deep) 100%);
+            background: linear-gradient(180deg, var(--surface-blue) 0%, var(--bg-dark-blue) 100%);
             border-radius: 16px;
             border: 1px solid rgba(0, 240, 255, 0.1);
             margin-bottom: 25px;
             margin-top: 15px;
         }
+
         .profile-avatar {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 15px #0065ff;
+            box-shadow: 0 0 15px var(--neon-blue);
             margin: 0 auto 15px auto;
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             background: #020813;
         }
-        .social-btn {
-            background: rgba(11, 21, 40, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 6px 14px;
-            border-radius: 6px;
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: 700;
             color: #fff;
-            font-size: 13px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .profile-tagline {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .badge-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .badge {
+            color: var(--text-main);
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.2);
             text-decoration: none;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 20px;
             transition: all 0.2s;
         }
-        .social-btn:hover {
+
+        .badge:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark-blue);
+            box-shadow: 0 0 8px var(--neon-cyan);
+        }
+
+        /* 2. सर्च बार */
+        #toolSearch {
+            width: 100%;
+            background: var(--surface-blue);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: #fff;
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        #toolSearch:focus {
             border-color: var(--neon-cyan);
             box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
         }
-        .cyber-card {
+
+        .section-title {
+            font-size: 1.1rem;
+            color: var(--neon-cyan);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .tools-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        /* 3. टूल आइटम (Row) सिस्टम */
+        .tool-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--surface-blue);
+            padding: 10px 14px;
+            border-radius: 12px;
+            transition: all 0.15s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .tool-item:hover {
+            border-color: rgba(0, 240, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .tool-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tool-index {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-main);
+            width: 24px;
+            text-align: center;
+        }
+
+        .tool-icon {
+            font-size: 1.2rem;
+        }
+
+        .tool-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .tool-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-w: 220px;
+        }
+
+        @media (min-width: 480px) {
+            .tool-desc { max-w: 360px; }
+        }
+
+        .tool-action-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ff0055;
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tool-item:hover .tool-action-btn {
+            background-color: var(--neon-red);
+            color: var(--bg-dark-blue);
+            box-shadow: 0 0 8px var(--neon-red);
+        }
+
+        /* रेटिंग सिस्टम पैनल */
+        .rating-box {
             background: var(--surface-blue);
             border: 1px solid rgba(0, 240, 255, 0.1);
-            border-radius: 12px;
-            transition: all 0.2s ease;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 40px;
+            margin-bottom: 30px;
         }
-        .cyber-card:hover { 
-            border-color: var(--neon-cyan); 
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); 
+
+        .rating-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            text-align: center;
         }
-        .star-input { 
-            font-size: 2.2rem; 
-            color: rgba(255, 255, 255, 0.15); 
-            cursor: pointer; 
+
+        .rating-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 15px;
         }
-        .star-input.active { 
-            color: #fbbf24; 
-            text-shadow: 0 0 10px #fbbf24; 
+
+        .form-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 0.9rem;
+            color: #fff;
+            outline: none;
+            margin-bottom: 12px;
         }
+
+        .form-btn {
+            width: 100%;
+            background: var(--neon-cyan);
+            color: var(--bg-dark-blue);
+            font-weight: bold;
+            font-size: 0.9rem;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .form-btn:hover {
+            box-shadow: 0 0 12px var(--neon-cyan);
+        }
+
+        .star-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 0;
+        }
+
+        .star-input {
+            font-size: 2.2rem;
+            color: rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+        }
+
+        .star-input.active {
+            color: #fbbf24;
+            text-shadow: 0 0 10px #fbbf24;
+        }
+
+        .user-status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
     <canvas id="matrix"></canvas>
     <div class="terminal-overlay">
         
-        <!-- स्क्रीनशॉट के अनुसार 100% सेम प्रोफाइल हेडर सेक्शन -->
-        <div class="profile-header">
-            <div class="profile-avatar">
-                <span class="text-3xl">👨‍💻</span> 
+        <!-- आपका ओरिजिनल प्रोफाइल हेडर लेआउट -->
+        <header class="profile-header">
+            <div class="profile-avatar" style="background: url('https://63piyush63.github.com') center/cover;"><!-- अवतार इमेज --></div>
+            <h1 class="profile-name">Preyar Piyush</h1>
+            <div class="profile-tagline">[ ETHICAL HACKER & CYBER SECURITY ]</div>
+            <p class="profile-bio">Cyber Security Expert from India. Specializing in secure architectures, penetration testing, automated defense systems, and advanced AI directory engines.</p>
+            <div class="badge-grid">
+                <a href="https://github.com" class="badge" target="_blank">📁 GitHub</a>
+                <a href="https://linkedin.com" class="badge" target="_blank">🔗 LinkedIn</a>
+                <a href="https://tryhackme.com" class="badge" target="_blank">💀 TryHackMe</a>
+                <a href="https://gitlab.com" class="badge" target="_blank">🦊 GitLab</a>
             </div>
-            <h1 class="text-2xl font-bold text-white tracking-wide mb-1">Preyar Piyush</h1>
-            <div class="text-[11px] font-bold uppercase tracking-widest mb-4" style="color: #00bfff; font-family: monospace;">[ ETHICAL HACKER & CYBER SECURITY ANALYST ]</div>
-            <p class="text-xs leading-relaxed mx-auto max-w-md" style="color: var(--text-muted);">
-                Cyber Security Expert from India. Specializing in secure architectures, penetration testing, automated defense systems, and advanced AI directory engines.
-            </p>
-            
-            <!-- सोशल मीडिया बट्स -->
-            <div class="flex flex-wrap justify-center gap-3 mt-5">
-                <a href="https://github.com" target="_blank" class="social-btn">📁 GitHub</a>
-                <a href="https://linkedin.com" target="_blank" class="social-btn">🔗 LinkedIn</a>
-                <a href="https://tryhackme.com" target="_blank" class="social-btn">💀 TryHackMe</a>
-                <a href="https://gitlab.com" target="_blank" class="social-btn">🦊 GitLab</a>
-            </div>
-        </div>
+        </header>
 
-        <!-- लाइव सर्च बार -->
-        <div class="max-w-xl mx-auto mb-10">
-            <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="🔍 Search across all 52 verified tools and systems..." class="w-full bg-black/80 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 font-mono">
-        </div>
+        <!-- सर्च इनपुट -->
+        <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="🔍 Enter Search Payload...">
 
-        <!-- आइसबर्ग लेवल 1 -->
-        <div class="mb-10">
-            <div class="text-center mb-5">
-                <span class="bg-white/10 border border-white/20 text-white text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider">▲ Level 1: Surface & OS Layers</span>
-            </div>
-            <div id="toolsSurface" class="grid grid-cols-1 gap-3"></div>
-        </div>
+        <h2 class="section-title">⚡ Core Tools Dashboard</h2>
+        
+        <!-- आपका ओरिजिनल वर्टिकल टूल्स कंटेनर -->
+        <div id="toolsListContainer" class="tools-list"></div>
 
-        <!-- आइसबर्ग लेवल 2 -->
-        <div class="mb-10">
-            <div class="text-center mb-5">
-                <span class="bg-white/10 border border-white/20 text-white text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider">🌊 Level 2: Mid-Ocean Auditing & Bounty Hub</span>
-            </div>
-            <div id="toolsIntermediate" class="grid grid-cols-1 gap-3"></div>
-        </div>
-
-        <!-- आइसबर्ग लेवल 3 -->
-        <div class="mb-10">
-            <div class="text-center mb-5">
-                <span class="bg-black/60 border border-cyan-400/50 text-cyan-400 text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider">⚓ Level 3: Deep Ocean Hardware & AI</span>
-            </div>
-            <div id="toolsAdvanced" class="grid grid-cols-1 gap-3"></div>
-        </div>
-
-        <!-- सुरक्षित ईमेल लॉगिन एवं रेटिंग फीडबैक बॉक्स -->
-        <div class="cyber-card rounded-2xl p-6 max-w-xl mx-auto mt-16 border border-cyan-500/20">
-            <div class="text-center mb-4">
-                <h3 class="text-md font-bold text-white uppercase tracking-wider">Secure Feedback Engine</h3>
-                <p class="text-[11px] text-gray-400">लॉगिन करें और इस वेबसाइट को रेट या कमेंट करें</p>
-            </div>
-            <div id="loginSection" class="space-y-3">
-                <input type="email" id="userEmail" placeholder="Enter your email to auto-login..." class="w-full bg-black/60 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none">
-                <button onclick="handleAutoLogin()" class="w-full bg-cyan-400 hover:bg-cyan-500 text-black text-xs font-bold py-2.5 rounded-xl uppercase tracking-wider">Verify & Access Rating</button>
-                <p id="loginError" class="text-[11px] text-red-400 text-center"></p>
-            </div>
-            <div id="ratingSection" class="hidden space-y-3">
-                <div class="flex items-center justify-between bg-black/40 p-2 rounded-lg text-[11px]">
-                    <span id="welcomeUser" class="text-cyan-400"></span>
-                    <button onclick="handleLogout()" class="text-red-400 underline font-bold">Logout</button>
-                </div>
-                <div class="flex justify-center gap-2 py-1" id="starInputContainer">
-                    <span class="star-input" onclick="selectStar(1)">★</span>
-                    <span class="star-input" onclick="selectStar(2)">★</span>
-                    <span class="star-input" onclick="selectStar(3)">★</span>
-                    <span class="star-input" onclick="selectStar(4)">★</span>
-                    <span class="star-input" onclick="selectStar(5)">★</span>
-                </div>
-                <textarea id="userComment" rows="2" placeholder="Write review here (Optional)..." class="w-full bg-black/60 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none resize-none"></textarea>
-                <button onclick="submitRating()" class="w-full bg-emerald-400 text-black text-xs font-bold py-2.5 rounded-xl uppercase">Submit Review</button>
-                <div id="userDeleteOption" class="hidden text-center">
-                    <button onclick="deleteOwnRating()" class="text-[11px] text-red-400 font-bold underline">❌ Delete My Rating</button>
-                </div>
-                <p id="ratingStatus" class="text-[11px] text-center font-medium"></p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // सभी 52 प्रमाणित और असली टूल्स की विस्तृत सूची (खुला हुआ कोड)
-        const toolsData = [
-            { 
-                name: "Kali Linux", 
-                desc: "Advanced penetration testing Linux OS.", 
-                url: "https://kali.org", 
-                icon: "🐧", 
-                level: 1 
-            },
-            { 
-                name: "Ubuntu Linux", 
-                desc: "Open-source Linux OS for cloud architectures.", 
-                url: "https://ubuntu.com", 
-                icon: "💻", 
-                level: 1 
-            },
-            { 
-                name: "Parrot Security OS", 
-                desc: "Lightweight cloud security GNU/Linux.", 
-                url: "https://parrotsec.org", 
-                icon: "🦜", 
-                level: 1 
-            },
-            { 
-                name: "BlackArch Linux", 
-                desc: "Arch distribution with 2800+ pre-installed tools.", 
-                url: "https://blackarch.org", 
-                icon: "🦅", 
-                level: 1 
-            },
+        
