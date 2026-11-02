@@ -48,236 +48,146 @@
   <p style="color: var(--text-muted, #a1b1cc);">Welcome to the ultimate resource hub. This dashboard contains a curated directory of over 300 tools for Ethical Hacking, Cyber Security Analytics, Penetration Testing, and Artificial Intelligence, including tools like Aircrack-ng, Midjourney models, and automated defense frameworks.</p>
 </div>
 
+    <!-- आवश्यक CSS फ्रेमवर्क और फोंट लोड करने के लिए -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
     <style>
         :root {
             --bg-top: #4fa3d1;
             --bg-mid: #1d5b91;
             --bg-deep: #061a37;
             --bg-bottom: #020b18;
-            --neon-cyan: #22d3ee;
-            --text-main: #f1f5f9;
+            --neon-cyan: #00ffff;
+            --surface-blue: #0b1528;
+            --text-main: #e2e8f0;
+            --text-muted: #a1b1cc;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scrollbar-width: thin;
-            scrollbar-color: var(--neon-cyan) var(--bg-bottom);
-        }
-
-        /* असली आइसबर्ग वर्टिकल ग्रेडिएंट */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html {
-            background: linear-gradient(to bottom, var(--bg-top) 0%, var(--bg-mid) 25%, var(--bg-deep) 60%, var(--bg-bottom) 100%);
-            background-attachment: scroll;
+            background: linear-gradient(to bottom, var(--bg-top) 0%, var(--bg-mid) 25%, var(--bg-deep) 60%, var(--bg-bottom) 100%) !important;
             color: var(--text-main);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            min-h-screen;
+            min-height: 100vh;
         }
-
-        #matrix {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.05;
-            pointer-events: none;
+        #matrix { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.05; pointer-events: none; }
+        .terminal-overlay { position: relative; z-index: 2; max-w: 600px; margin: 0 auto; padding: 15px; }
+        
+        /* स्क्रीनशॉट के अनुसार प्रोफाइल कार्ड और टूल्स का बिल्कुल सेम स्टाइल */
+        .profile-header {
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--surface-blue) 0%, var(--bg-deep) 100%);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            margin-bottom: 25px;
+            margin-top: 15px;
         }
-
-        .terminal-overlay {
-            position: relative;
-            z-index: 2;
-            max-w-5xl mx-auto;
-            padding: 24px;
-        }
-
-        /* आइसबर्ग फ्लोटिंग साइबर कार्ड्स */
-        .cyber-card {
-            background: rgba(2, 11, 24, 0.6);
-            border: 1px solid rgba(34, 211, 238, 0.2);
-            backdrop-filter: blur(12px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .cyber-card:hover {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 25px rgba(34, 211, 238, 0.3);
-            transform: translateY(-3px);
-        }
-
-        .level-header {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-
-        .tool-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-            gap: 20px;
-            width: 100%;
-        }
-
-        #toolSearch {
-            width: 100%;
-            background: rgba(2, 11, 24, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 14px;
-            padding: 16px 22px;
-            color: #fff;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        #toolSearch:focus {
-            outline: none;
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
-        }
-
-        .badge-grid {
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 15px #0065ff;
+            margin: 0 auto 15px auto;
+            overflow: hidden;
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin-top: 16px;
+            background: #020813;
         }
-
-        .badge {
-            color: var(--text-main);
-            background: rgba(2, 11, 24, 0.7);
+        .social-btn {
+            background: rgba(11, 21, 40, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             text-decoration: none;
-            font-size: 12px;
-            padding: 8px 16px;
-            border-radius: 20px;
             transition: all 0.2s;
         }
-
-        .badge:hover {
-            background: var(--neon-cyan);
-            color: var(--bg-bottom);
-            box-shadow: 0 0 15px var(--neon-cyan);
+        .social-btn:hover {
             border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
         }
-
-        .star-input {
-            font-size: 2.5rem;
-            color: rgba(255, 255, 255, 0.15);
-            cursor: pointer;
-            transition: color 0.15s ease, transform 0.1s ease;
+        .cyber-card {
+            background: var(--surface-blue);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.2s ease;
         }
-        .star-input:hover {
-            transform: scale(1.2);
+        .cyber-card:hover { 
+            border-color: var(--neon-cyan); 
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); 
         }
-        .star-input.active {
-            color: #fbbf24;
-            text-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
-        }
+        .star-input { font-size: 2.2rem; color: rgba(255, 255, 255, 0.15); cursor: pointer; }
+        .star-input.active { color: #fbbf24; text-shadow: 0 0 10px #fbbf24; }
     </style>
 </head>
 <body>
-
     <canvas id="matrix"></canvas>
-    
-    <div class="terminal-overlay max-w-5xl mx-auto px-4 py-8">
+    <div class="terminal-overlay">
         
-        <!-- टॉप रनिंग इंफो स्ट्रिप -->
-        <div class="w-full text-center py-2.5 mb-10 bg-black/40 border border-white/10 text-xs tracking-widest uppercase text-cyan-300 rounded-xl backdrop-blur-md">
-            🛡️ Preyar Piyush Cyber Security & AI Iceberg Directory Hub
-        </div>
-
-        <!-- हीरो प्रोफाइल कार्ड -->
-        <div class="cyber-card rounded-3xl p-8 text-center max-w-2xl mx-auto mb-14 relative overflow-hidden">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl"></div>
-            
-            <div class="relative w-24 h-24 mx-auto mb-4 rounded-full p-1 bg-gradient-to-tr from-cyan-400 to-blue-500 shadow-xl overflow-hidden">
-                <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center">
-                    <span class="text-3xl">👨‍💻</span>
-                </div>
+        <!-- स्क्रीनशॉट के अनुसार 100% सेम प्रोफाइल हेडर सेक्शन -->
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <span class="text-3xl">👨‍💻</span> 
             </div>
-
-            <h1 class="text-3xl font-black tracking-tight text-white mb-1">Preyar Piyush</h1>
-            <div class="text-xs font-bold tracking-widest text-cyan-300 uppercase mb-4 font-mono">[ Ethical Hacker & Cyber Security Analyst ]</div>
-            <p class="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+            <h1 class="text-2xl font-bold text-white tracking-wide mb-1" style="font-family: inherit;">Preyar Piyush</h1>
+            <div class="text-[11px] font-bold uppercase tracking-widest mb-4" style="color: #00bfff; font-family: monospace;">[ ETHICAL HACKER & CYBER SECURITY ANALYST ]</div>
+            <p class="text-xs leading-relaxed mx-auto max-w-md" style="color: var(--text-muted);">
                 Cyber Security Expert from India. Specializing in secure architectures, penetration testing, automated defense systems, and advanced AI directory engines.
             </p>
-
-            <div class="badge-grid">
-                <a href="https://github.com" class="badge" target="_blank">GitHub</a>
-                <a href="https://linkedin.com" class="badge" target="_blank">LinkedIn</a>
-                <a href="https://tryhackme.com" class="badge" target="_blank">TryHackMe</a>
-                <a href="https://gitlab.com" class="badge" target="_blank">GitLab</a>
+            
+            <!-- सोशल मीडिया बट्स -->
+            <div class="flex flex-wrap justify-center gap-3 mt-5">
+                <a href="https://github.com" target="_blank" class="social-btn">📁 GitHub</a>
+                <a href="https://linkedin.com" target="_blank" class="social-btn">🔗 LinkedIn</a>
+                <a href="https://tryhackme.com" target="_blank" class="social-btn">💀 TryHackMe</a>
+                <a href="https://gitlab.com" target="_blank" class="social-btn">🦊 GitLab</a>
             </div>
         </div>
 
         <!-- लाइव सर्च बार -->
-        <div class="max-w-xl mx-auto mb-16">
-            <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="🔍 Search across all 52 verified tools and systems..." aria-label="Search tools">
+        <div class="max-w-xl mx-auto mb-10">
+            <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="🔍 Search across all 52 verified tools and systems..." class="w-full bg-black/80 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 font-mono">
         </div>
 
-        <!-- ================= ICEBERG INTERFACE LAYOUT ================= -->
-        
-        <!-- LEVEL 1: SURFACE LEVEL (Top of Iceberg) -->
-        <div class="mb-16" id="level1-container">
-            <div class="text-center mb-8">
-                <span class="level-header text-white text-sm font-black px-8 py-3 rounded-full uppercase tracking-widest">
-                    ▲ Level 1: Surface & OS Layers
-                </span>
-            </div>
-            <div id="toolsSurface" class="tool-grid"></div>
+        <!-- आइसबर्ग लेवल 1 -->
+        <div class="mb-10">
+            <div class="text-center mb-5"><span class="bg-white/10 border border-white/20 text-white text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider">▲ Level 1: Surface & OS Layers</span></div>
+            <div id="toolsSurface" class="grid grid-cols-1 gap-3"></div>
         </div>
 
-        <!-- LEVEL 2: DEEP WATER LEVEL (Middle of Iceberg) -->
-        <div class="mb-16" id="level2-container">
-            <div class="text-center mb-8">
-                <span class="level-header text-white text-sm font-black px-8 py-3 rounded-full uppercase tracking-widest">
-                    🌊 Level 2: Mid-Ocean Auditing & Bounty Hub
-                </span>
-            </div>
-            <div id="toolsIntermediate" class="tool-grid"></div>
+        <!-- आइसबर्ग लेवल 2 -->
+        <div class="mb-10">
+            <div class="text-center mb-5"><span class="bg-white/10 border border-white/20 text-white text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider">🌊 Level 2: Mid-Ocean Auditing & Bounty Hub</span></div>
+            <div id="toolsIntermediate" class="grid grid-cols-1 gap-3"></div>
         </div>
 
-        <!-- LEVEL 3: DEEP OCEAN BED (Bottom of Iceberg) -->
-        <div class="mb-16" id="level3-container">
-            <div class="text-center mb-8">
-                <span class="level-header text-cyan-300 text-sm font-black px-8 py-3 rounded-full uppercase tracking-widest" style="background: rgba(2,11,24,0.8); border-color: var(--neon-cyan)">
-                    ⚓ Level 3: Deep Ocean Hardware & Intelligence
-                </span>
-            </div>
-            <div id="toolsAdvanced" class="tool-grid"></div>
+        <!-- आइसबर्ग लेवल 3 -->
+        <div class="mb-10">
+            <div class="text-center mb-5"><span class="bg-black/60 border border-cyan-400/50 text-cyan-400 text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider">⚓ Level 3: Deep Ocean Hardware & AI</span></div>
+            <div id="toolsAdvanced" class="grid grid-cols-1 gap-3"></div>
         </div>
 
-        <!-- ================= SECURE RATING & FEEDBACK CENTER ================= -->
-        <div class="cyber-card rounded-2xl p-6 max-w-xl mx-auto mt-24 border border-cyan-500/30 shadow-2xl relative">
-            <div class="text-center mb-6">
-                <h3 class="text-xl font-black text-white tracking-wide uppercase">Secure Feedback Engine</h3>
-                <p class="text-xs text-slate-400 mt-1">लॉगिन करें और इस वेबसाइट को रेट या कमेंट करें</p>
+        <!-- सुरक्षित ईमेल लॉगिन एवं रेटिंग फीडबैक बॉक्स -->
+        <div class="cyber-card rounded-2xl p-6 max-w-xl mx-auto mt-16 border border-cyan-500/20">
+            <div class="text-center mb-4">
+                <h3 class="text-md font-bold text-white uppercase tracking-wider">Secure Feedback Engine</h3>
+                <p class="text-[11px] text-gray-400">लॉगिन करें और इस वेबसाइट को रेट या कमेंट करें</p>
             </div>
-
-            <!-- स्टेप 1: ऑटो ईमेल लॉगिन -->
-            <div id="loginSection" class="space-y-4">
-                <input type="email" id="userEmail" placeholder="Enter your email for instant auto-login..." class="w-full bg-black/60 border border-slate-800 focus:border-cyan-400 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none transition-all">
-                <button onclick="handleAutoLogin()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-slate-950 font-black py-3.5 rounded-xl text-xs uppercase tracking-widest transition-all">
-                    Verify & Access Rating
-                </button>
-                <p id="loginError" class="text-xs text-rose-400 text-center h-4"></p>
+            <div id="loginSection" class="space-y-3">
+                <input type="email" id="userEmail" placeholder="Enter your email to auto-login..." class="w-full bg-black/60 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none">
+                <button onclick="handleAutoLogin()" class="w-full bg-cyan-400 hover:bg-cyan-500 text-black text-xs font-bold py-2.5 rounded-xl uppercase tracking-wider">Verify & Access Rating</button>
+                <p id="loginError" class="text-[11px] text-red-400 text-center"></p>
             </div>
-
-            <!-- स्टेप 2: रेटिंग इनपुट -->
-            <div id="ratingSection" class="hidden space-y-4">
-                <div class="flex items-center justify-between bg-black/40 border border-slate-800 p-3 rounded-xl">
-                    <span id="welcomeUser" class="text-xs text-cyan-400 font-mono"></span>
-                    <button onclick="handleLogout()" class="text-[10px] text-rose-400 uppercase tracking-wider font-bold underline">Logout</button>
+            <div id="ratingSection" class="hidden space-y-3">
+                <div class="flex items-center justify-between bg-black/40 p-2 rounded-lg text-[11px]">
+                    <span id="welcomeUser" class="text-cyan-400"></span>
+                    <button onclick="handleLogout()" class="text-red-400 underline font-bold">Logout</button>
                 </div>
-
                 <div class="flex justify-center gap-2 py-1" id="starInputContainer">
                     <span class="star-input" onclick="selectStar(1)">★</span>
                     <span class="star-input" onclick="selectStar(2)">★</span>
@@ -285,5 +195,23 @@
                     <span class="star-input" onclick="selectStar(4)">★</span>
                     <span class="star-input" onclick="selectStar(5)">★</span>
                 </div>
+                <textarea id="userComment" rows="2" placeholder="Write review here (Optional)..." class="w-full bg-black/60 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-none resize-none"></textarea>
+                <button onclick="submitRating()" class="w-full bg-emerald-400 text-black text-xs font-bold py-2.5 rounded-xl uppercase">Submit Review</button>
+                <div id="userDeleteOption" class="hidden text-center"><button onclick="deleteOwnRating()" class="text-[11px] text-red-400 font-bold underline">❌ Delete My Rating</button></div>
+                <p id="ratingStatus" class="text-[11px] text-center font-medium"></p>
+            </div>
+        </div>
+    </div>
 
-                
+    <script>
+        // सभी 52 प्रमाणित और असली टूल्स की डेटा लिस्ट
+        const toolsData = [
+            { name: "Kali Linux", desc: "Advanced penetration testing Linux OS.", url: "https://kali.org", icon: "🐧", level: 1 },
+            { name: "Ubuntu Linux", desc: "Open-source Linux OS for cloud architectures.", url: "https://ubuntu.com", icon: "💻", level: 1 },
+            { name: "Parrot Security OS", desc: "Lightweight cloud security GNU/Linux.", url: "https://parrotsec.org", icon: "🦜", level: 1 },
+            { name: "BlackArch Linux", desc: "Arch distribution with 2800+ pre-installed tools.", url: "https://blackarch.org", icon: "🦅", level: 1 },
+            { name: "Maltego", desc: "Data visualization for link analysis & OSINT.", url: "https://maltego.com", icon: "🔍", level: 1 },
+            { name: "TheHarvester", desc: "Gathers emails and subdomains from public sources.", url: "https://github.com", icon: "🌾", level: 1 },
+            { name: "Sherlock", desc: "Find social accounts by username across networks.", url: "https://github.io", icon: "🕵️", level: 1 },
+            { name: "Spiderfoot", desc: "Automating OSINT collection from public channels.", url: "https://spiderfoot.net", icon: "🕷️", level: 1 },
+        
