@@ -48,347 +48,234 @@
   <p style="color: var(--text-muted, #a1b1cc);">Welcome to the ultimate resource hub. This dashboard contains a curated directory of over 300 tools for Ethical Hacking, Cyber Security Analytics, Penetration Testing, and Artificial Intelligence, including tools like Aircrack-ng, Midjourney models, and automated defense frameworks.</p>
 </div>
 
-      <style>
-        /* आपका पुराना और ओरिजिनल CSS वेरिएबल्स थीम */
+    <style>
+        /* ==========================================================================
+           ICEBERG THEME CORE STYLING (Line 51 Onwards)
+           ========================================================================== */
         :root {
-            --bg-dark-blue: #020813;
+            --bg-dark: #020813;
             --surface-blue: #0b1528;
-            --neon-cyan: #00ffff;
+            --neon-cyan: #00f0ff;
             --neon-blue: #0065ff;
+            --neon-purple: #8b5cf6;
             --neon-red: #ff0055;
             --text-main: #e2e8f0;
             --text-muted: #a1b1cc;
+            --star-color: #ffd700;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            scrollbar-width: thin;
-            scrollbar-color: var(--neon-cyan) var(--bg-dark-blue);
-        }
-
-        body, html {
-            background: linear-gradient(135deg, #020813, #005577, #1a0033, #0b1528, #330022);
-            background-size: 400% 400%;
-            animation: smoothNeonLights 6s ease infinite;
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
-            overflow-y: scroll;
             scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
         }
 
-        @keyframes smoothNeonLights {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        #matrix {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.08;
-            pointer-events: none;
-        }
-
-        .terminal-overlay {
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 15px;
-        }
-
-        /* 1. प्रोफाइल सेक्शन (सबसे ऊपर) */
-        .profile-header {
-            padding: 40px 20px;
-            text-align: center;
-            background: linear-gradient(180deg, var(--surface-blue) 0%, var(--bg-dark-blue) 100%);
-            border-radius: 16px;
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            margin-bottom: 25px;
-            margin-top: 15px;
-        }
-
-        .profile-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 15px var(--neon-blue);
-            margin: 0 auto 15px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #020813;
-        }
-
-        .profile-name {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #fff;
-            text-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        .profile-tagline {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-
-        .badge-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .badge {
+        body {
+            background: linear-gradient(180deg, #020813 0%, #0b1528 35%, #052e42 65%, #010409 100%);
             color: var(--text-main);
-            background: rgba(0, 102, 255, 0.1);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            text-decoration: none;
-            font-size: 0.85rem;
-            padding: 6px 12px;
-            border-radius: 20px;
-            transition: all 0.2s;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow-x: hidden;
+            padding: 20px;
         }
 
-        .badge:hover {
-            background: var(--neon-cyan);
-            color: var(--bg-dark-blue);
-            box-shadow: 0 0 8px var(--neon-cyan);
+        /* Iceberg Roadmap Containers */
+        .iceberg-wrapper {
+            max-width: 1200px;
+            margin: 0 auto 100px auto;
         }
 
-        /* 2. सर्च बार */
-        #toolSearch {
-            width: 100%;
-            background: var(--surface-blue);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            color: #fff;
-            border-radius: 12px;
-            padding: 14px;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            outline: none;
+        .iceberg-tier {
+            margin: 50px 0;
+            padding: 35px 25px;
+            background: rgba(11, 21, 40, 0.65);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 240, 255, 0.05);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        #toolSearch:focus {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-        }
+        .tier-beginner { border-top: 4px solid var(--neon-cyan); box-shadow: 0 0 30px rgba(0, 240, 255, 0.05); }
+        .tier-intermediate { border-top: 4px solid var(--neon-blue); box-shadow: 0 0 30px rgba(0, 101, 255, 0.05); }
+        .tier-advanced { border-top: 4px solid var(--neon-purple); box-shadow: 0 0 30px rgba(139, 92, 246, 0.05); }
 
-        .section-title {
-            font-size: 1.1rem;
-            color: var(--neon-cyan);
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .tools-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        /* 3. टूल आइटम (Row) सिस्टम */
-        .tool-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: var(--surface-blue);
-            padding: 10px 14px;
-            border-radius: 12px;
-            transition: all 0.15s ease;
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
-
-        .tool-item:hover {
-            border-color: rgba(0, 240, 255, 0.2);
-            transform: translateY(-1px);
-        }
-
-        .tool-left {
+        .tier-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             gap: 12px;
+            text-transform: uppercase;
         }
 
-        .tool-index {
-            font-size: 1rem;
-            font-weight: bold;
-            color: var(--text-main);
-            width: 24px;
-            text-align: center;
+        .tier-beginner .tier-title { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 240, 255, 0.2); }
+        .tier-intermediate .tier-title { color: var(--neon-blue); text-shadow: 0 0 10px rgba(0, 101, 255, 0.2); }
+        .tier-advanced .tier-title { color: var(--neon-purple); text-shadow: 0 0 10px rgba(139, 92, 246, 0.2); }
+
+        /* Tools Grid Layout */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
 
-        .tool-icon {
-            font-size: 1.2rem;
-        }
-
-        .tool-details {
+        /* Tool Cards */
+        .tool-card {
+            background: rgba(2, 8, 19, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        .tool-name {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 2px;
+        .tool-card:hover {
+            transform: translateY(-5px);
+            background: rgba(11, 21, 40, 0.9);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
-        .tool-desc {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-w: 220px;
-        }
+        .tier-beginner .tool-card:hover { border-color: var(--neon-cyan); }
+        .tier-intermediate .tool-card:hover { border-color: var(--neon-blue); }
+        .tier-advanced .tool-card:hover { border-color: var(--neon-purple); }
 
-        @media (min-width: 480px) {
-            .tool-desc { max-w: 360px; }
-        }
-
-        .tool-action-btn {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #ff0055;
-            border: 1px solid rgba(255, 0, 85, 0.2);
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .tool-item:hover .tool-action-btn {
-            background-color: var(--neon-red);
-            color: var(--bg-dark-blue);
-            box-shadow: 0 0 8px var(--neon-red);
-        }
-
-        /* रेटिंग सिस्टम पैनल */
-        .rating-box {
-            background: var(--surface-blue);
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            border-radius: 16px;
-            padding: 20px;
-            margin-top: 40px;
-            margin-bottom: 30px;
-        }
-
-        .rating-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #fff;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-            text-align: center;
-        }
-
-        .rating-sub {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-align: center;
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             margin-bottom: 15px;
         }
 
-        .form-input {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            border-radius: 10px;
-            padding: 12px;
-            font-size: 0.9rem;
-            color: #fff;
-            outline: none;
-            margin-bottom: 12px;
+        .tool-header i {
+            font-size: 1.5rem;
+            min-width: 30px;
+            text-align: center;
         }
 
-        .form-btn {
-            width: 100%;
-            background: var(--neon-cyan);
-            color: var(--bg-dark-blue);
-            font-weight: bold;
-            font-size: 0.9rem;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s;
+        .tier-beginner .tool-header i { color: var(--neon-cyan); }
+        .tier-intermediate .tool-header i { color: var(--neon-blue); }
+        .tier-advanced .tool-header i { color: var(--neon-purple); }
+
+        .tool-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
         }
 
-        .form-btn:hover {
-            box-shadow: 0 0 12px var(--neon-cyan);
-        }
-
-        .star-container {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 0;
-        }
-
-        .star-input {
-            font-size: 2.2rem;
-            color: rgba(255, 255, 255, 0.15);
-            cursor: pointer;
-        }
-
-        .star-input.active {
-            color: #fbbf24;
-            text-shadow: 0 0 10px #fbbf24;
-        }
-
-        .user-status-bar {
+        /* Live Interative Star Ratings */
+        .rating-container {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
+            gap: 6px;
+            margin: 12px 0;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .hidden { display: none !important; }
+        .stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .stars i {
+            cursor: pointer;
+            color: #334155;
+            font-size: 0.95rem;
+            transition: color 0.15s ease;
+        }
+
+        .stars i.active {
+            color: var(--star-color);
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+        }
+
+        .rating-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Direct Instant Access Anchor Links */
+        .direct-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .tier-beginner .direct-link:hover { background: var(--neon-cyan); color: #020813; font-weight: 600; }
+        .tier-intermediate .direct-link:hover { background: var(--neon-blue); color: #ffffff; font-weight: 600; }
+        .tier-advanced .direct-link:hover { background: var(--neon-purple); color: #ffffff; font-weight: 600; }
     </style>
-</head>
-<body>
-    <canvas id="matrix"></canvas>
-    <div class="terminal-overlay">
+
+    <!-- FontAwesome Library For High-Quality Branding Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+
+    <!-- MAIN CORE UI VIEW -->
+    <div class="iceberg-wrapper">
         
-        <!-- आपका ओरिजिनल प्रोफाइल हेडर लेआउट -->
-        <header class="profile-header">
-            <div class="profile-avatar" style="background: url('https://63piyush63.github.com') center/cover;"><!-- अवतार इमेज --></div>
-            <h1 class="profile-name">Preyar Piyush</h1>
-            <div class="profile-tagline">[ ETHICAL HACKER & CYBER SECURITY ]</div>
-            <p class="profile-bio">Cyber Security Expert from India. Specializing in secure architectures, penetration testing, automated defense systems, and advanced AI directory engines.</p>
-            <div class="badge-grid">
-                <a href="https://github.com" class="badge" target="_blank">📁 GitHub</a>
-                <a href="https://linkedin.com" class="badge" target="_blank">🔗 LinkedIn</a>
-                <a href="https://tryhackme.com" class="badge" target="_blank">💀 TryHackMe</a>
-                <a href="https://gitlab.com" class="badge" target="_blank">🦊 GitLab</a>
-            </div>
-        </header>
+        <!-- LEVEL 1: SURFACE / LEARNING / PLATFORMS -->
+        <section class="iceberg-tier tier-beginner">
+            <h2 class="tier-title"><i class="fa-solid fa-cloud-sun"></i> Beginner Ecosystem & Platforms</h2>
+            <div class="tools-grid" id="layer-beginner"></div>
+        </section>
 
-        <!-- सर्च इनपुट -->
-        <input type="text" id="toolSearch" onkeyup="filterTools()" placeholder="🔍 Enter Search Payload...">
+        <!-- LEVEL 2: DEEP SOFTWARE ASSESSMENT -->
+        <section class="iceberg-tier tier-intermediate">
+            <h2 class="tier-title"><i class="fa-solid fa-water"></i> Intermediate Security Software</h2>
+            <div class="tools-grid" id="layer-intermediate"></div>
+        </section>
 
-        <h2 class="section-title">⚡ Core Tools Dashboard</h2>
-        
-        <!-- आपका ओरिजिनल वर्टिकल टूल्स कंटेनर -->
-        <div id="toolsListContainer" class="tools-list"></div>
+        <!-- LEVEL 3: ABYSS HARDWARE & ADVANCED SYSTEMS -->
+        <section class="iceberg-tier tier-advanced">
+            <h2 class="tier-title"><i class="fa-solid fa-shield-virus"></i> Advanced Infrastructure Tools</h2>
+            <div class="tools-grid" id="layer-advanced"></div>
+        </section>
 
+    </div>
+
+    <!-- OBJECT ARCHITECTURE AND LOGIC CONTROL -->
+    <script>
+        // Clean Direct Map Arrays containing exact requested target links
+        const database = [
+            // --- Beginner / Bug Bounty / Learning ---
+            { name: "HackerOne", url: "https://hackerone.com", icon: "fa-solid fa-bug", tier: "beginner" },
+            { name: "Bugcrowd", url: "https://bugcrowd.com", icon: "fa-solid fa-shield-halved", tier: "beginner" },
+            { name: "Intigriti", url: "https://intigriti.com", icon: "fa-solid fa-terminal", tier: "beginner" },
+            { name: "Open Bug Bounty", url: "https://openbugbounty.org", icon: "fa-solid fa-unlock-keyhole", tier: "beginner" },
+            { name: "PortSwigger Web Academy", url: "https://portswigger.net", icon: "fa-solid fa-graduation-cap", tier: "beginner" },
+            { name: "TryHackMe", url: "https://tryhackme.com", icon: "fa-solid fa-gamepad", tier: "beginner" },
+            { name: "OverTheWire", url: "https://overthewire.org", icon: "fa-solid fa-code", tier: "beginner" },
+            { name: "Nmap", url: "https://nmap.org", icon: "fa-solid fa-network-wired", tier: "beginner" },
+            { name: "Wireshark", url: "https://wireshark.org", icon: "fa-solid fa-file-wave", tier: "beginner" },
+            { name: "OWASP ZAP", url: "https://zaproxy.org", icon: "fa-solid fa-user-secret", tier: "beginner" },
+            { name: "Tor Project", url: "https://torproject.org", icon: "fa-solid fa-circle-nodes", tier: "beginner" },
+            { name: "VirusTotal", url: "https://virustotal.com", icon: "fa-solid fa-virus", tier: "beginner" },
+            { name: "Have I Been Pwned", url: "https://haveibeenpwned.com", icon: "fa-solid fa-key", tier: "beginner" },
+            { name: "Postman", url: "https://postman.com", icon: "fa-solid fa-server", tier: "beginner" },
+            { name: "ExifTool", url: "https://exiftool.org", icon: "fa-solid fa-image", tier: "beginner" },
+
+            // --- Intermediate PenTesting Suite ---
+            { name: "Kali Linux", url: "https://kali.org", icon: "fa-brands fa-linux", tier: "intermediate" },
+            { name: "Burp Suite", url: "https://portswigger.net", icon: "fa-solid fa-box-open", tier: "intermediate" },
+            { name: "Metasploit", url: "https://metasploit.com", icon: "fa-solid fa-fire", tier: "intermediate" },
+            { name: "Nikto", url: "https://github.com", icon: "fa-solid fa-eye", tier: "intermediate" },
+            { name: "SQLMap", url: "https://sqlmap.org", icon: "fa-solid fa-database", tier: "intermediate" },
+            { name: "Hydra", url: "https://github.com", icon: "fa-solid fa-dragon", tier: "intermediate" },
+            { name: "John the Ripper", url: "https://openwall.com", icon: "fa-solid fa-gavel", tier: "intermediate" },
+            { name: "Hashcat", url: "https://hashcat.net", icon: "fa-solid fa-hashtag", tier: "intermediate" },
         
