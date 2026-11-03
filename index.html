@@ -475,10 +475,7 @@ window.__ok.common = 1;
   fetch('https://api.github.com/users/63piyush63')
     .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
     .then(function(d){
-      chip('\uD83D\uDCE6 ' + d.public_repos + ' Repos');
-      chip('\uD83D\uDC65 ' + d.followers + ' Followers');
-      chip('\u27A1\uFE0F ' + d.following + ' Following');
-      if (d.created_at) chip('\uD83D\uDCC5 Since ' + new Date(d.created_at).getFullYear());
+      
     }).catch(function(){});
 })();
 </script>
