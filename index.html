@@ -49,9 +49,9 @@ u<!DOCTYPE html>
 </div>
 
 <style>
-  :root{--bg:#031a4a;--card:rgba(6,34,88,.55);--fg:#eaf4ff;--mut:#9cc0e8;--acc:#2fd0c8;--ok:#2fd0c8;--err:#ff8080;--teal:#35e0d2}
+  :root{--card:rgba(6,34,88,.55);--fg:#eaf4ff;--mut:#9cc0e8;--ok:#2fd0c8;--err:#ff8080;--teal:#35e0d2}
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#031a4a;color:var(--fg);padding:16px;max-width:760px;margin-inline:auto;position:relative;min-height:100vh}
   body::before{content:"";position:fixed;inset:0;z-index:-2;
     background:linear-gradient(180deg,#6db4e6 0,#a9d4f0 5%,#2f7fc0 14%,#0b4a92 22%,#08306c 45%,#04204f 75%,#020f2e 100%)}
@@ -61,13 +61,12 @@ u<!DOCTYPE html>
   h1 span{color:var(--teal)}
   .sub{text-align:center;letter-spacing:.25em;font-size:.75rem;color:#e6f4ff;margin:0 0 20px;text-shadow:0 1px 6px rgba(0,30,80,.7)}
   .card{background:var(--card);border-radius:14px;padding:16px;margin-bottom:16px;border:1px solid rgba(160,210,255,.22);
-    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 30px rgba(0,10,40,.35)}
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 8px 30px rgba(0,10,40,.35)}
   .tabs{display:flex;gap:8px;margin-bottom:16px}
   .tabs button{flex:1;padding:12px;border:0;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:1rem;font-weight:700;cursor:pointer}
   .tabs button.on{background:#fff;color:#031a4a;font-weight:800}
   label{display:block;margin:12px 0 4px;color:var(--mut);font-size:.9rem}
-  select,input[type=file],#toolSearch{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(160,210,255,.25);background:rgba(2,15,46,.55);color:var(--fg);font-size:1rem}
-  #toolSearch{padding:12px;border-radius:10px;margin:10px 0}
+  select,input[type=file],input[type=search]{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(160,210,255,.25);background:rgba(2,15,46,.55);color:var(--fg);font-size:1rem}
   button.go{width:100%;margin-top:14px;padding:14px;border:0;border-radius:999px;background:var(--ok);color:#032033;font-weight:700;font-size:1rem;cursor:pointer}
   button.go:disabled{opacity:.5;cursor:not-allowed}
   progress{width:100%;margin-top:12px;height:14px}
@@ -81,10 +80,8 @@ u<!DOCTYPE html>
   .ok{color:var(--teal)}
 
   /* Profile */
-  .profile{text-align:center;padding:24px 16px;background:rgba(3,12,36,.75);border:1px solid rgba(53,224,210,.35);
-    box-shadow:0 0 30px rgba(53,224,210,.15),0 8px 30px rgba(0,10,40,.45)}
-  #pfAvatar{width:110px;height:110px;border-radius:50%;object-fit:cover;margin:0 auto;display:block;background:#0a1f4d;
-    border:3px solid var(--teal);box-shadow:0 0 0 3px #b02aff,0 0 24px rgba(53,224,210,.7)}
+  .profile{text-align:center;padding:24px 16px;background:rgba(3,12,36,.75);border:1px solid rgba(53,224,210,.35);box-shadow:0 0 30px rgba(53,224,210,.15),0 8px 30px rgba(0,10,40,.45)}
+  #pfAvatar{width:110px;height:110px;border-radius:50%;object-fit:cover;margin:0 auto;display:block;background:#0a1f4d;border:3px solid var(--teal);box-shadow:0 0 0 3px #b02aff,0 0 24px rgba(53,224,210,.7)}
   .pfName{font-size:1.7rem;font-weight:800;margin-top:14px;color:#fff;text-shadow:0 0 14px rgba(53,224,210,.6)}
   .pfRole{margin-top:6px;font-size:.78rem;letter-spacing:.18em;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace}
   .pfBio{margin:12px 0 0;color:#cfe3f8;font-size:.92rem;line-height:1.55}
@@ -94,10 +91,17 @@ u<!DOCTYPE html>
   .pfLinks a{padding:8px 16px;border-radius:999px;background:#07163a;border:1px solid rgba(160,210,255,.35);color:#fff;text-decoration:none;font-size:.85rem;font-family:ui-monospace,monospace}
   .pfLinks a:active{background:#0e2a66}
 
-  /* Directory */
+  /* Directory: the whole page scrolls (no inner scroll box) */
   #tools h2,#rating h2{font-size:1.15rem;margin:0 0 4px}
-  .tl{max-height:70vh;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;overscroll-behavior:contain}
-  .tl h3{position:sticky;top:0;margin:0;padding:8px 4px;background:#072a63;color:var(--teal);font-size:.95rem;letter-spacing:.12em;z-index:1}
+  .sform{display:flex;gap:8px;margin:12px 0 8px}
+  .sform input{flex:1;min-width:0;border-radius:999px;padding:12px 16px}
+  .sform button{border:0;border-radius:999px;padding:0 18px;background:var(--ok);color:#032033;font-weight:800;font-size:1rem;cursor:pointer;white-space:nowrap}
+  .sform button.clr{background:rgba(255,255,255,.18);color:#fff;padding:0 14px}
+  .jump{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px;-webkit-overflow-scrolling:touch}
+  .jump a{flex:none;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;text-decoration:none;font-size:.78rem;letter-spacing:.04em}
+  #count{font-size:.8rem;color:var(--mut);margin:2px 0 6px}
+  #noRes{text-align:center;color:var(--mut);padding:20px 0}
+  .tl h3{position:sticky;top:0;margin:0;padding:10px 6px;background:#072a63;color:var(--teal);font-size:.95rem;letter-spacing:.12em;z-index:2;scroll-margin-top:0}
   .row{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px solid rgba(160,210,255,.15);text-decoration:none;color:var(--fg)}
   .row:active{background:rgba(255,255,255,.1)}
   .row .n{width:34px;text-align:right;color:var(--mut);font-size:.85rem;flex:none}
@@ -106,7 +110,7 @@ u<!DOCTYPE html>
   .row .t b{display:block;font-weight:600}
   .row .t small{color:var(--mut);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .row .go2{color:var(--teal);font-size:1.2rem}
-  #toTop{display:block;text-align:center;margin-top:10px;color:var(--teal);text-decoration:none}
+  #toTop{display:block;text-align:center;margin-top:14px;color:var(--teal);text-decoration:none}
 
   /* Rating */
   .stars{display:flex;justify-content:center;gap:6px;margin:14px 0 6px}
@@ -121,25 +125,46 @@ u<!DOCTYPE html>
   .bar i s{display:block;height:100%;background:#ffd54a;width:0;transition:width .4s}
   .bar span{width:40px;text-align:right}
   footer{text-align:center;color:var(--mut);font-size:.8rem;margin:8px 0 24px}
+  #fileBanner{position:fixed;left:8px;right:8px;bottom:8px;z-index:99;background:#b00020;color:#fff;padding:12px 14px;border-radius:12px;font-size:.85rem;line-height:1.4;box-shadow:0 6px 24px rgba(0,0,0,.5)}
 </style>
+<script>
+/* Health check: shows a red notice if this file is incomplete or a script failed */
+window.__ok = {};
+window.__bannerShown = false;
+function showBanner(msg){
+  if (window.__bannerShown) return;
+  window.__bannerShown = true;
+  var d = document.createElement('div'); d.id = 'fileBanner';
+  d.textContent = msg;
+  (document.body || document.documentElement).appendChild(d);
+}
+window.addEventListener('error', function(e){
+  if (!e.message || e.message === 'Script error.') return;
+  showBanner('A script on this page failed: ' + e.message + ' (line ' + e.lineno + '). If you pasted the code by hand, upload the whole index.html file again instead.');
+});
+window.addEventListener('load', function(){
+  if (!window.__ok.end) showBanner('This index.html is incomplete (the end of the file is missing). Upload the full file again with GitHub: Add file > Upload files. The last line must be </html>.');
+});
+</script>
 </head>
 <body>
 
 <!-- PROFILE -->
 <section class="profile card" id="profile">
-  <img id="pfAvatar" alt="Preyar Piyush profile photo">
+  <img id="pfAvatar" alt="Preyar Piyush profile photo" src="https://63piyush63.github.com/63piyush63.png?size=240"
+       onerror="if(!this.getAttribute('data-t')){this.setAttribute('data-t','1');this.src='https://avatars.githubusercontent.com/63piyush63?s=240';}else{this.style.display='none';}">
   <div class="pfName">Preyar Piyush</div>
   <div class="pfRole">[ ETHICAL HACKER & CYBER SECURITY ]</div>
   <p class="pfBio">Cyber Security Expert from India. Specializing in secure architectures, penetration testing, automated systems, and advanced AI directory engines.</p>
-  <div class="pfStats" id="pfStats"></div>
+  <div class="pfStats" id="pfStats"><span>&#128205; Lucknow, Uttar Pradesh, India</span></div>
   <div class="pfLinks">
-    <a id="lnGithub" href="https://63piyush63.github.com/63piyush63" target="_blank" rel="noopener noreferrer">&#128187; GitHub</a>
-    <a id="lnLinkedin" href="https://www.linkedin.com/in/63piyush63" target="_blank" rel="noopener noreferrer">&#128279; LinkedIn</a>
-    <a id="lnTHM" href="https://tryhackme.com/p/63piyush63" target="_blank" rel="noopener noreferrer">&#128128; TryHackMe</a>
-    <a id="lnGitlab" href="https://gitlab.com/63piyush63" target="_blank" rel="noopener noreferrer">&#129418; GitLab</a>
-    <a id="lnHTB" href="https://hackthebox.com/63piyush63" target="_blank" rel="noopener noreferrer">&#128230; HackTheBox</a>
-    <a id="lnGdev" href="https://me.developers.google.com/u/109809989349859704969" target="_blank" rel="noopener noreferrer">&#128310; Google Dev</a>
-    <a id="lnWiki" href="https://www.wikidata.org/wiki/Q141662462" target="_blank" rel="noopener noreferrer">&#127760; Wikidata</a>
+    <a href="https://github.com/63piyush63" target="_blank" rel="noopener noreferrer">&#128187; GitHub</a>
+    <a href="https://www.linkedin.com/in/63piyush63" target="_blank" rel="noopener noreferrer">&#128279; LinkedIn</a>
+    <a href="https://tryhackme.com/p/63piyush63" target="_blank" rel="noopener noreferrer">&#128128; TryHackMe</a>
+    <a href="https://gitlab.com/63piyush63" target="_blank" rel="noopener noreferrer">&#129418; GitLab</a>
+    <a href="https://hackthebox.com/63piyush63" target="_blank" rel="noopener noreferrer">&#128230; HackTheBox</a>
+    <a href="https://me.developers.google.com/u/109809989349859704969" target="_blank" rel="noopener noreferrer">&#128310; Google Dev</a>
+    <a href="https://www.wikidata.org/wiki/Q141662462" target="_blank" rel="noopener noreferrer">&#127760; Wikidata</a>
   </div>
 </section>
 
@@ -147,8 +172,8 @@ u<!DOCTYPE html>
 <div class="sub">LEARN &bull; BUILD &bull; BUILD THE FUTURE</div>
 
 <div class="tabs">
-  <button id="tImg" class="on">Photo</button>
-  <button id="tVid">Video</button>
+  <button id="tImg" class="on" type="button">Photo</button>
+  <button id="tVid" type="button">Video</button>
 </div>
 
 <!-- PHOTO -->
@@ -166,7 +191,7 @@ u<!DOCTYPE html>
     <option value="3">3x</option>
     <option value="4">4x</option>
   </select>
-  <button class="go" id="imgGo" disabled>Enhance Photo</button>
+  <button class="go" id="imgGo" type="button" disabled>Enhance Photo</button>
   <progress id="imgProg" class="hide" max="100" value="0"></progress>
   <div id="imgMsg" class="note"></div>
   <img id="imgOut" class="hide" alt="Enhanced result">
@@ -190,147 +215,653 @@ u<!DOCTYPE html>
     <option value="30">30 FPS</option>
     <option value="60">60 FPS (smoother motion, much slower)</option>
   </select>
-  <button class="go" id="vidGo" disabled>Enhance Video</button>
+  <button class="go" id="vidGo" type="button" disabled>Enhance Video</button>
   <progress id="vidProg" class="hide" max="100" value="0"></progress>
   <div id="vidMsg" class="note"></div>
   <div id="log"></div>
   <video id="vidOut" class="hide" controls playsinline></video>
   <a id="vidDl" class="dl hide" download="enhanced.mp4">Download Video</a>
-  <div class="note">Everything runs inside your browser, so nothing is uploaded. Keep this page open and the screen on while it works. Best results on videos of 1 to 3 minutes on a phone. 8K and 3-hour videos need a GPU server and are not possible here.</div>
+  <div class="note">Everything runs inside your browser, so nothing is uploaded. Keep this page open and the screen on while it works. Best on videos of 1 to 3 minutes on a phone. 8K and 3-hour videos need a GPU server and are not possible here.</div>
 </section>
 
-<!-- TOOLS LIST -->
+<!-- DIRECTORY (written directly into the page, so it shows even if scripts fail) -->
 <section id="tools" class="card">
-  <h2>Cyber Tools &amp; Learning Directory</h2>
-  <div class="note">Official links. Use only for legal and authorized testing.</div>
-  <input id="toolSearch" type="search" placeholder="Search a tool or platform...">
-  <div class="tl" id="toolList"></div>
-  <a id="toTop" href="#profile">Back to top</a>
+  <h2>Cyber Tools, AI Tools &amp; Learning Directory</h2>
+  <div class="note">Official links. Use security tools only for legal and authorized testing.</div>
+  <form class="sform" id="sform" onsubmit="return false;">
+    <input id="toolSearch" type="search" placeholder="Search a tool or platform..." enterkeyhint="search" autocomplete="off">
+    <button type="submit" id="sBtn" aria-label="Search">&#128269; Search</button>
+    <button type="button" id="sClr" class="clr hide" aria-label="Clear">&#10005;</button>
+  </form>
+  <div class="jump">
+    <a href="#sec-software">Software</a>
+    <a href="#sec-hardware">Hardware</a>
+    <a href="#sec-ai">AI Tools</a>
+    <a href="#sec-bounty">Bug Bounty</a>
+    <a href="#sec-labs">Practice Labs</a>
+    <a href="#sec-courses">Courses</a>
+  </div>
+  <div id="count">162 items</div>
+  <div class="tl" id="toolList">
+    <h3 id="sec-software">SOFTWARE</h3>
+    <a class="row" href="https://www.kali.org" target="_blank" rel="noopener noreferrer" data-name="kali linux kali.org"><span class="n">1.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.kali.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Kali Linux</b><small>kali.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.parrotsec.org" target="_blank" rel="noopener noreferrer" data-name="parrot security os parrotsec.org"><span class="n">2.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.parrotsec.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Parrot Security OS</b><small>parrotsec.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://blackarch.org" target="_blank" rel="noopener noreferrer" data-name="blackarch linux blackarch.org"><span class="n">3.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=blackarch.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>BlackArch Linux</b><small>blackarch.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://ubuntu.com" target="_blank" rel="noopener noreferrer" data-name="ubuntu ubuntu.com"><span class="n">4.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=ubuntu.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Ubuntu</b><small>ubuntu.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://nmap.org" target="_blank" rel="noopener noreferrer" data-name="nmap nmap.org"><span class="n">5.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=nmap.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Nmap</b><small>nmap.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.wireshark.org" target="_blank" rel="noopener noreferrer" data-name="wireshark wireshark.org"><span class="n">6.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.wireshark.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Wireshark</b><small>wireshark.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://portswigger.net/burp" target="_blank" rel="noopener noreferrer" data-name="burp suite portswigger.net"><span class="n">7.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=portswigger.net&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Burp Suite</b><small>portswigger.net</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.zaproxy.org" target="_blank" rel="noopener noreferrer" data-name="owasp zap zaproxy.org"><span class="n">8.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.zaproxy.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>OWASP ZAP</b><small>zaproxy.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.metasploit.com" target="_blank" rel="noopener noreferrer" data-name="metasploit metasploit.com"><span class="n">9.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.metasploit.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Metasploit</b><small>metasploit.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/sullo/nikto" target="_blank" rel="noopener noreferrer" data-name="nikto github.com"><span class="n">10.</span><img loading="lazy" alt="" src="https://github.com/sullo.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Nikto</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.tenable.com/products/nessus" target="_blank" rel="noopener noreferrer" data-name="nessus tenable.com"><span class="n">11.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.tenable.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Nessus</b><small>tenable.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.openvas.org" target="_blank" rel="noopener noreferrer" data-name="openvas openvas.org"><span class="n">12.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.openvas.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>OpenVAS</b><small>openvas.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://sqlmap.org" target="_blank" rel="noopener noreferrer" data-name="sqlmap sqlmap.org"><span class="n">13.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=sqlmap.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>SQLMap</b><small>sqlmap.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/vanhauser-thc/thc-hydra" target="_blank" rel="noopener noreferrer" data-name="hydra github.com"><span class="n">14.</span><img loading="lazy" alt="" src="https://github.com/vanhauser-thc.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Hydra</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.openwall.com/john/" target="_blank" rel="noopener noreferrer" data-name="john the ripper openwall.com"><span class="n">15.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.openwall.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>John the Ripper</b><small>openwall.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://hashcat.net" target="_blank" rel="noopener noreferrer" data-name="hashcat hashcat.net"><span class="n">16.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=hashcat.net&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Hashcat</b><small>hashcat.net</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.aircrack-ng.org" target="_blank" rel="noopener noreferrer" data-name="aircrack-ng aircrack-ng.org"><span class="n">17.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.aircrack-ng.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Aircrack-ng</b><small>aircrack-ng.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/t6x/reaver-wps-fork-t6x" target="_blank" rel="noopener noreferrer" data-name="reaver github.com"><span class="n">18.</span><img loading="lazy" alt="" src="https://github.com/t6x.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Reaver</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/derv82/wifite2" target="_blank" rel="noopener noreferrer" data-name="wifite github.com"><span class="n">19.</span><img loading="lazy" alt="" src="https://github.com/derv82.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Wifite</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/v1s1t0r1sh3r3/airgeddon" target="_blank" rel="noopener noreferrer" data-name="airgeddon github.com"><span class="n">20.</span><img loading="lazy" alt="" src="https://github.com/v1s1t0r1sh3r3.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Airgeddon</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.kismetwireless.net" target="_blank" rel="noopener noreferrer" data-name="kismet kismetwireless.net"><span class="n">21.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.kismetwireless.net&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Kismet</b><small>kismetwireless.net</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/byt3bl33d3r/CrackMapExec" target="_blank" rel="noopener noreferrer" data-name="crackmapexec github.com"><span class="n">22.</span><img loading="lazy" alt="" src="https://github.com/byt3bl33d3r.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>CrackMapExec</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/lgandx/Responder" target="_blank" rel="noopener noreferrer" data-name="responder github.com"><span class="n">23.</span><img loading="lazy" alt="" src="https://github.com/lgandx.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Responder</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.bettercap.org" target="_blank" rel="noopener noreferrer" data-name="bettercap bettercap.org"><span class="n">24.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.bettercap.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Bettercap</b><small>bettercap.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://nmap.org/ncat/" target="_blank" rel="noopener noreferrer" data-name="netcat (ncat) nmap.org"><span class="n">25.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=nmap.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Netcat (Ncat)</b><small>nmap.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://beefproject.com" target="_blank" rel="noopener noreferrer" data-name="beef beefproject.com"><span class="n">26.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=beefproject.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>BeEF</b><small>beefproject.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/trustedsec/social-engineer-toolkit" target="_blank" rel="noopener noreferrer" data-name="set toolkit github.com"><span class="n">27.</span><img loading="lazy" alt="" src="https://github.com/trustedsec.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>SET Toolkit</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.trustedsec.com/resources/tools/the-social-engineer-toolkit-set" target="_blank" rel="noopener noreferrer" data-name="social-engineer toolkit trustedsec.com"><span class="n">28.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.trustedsec.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Social-Engineer Toolkit</b><small>trustedsec.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://getgophish.com" target="_blank" rel="noopener noreferrer" data-name="gophish getgophish.com"><span class="n">29.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=getgophish.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Gophish</b><small>getgophish.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.maltego.com" target="_blank" rel="noopener noreferrer" data-name="maltego maltego.com"><span class="n">30.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.maltego.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Maltego</b><small>maltego.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/laramies/theHarvester" target="_blank" rel="noopener noreferrer" data-name="theharvester github.com"><span class="n">31.</span><img loading="lazy" alt="" src="https://github.com/laramies.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>TheHarvester</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.shodan.io" target="_blank" rel="noopener noreferrer" data-name="shodan shodan.io"><span class="n">32.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.shodan.io&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Shodan</b><small>shodan.io</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/lanmaster53/recon-ng" target="_blank" rel="noopener noreferrer" data-name="recon-ng github.com"><span class="n">33.</span><img loading="lazy" alt="" src="https://github.com/lanmaster53.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Recon-ng</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.spiderfoot.net" target="_blank" rel="noopener noreferrer" data-name="spiderfoot spiderfoot.net"><span class="n">34.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.spiderfoot.net&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>SpiderFoot</b><small>spiderfoot.net</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/sherlock-project/sherlock" target="_blank" rel="noopener noreferrer" data-name="sherlock github.com"><span class="n">35.</span><img loading="lazy" alt="" src="https://github.com/sherlock-project.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Sherlock</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/projectdiscovery/subfinder" target="_blank" rel="noopener noreferrer" data-name="subfinder github.com"><span class="n">36.</span><img loading="lazy" alt="" src="https://github.com/projectdiscovery.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Subfinder</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/OJ/gobuster" target="_blank" rel="noopener noreferrer" data-name="gobuster github.com"><span class="n">37.</span><img loading="lazy" alt="" src="https://github.com/OJ.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Gobuster</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/maurosoria/dirsearch" target="_blank" rel="noopener noreferrer" data-name="dirsearch github.com"><span class="n">38.</span><img loading="lazy" alt="" src="https://github.com/maurosoria.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Dirsearch</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://dirb.sourceforge.net" target="_blank" rel="noopener noreferrer" data-name="dirb dirb.sourceforge.net"><span class="n">39.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=dirb.sourceforge.net&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Dirb</b><small>dirb.sourceforge.net</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/xmendez/wfuzz" target="_blank" rel="noopener noreferrer" data-name="wfuzz github.com"><span class="n">40.</span><img loading="lazy" alt="" src="https://github.com/xmendez.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>WFuzz</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://digi.ninja/projects/cewl.php" target="_blank" rel="noopener noreferrer" data-name="cewl digi.ninja"><span class="n">41.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=digi.ninja&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>CeWL</b><small>digi.ninja</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/ffuf/ffuf" target="_blank" rel="noopener noreferrer" data-name="ffuf github.com"><span class="n">42.</span><img loading="lazy" alt="" src="https://github.com/ffuf.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>FFUF</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/aboul3la/Sublist3r" target="_blank" rel="noopener noreferrer" data-name="sublist3r github.com"><span class="n">43.</span><img loading="lazy" alt="" src="https://github.com/aboul3la.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Sublist3r</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/owasp-amass/amass" target="_blank" rel="noopener noreferrer" data-name="amass github.com"><span class="n">44.</span><img loading="lazy" alt="" src="https://github.com/owasp-amass.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Amass</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/robertdavidgraham/masscan" target="_blank" rel="noopener noreferrer" data-name="masscan github.com"><span class="n">45.</span><img loading="lazy" alt="" src="https://github.com/robertdavidgraham.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Masscan</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/CiscoCXSecurity/enum4linux" target="_blank" rel="noopener noreferrer" data-name="enum4linux github.com"><span class="n">46.</span><img loading="lazy" alt="" src="https://github.com/CiscoCXSecurity.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Enum4linux</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/fortra/impacket" target="_blank" rel="noopener noreferrer" data-name="impacket github.com"><span class="n">47.</span><img loading="lazy" alt="" src="https://github.com/fortra.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Impacket</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/securing/DumpsterDiver" target="_blank" rel="noopener noreferrer" data-name="dumpsterdiver github.com"><span class="n">48.</span><img loading="lazy" alt="" src="https://github.com/securing.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>DumpsterDiver</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://osintframework.com" target="_blank" rel="noopener noreferrer" data-name="osint framework osintframework.com"><span class="n">49.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=osintframework.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>OSINT Framework</b><small>osintframework.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.torproject.org" target="_blank" rel="noopener noreferrer" data-name="tor torproject.org"><span class="n">50.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.torproject.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Tor</b><small>torproject.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com" target="_blank" rel="noopener noreferrer" data-name="github dorks github.com"><span class="n">51.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=github.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>GitHub Dorks</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.exploit-db.com/google-hacking-database" target="_blank" rel="noopener noreferrer" data-name="google dorking (ghdb) exploit-db.com"><span class="n">52.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.exploit-db.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Google Dorking (GHDB)</b><small>exploit-db.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.virustotal.com" target="_blank" rel="noopener noreferrer" data-name="virustotal virustotal.com"><span class="n">53.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.virustotal.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>VirusTotal</b><small>virustotal.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://haveibeenpwned.com" target="_blank" rel="noopener noreferrer" data-name="have i been pwned haveibeenpwned.com"><span class="n">54.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=haveibeenpwned.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Have I Been Pwned</b><small>haveibeenpwned.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://censys.io" target="_blank" rel="noopener noreferrer" data-name="censys censys.io"><span class="n">55.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=censys.io&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Censys</b><small>censys.io</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/projectdiscovery/nuclei" target="_blank" rel="noopener noreferrer" data-name="nuclei github.com"><span class="n">56.</span><img loading="lazy" alt="" src="https://github.com/projectdiscovery.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Nuclei</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/devanshbatham/ParamSpider" target="_blank" rel="noopener noreferrer" data-name="paramspider github.com"><span class="n">57.</span><img loading="lazy" alt="" src="https://github.com/devanshbatham.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>ParamSpider</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/tomnomnom/assetfinder" target="_blank" rel="noopener noreferrer" data-name="assetfinder github.com"><span class="n">58.</span><img loading="lazy" alt="" src="https://github.com/tomnomnom.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>AssetFinder</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.morningstarsecurity.com/research/whatweb" target="_blank" rel="noopener noreferrer" data-name="whatweb morningstarsecurity.com"><span class="n">59.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.morningstarsecurity.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>WhatWeb</b><small>morningstarsecurity.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/Dionach/CMSmap" target="_blank" rel="noopener noreferrer" data-name="cmsmap github.com"><span class="n">60.</span><img loading="lazy" alt="" src="https://github.com/Dionach.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>CMSMap</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://wpscan.com" target="_blank" rel="noopener noreferrer" data-name="wpscan wpscan.com"><span class="n">61.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=wpscan.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>WPScan</b><small>wpscan.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.postman.com" target="_blank" rel="noopener noreferrer" data-name="postman postman.com"><span class="n">62.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.postman.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Postman</b><small>postman.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://insomnia.rest" target="_blank" rel="noopener noreferrer" data-name="insomnia insomnia.rest"><span class="n">63.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=insomnia.rest&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Insomnia</b><small>insomnia.rest</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.telerik.com/fiddler" target="_blank" rel="noopener noreferrer" data-name="fiddler telerik.com"><span class="n">64.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.telerik.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Fiddler</b><small>telerik.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.charlesproxy.com" target="_blank" rel="noopener noreferrer" data-name="charles proxy charlesproxy.com"><span class="n">65.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.charlesproxy.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Charles Proxy</b><small>charlesproxy.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://suricata.io" target="_blank" rel="noopener noreferrer" data-name="suricata suricata.io"><span class="n">66.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=suricata.io&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Suricata</b><small>suricata.io</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.snort.org" target="_blank" rel="noopener noreferrer" data-name="snort snort.org"><span class="n">67.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.snort.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Snort</b><small>snort.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.autopsy.com" target="_blank" rel="noopener noreferrer" data-name="autopsy autopsy.com"><span class="n">68.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.autopsy.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Autopsy</b><small>autopsy.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.volatilityfoundation.org" target="_blank" rel="noopener noreferrer" data-name="volatility volatilityfoundation.org"><span class="n">69.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.volatilityfoundation.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Volatility</b><small>volatilityfoundation.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/ReFirmLabs/binwalk" target="_blank" rel="noopener noreferrer" data-name="binwalk github.com"><span class="n">70.</span><img loading="lazy" alt="" src="https://github.com/ReFirmLabs.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Binwalk</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://ghidra-sre.org" target="_blank" rel="noopener noreferrer" data-name="ghidra ghidra-sre.org"><span class="n">71.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=ghidra-sre.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Ghidra</b><small>ghidra-sre.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://rada.re" target="_blank" rel="noopener noreferrer" data-name="radare2 rada.re"><span class="n">72.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=rada.re&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Radare2</b><small>rada.re</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://exiftool.org" target="_blank" rel="noopener noreferrer" data-name="exiftool exiftool.org"><span class="n">73.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=exiftool.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>ExifTool</b><small>exiftool.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://steghide.sourceforge.net" target="_blank" rel="noopener noreferrer" data-name="steghide steghide.sourceforge.net"><span class="n">74.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=steghide.sourceforge.net&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Steghide</b><small>steghide.sourceforge.net</small></span><span class="go2">&rsaquo;</span></a>
+    <h3 id="sec-hardware">HARDWARE</h3>
+    <a class="row" href="https://www.raspberrypi.com" target="_blank" rel="noopener noreferrer" data-name="raspberry pi raspberrypi.com"><span class="n">75.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.raspberrypi.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Raspberry Pi</b><small>raspberrypi.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.arduino.cc" target="_blank" rel="noopener noreferrer" data-name="arduino arduino.cc"><span class="n">76.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.arduino.cc&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Arduino</b><small>arduino.cc</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.espressif.com/en/products/socs/esp32" target="_blank" rel="noopener noreferrer" data-name="esp32 espressif.com"><span class="n">77.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.espressif.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>ESP32</b><small>espressif.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.espressif.com/en/products/socs/esp8266" target="_blank" rel="noopener noreferrer" data-name="esp8266 espressif.com"><span class="n">78.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.espressif.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>ESP8266</b><small>espressif.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://shop.m5stack.com" target="_blank" rel="noopener noreferrer" data-name="m5stickc plus2 shop.m5stack.com"><span class="n">79.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=shop.m5stack.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>M5StickC Plus2</b><small>shop.m5stack.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://flipperzero.one" target="_blank" rel="noopener noreferrer" data-name="flipper zero flipperzero.one"><span class="n">80.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=flipperzero.one&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Flipper Zero</b><small>flipperzero.one</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://digistump.com" target="_blank" rel="noopener noreferrer" data-name="digispark digistump.com"><span class="n">81.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=digistump.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Digispark</b><small>digistump.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://shop.hak5.org/products/usb-rubber-ducky" target="_blank" rel="noopener noreferrer" data-name="usb rubber ducky shop.hak5.org"><span class="n">82.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=shop.hak5.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>USB Rubber Ducky</b><small>shop.hak5.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.alfa.com.tw" target="_blank" rel="noopener noreferrer" data-name="wi-fi adapter (alfa) alfa.com.tw"><span class="n">83.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.alfa.com.tw&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Wi-Fi Adapter (ALFA)</b><small>alfa.com.tw</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.rtl-sdr.com" target="_blank" rel="noopener noreferrer" data-name="rtl-sdr rtl-sdr.com"><span class="n">84.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.rtl-sdr.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>RTL-SDR</b><small>rtl-sdr.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.tp-link.com" target="_blank" rel="noopener noreferrer" data-name="tp-link t3u tp-link.com"><span class="n">85.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.tp-link.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>TP-Link T3U</b><small>tp-link.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://shop.hak5.org" target="_blank" rel="noopener noreferrer" data-name="wi-fi pineapple shop.hak5.org"><span class="n">86.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=shop.hak5.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Wi-Fi Pineapple</b><small>shop.hak5.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://shop.hak5.org" target="_blank" rel="noopener noreferrer" data-name="lan turtle shop.hak5.org"><span class="n">87.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=shop.hak5.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>LAN Turtle</b><small>shop.hak5.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://proxmark.com" target="_blank" rel="noopener noreferrer" data-name="proxmark3 proxmark.com"><span class="n">88.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=proxmark.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Proxmark3</b><small>proxmark.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.yubico.com" target="_blank" rel="noopener noreferrer" data-name="yubikey yubico.com"><span class="n">89.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.yubico.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>YubiKey</b><small>yubico.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://greatscottgadgets.com/hackrf/" target="_blank" rel="noopener noreferrer" data-name="hackrf one greatscottgadgets.com"><span class="n">90.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=greatscottgadgets.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>HackRF One</b><small>greatscottgadgets.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://buspirate.com" target="_blank" rel="noopener noreferrer" data-name="bus pirate buspirate.com"><span class="n">91.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=buspirate.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Bus Pirate</b><small>buspirate.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.nordicsemi.com" target="_blank" rel="noopener noreferrer" data-name="nrf24l01 nordicsemi.com"><span class="n">92.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.nordicsemi.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>NRF24L01</b><small>nordicsemi.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.elechouse.com" target="_blank" rel="noopener noreferrer" data-name="rfid reader elechouse.com"><span class="n">93.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.elechouse.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>RFID Reader</b><small>elechouse.com</small></span><span class="go2">&rsaquo;</span></a>
+    <h3 id="sec-ai">AI TOOLS</h3>
+    <a class="row" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" data-name="chatgpt chatgpt.com"><span class="n">94.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=chatgpt.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>ChatGPT</b><small>chatgpt.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://claude.ai" target="_blank" rel="noopener noreferrer" data-name="claude claude.ai"><span class="n">95.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=claude.ai&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Claude</b><small>claude.ai</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" data-name="gemini gemini.google.com"><span class="n">96.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=gemini.google.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Gemini</b><small>gemini.google.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.deepseek.com" target="_blank" rel="noopener noreferrer" data-name="deepseek deepseek.com"><span class="n">97.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.deepseek.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>DeepSeek</b><small>deepseek.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://grok.com" target="_blank" rel="noopener noreferrer" data-name="grok grok.com"><span class="n">98.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=grok.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Grok</b><small>grok.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer" data-name="perplexity perplexity.ai"><span class="n">99.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.perplexity.ai&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Perplexity</b><small>perplexity.ai</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer" data-name="microsoft copilot copilot.microsoft.com"><span class="n">100.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Microsoft Copilot</b><small>copilot.microsoft.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.meta.ai" target="_blank" rel="noopener noreferrer" data-name="meta ai meta.ai"><span class="n">101.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.meta.ai&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Meta AI</b><small>meta.ai</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://chat.mistral.ai" target="_blank" rel="noopener noreferrer" data-name="mistral le chat chat.mistral.ai"><span class="n">102.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=chat.mistral.ai&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Mistral Le Chat</b><small>chat.mistral.ai</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://chat.qwen.ai" target="_blank" rel="noopener noreferrer" data-name="qwen chat.qwen.ai"><span class="n">103.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=chat.qwen.ai&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Qwen</b><small>chat.qwen.ai</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.kimi.com" target="_blank" rel="noopener noreferrer" data-name="kimi kimi.com"><span class="n">104.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.kimi.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Kimi</b><small>kimi.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://poe.com" target="_blank" rel="noopener noreferrer" data-name="poe poe.com"><span class="n">105.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=poe.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Poe</b><small>poe.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://huggingface.co" target="_blank" rel="noopener noreferrer" data-name="hugging face huggingface.co"><span class="n">106.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=huggingface.co&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Hugging Face</b><small>huggingface.co</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" data-name="notebooklm notebooklm.google.com"><span class="n">107.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=notebooklm.google.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>NotebookLM</b><small>notebooklm.google.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" data-name="github copilot github.com"><span class="n">108.</span><img loading="lazy" alt="" src="https://github.com/features.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>GitHub Copilot</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://cursor.com" target="_blank" rel="noopener noreferrer" data-name="cursor cursor.com"><span class="n">109.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=cursor.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Cursor</b><small>cursor.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://replit.com" target="_blank" rel="noopener noreferrer" data-name="replit replit.com"><span class="n">110.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=replit.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Replit</b><small>replit.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://ollama.com" target="_blank" rel="noopener noreferrer" data-name="ollama ollama.com"><span class="n">111.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=ollama.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Ollama</b><small>ollama.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://lmstudio.ai" target="_blank" rel="noopener noreferrer" data-name="lm studio lmstudio.ai"><span class="n">112.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=lmstudio.ai&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>LM Studio</b><small>lmstudio.ai</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.midjourney.com" target="_blank" rel="noopener noreferrer" data-name="midjourney midjourney.com"><span class="n">113.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.midjourney.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Midjourney</b><small>midjourney.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://stability.ai" target="_blank" rel="noopener noreferrer" data-name="stability ai stability.ai"><span class="n">114.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=stability.ai&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Stability AI</b><small>stability.ai</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://leonardo.ai" target="_blank" rel="noopener noreferrer" data-name="leonardo ai leonardo.ai"><span class="n">115.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=leonardo.ai&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Leonardo AI</b><small>leonardo.ai</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://runwayml.com" target="_blank" rel="noopener noreferrer" data-name="runway runwayml.com"><span class="n">116.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=runwayml.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Runway</b><small>runwayml.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://elevenlabs.io" target="_blank" rel="noopener noreferrer" data-name="elevenlabs elevenlabs.io"><span class="n">117.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=elevenlabs.io&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>ElevenLabs</b><small>elevenlabs.io</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/GreyDGL/PentestGPT" target="_blank" rel="noopener noreferrer" data-name="pentestgpt github.com"><span class="n">118.</span><img loading="lazy" alt="" src="https://github.com/GreyDGL.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>PentestGPT</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/NVIDIA/garak" target="_blank" rel="noopener noreferrer" data-name="garak (llm scanner) github.com"><span class="n">119.</span><img loading="lazy" alt="" src="https://github.com/NVIDIA.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>Garak (LLM scanner)</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/Azure/PyRIT" target="_blank" rel="noopener noreferrer" data-name="pyrit (ai red teaming) github.com"><span class="n">120.</span><img loading="lazy" alt="" src="https://github.com/Azure.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>PyRIT (AI red teaming)</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <h3 id="sec-bounty">BUG BOUNTY</h3>
+    <a class="row" href="https://www.hackerone.com" target="_blank" rel="noopener noreferrer" data-name="hackerone hackerone.com"><span class="n">121.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.hackerone.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>HackerOne</b><small>hackerone.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.bugcrowd.com" target="_blank" rel="noopener noreferrer" data-name="bugcrowd bugcrowd.com"><span class="n">122.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.bugcrowd.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Bugcrowd</b><small>bugcrowd.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.intigriti.com" target="_blank" rel="noopener noreferrer" data-name="intigriti intigriti.com"><span class="n">123.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.intigriti.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Intigriti</b><small>intigriti.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.openbugbounty.org" target="_blank" rel="noopener noreferrer" data-name="open bug bounty openbugbounty.org"><span class="n">124.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.openbugbounty.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Open Bug Bounty</b><small>openbugbounty.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.yeswehack.com" target="_blank" rel="noopener noreferrer" data-name="yeswehack yeswehack.com"><span class="n">125.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.yeswehack.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>YesWeHack</b><small>yeswehack.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.synack.com" target="_blank" rel="noopener noreferrer" data-name="synack synack.com"><span class="n">126.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.synack.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Synack</b><small>synack.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://hackenproof.com" target="_blank" rel="noopener noreferrer" data-name="hackenproof hackenproof.com"><span class="n">127.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=hackenproof.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>HackenProof</b><small>hackenproof.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.cobalt.io" target="_blank" rel="noopener noreferrer" data-name="cobalt cobalt.io"><span class="n">128.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.cobalt.io&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Cobalt</b><small>cobalt.io</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://bughunters.google.com" target="_blank" rel="noopener noreferrer" data-name="google bug hunters (vrp) bughunters.google.com"><span class="n">129.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=bughunters.google.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Google Bug Hunters (VRP)</b><small>bughunters.google.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://bugbounty.standoff365.com" target="_blank" rel="noopener noreferrer" data-name="standoff 365 bug bounty bugbounty.standoff365.com"><span class="n">130.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=bugbounty.standoff365.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Standoff 365 Bug Bounty</b><small>bugbounty.standoff365.com</small></span><span class="go2">&rsaquo;</span></a>
+    <h3 id="sec-labs">PRACTICE LABS</h3>
+    <a class="row" href="https://tryhackme.com" target="_blank" rel="noopener noreferrer" data-name="tryhackme tryhackme.com"><span class="n">131.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=tryhackme.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>TryHackMe</b><small>tryhackme.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.hackthebox.com" target="_blank" rel="noopener noreferrer" data-name="hack the box hackthebox.com"><span class="n">132.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.hackthebox.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Hack The Box</b><small>hackthebox.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://portswigger.net/web-security" target="_blank" rel="noopener noreferrer" data-name="portswigger web security academy portswigger.net"><span class="n">133.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=portswigger.net&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>PortSwigger Web Security Academy</b><small>portswigger.net</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.hacker101.com" target="_blank" rel="noopener noreferrer" data-name="hacker101 hacker101.com"><span class="n">134.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.hacker101.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Hacker101</b><small>hacker101.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://overthewire.org" target="_blank" rel="noopener noreferrer" data-name="overthewire overthewire.org"><span class="n">135.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=overthewire.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>OverTheWire</b><small>overthewire.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://picoctf.org" target="_blank" rel="noopener noreferrer" data-name="picoctf picoctf.org"><span class="n">136.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=picoctf.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>PicoCTF</b><small>picoctf.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.vulnhub.com" target="_blank" rel="noopener noreferrer" data-name="vulnhub vulnhub.com"><span class="n">137.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.vulnhub.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>VulnHub</b><small>vulnhub.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://pentesterlab.com" target="_blank" rel="noopener noreferrer" data-name="pentesterlab pentesterlab.com"><span class="n">138.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=pentesterlab.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>PentesterLab</b><small>pentesterlab.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.root-me.org" target="_blank" rel="noopener noreferrer" data-name="root me root-me.org"><span class="n">139.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.root-me.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Root Me</b><small>root-me.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.hackthissite.org" target="_blank" rel="noopener noreferrer" data-name="hackthissite hackthissite.org"><span class="n">140.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.hackthissite.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>HackThisSite</b><small>hackthissite.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://ctftime.org" target="_blank" rel="noopener noreferrer" data-name="ctftime ctftime.org"><span class="n">141.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=ctftime.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>CTFtime</b><small>ctftime.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://cyberdefenders.org" target="_blank" rel="noopener noreferrer" data-name="cyberdefenders cyberdefenders.org"><span class="n">142.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=cyberdefenders.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>CyberDefenders</b><small>cyberdefenders.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://blueteamlabs.online" target="_blank" rel="noopener noreferrer" data-name="blue team labs online blueteamlabs.online"><span class="n">143.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=blueteamlabs.online&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Blue Team Labs Online</b><small>blueteamlabs.online</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://letsdefend.io" target="_blank" rel="noopener noreferrer" data-name="letsdefend letsdefend.io"><span class="n">144.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=letsdefend.io&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>LetsDefend</b><small>letsdefend.io</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.rangeforce.com" target="_blank" rel="noopener noreferrer" data-name="rangeforce rangeforce.com"><span class="n">145.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.rangeforce.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>RangeForce</b><small>rangeforce.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://owasp-juice.shop" target="_blank" rel="noopener noreferrer" data-name="owasp juice shop owasp-juice.shop"><span class="n">146.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=owasp-juice.shop&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>OWASP Juice Shop</b><small>owasp-juice.shop</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/WebGoat/WebGoat" target="_blank" rel="noopener noreferrer" data-name="owasp webgoat github.com"><span class="n">147.</span><img loading="lazy" alt="" src="https://github.com/WebGoat.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>OWASP WebGoat</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://github.com/digininja/DVWA" target="_blank" rel="noopener noreferrer" data-name="dvwa github.com"><span class="n">148.</span><img loading="lazy" alt="" src="https://github.com/digininja.png?size=96" onerror="this.style.visibility='hidden'"><span class="t"><b>DVWA</b><small>github.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.bugcrowd.com/hackers/bugcrowd-university/" target="_blank" rel="noopener noreferrer" data-name="bugcrowd university bugcrowd.com"><span class="n">149.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.bugcrowd.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Bugcrowd University</b><small>bugcrowd.com</small></span><span class="go2">&rsaquo;</span></a>
+    <h3 id="sec-courses">COURSES</h3>
+    <a class="row" href="https://www.offsec.com" target="_blank" rel="noopener noreferrer" data-name="offensive security (oscp) offsec.com"><span class="n">150.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.offsec.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Offensive Security (OSCP)</b><small>offsec.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.eccouncil.org" target="_blank" rel="noopener noreferrer" data-name="ec-council (ceh) eccouncil.org"><span class="n">151.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.eccouncil.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>EC-Council (CEH)</b><small>eccouncil.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.sans.org" target="_blank" rel="noopener noreferrer" data-name="sans institute sans.org"><span class="n">152.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.sans.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>SANS Institute</b><small>sans.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.comptia.org" target="_blank" rel="noopener noreferrer" data-name="comptia comptia.org"><span class="n">153.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.comptia.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>CompTIA</b><small>comptia.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://ine.com" target="_blank" rel="noopener noreferrer" data-name="ine / elearnsecurity ine.com"><span class="n">154.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=ine.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>INE / eLearnSecurity</b><small>ine.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://tcm-sec.com" target="_blank" rel="noopener noreferrer" data-name="tcm security tcm-sec.com"><span class="n">155.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=tcm-sec.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>TCM Security</b><small>tcm-sec.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.cybrary.it" target="_blank" rel="noopener noreferrer" data-name="cybrary cybrary.it"><span class="n">156.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.cybrary.it&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Cybrary</b><small>cybrary.it</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://grow.google/certificates/cybersecurity/" target="_blank" rel="noopener noreferrer" data-name="google cybersecurity certificate grow.google"><span class="n">157.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=grow.google&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Google Cybersecurity Certificate</b><small>grow.google</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.coursera.org" target="_blank" rel="noopener noreferrer" data-name="coursera coursera.org"><span class="n">158.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.coursera.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Coursera</b><small>coursera.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.udemy.com" target="_blank" rel="noopener noreferrer" data-name="udemy udemy.com"><span class="n">159.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.udemy.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Udemy</b><small>udemy.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.edx.org" target="_blank" rel="noopener noreferrer" data-name="edx edx.org"><span class="n">160.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.edx.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>edX</b><small>edx.org</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.netacad.com" target="_blank" rel="noopener noreferrer" data-name="cisco networking academy netacad.com"><span class="n">161.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.netacad.com&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>Cisco Networking Academy</b><small>netacad.com</small></span><span class="go2">&rsaquo;</span></a>
+    <a class="row" href="https://www.isc2.org" target="_blank" rel="noopener noreferrer" data-name="isc2 isc2.org"><span class="n">162.</span><img loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain=www.isc2.org&amp;sz=128" onerror="this.style.visibility='hidden'"><span class="t"><b>ISC2</b><small>isc2.org</small></span><span class="go2">&rsaquo;</span></a>
+  </div>
+  <div id="noRes" class="hide">No tool found. Try another word.</div>
+  <a id="toTop" href="#profile">&#8593; Back to top</a>
 </section>
 
 <!-- RATING -->
 <section id="rating" class="card">
   <h2>Rate this website</h2>
   <div class="note" style="text-align:center">Tap a star to give your rating. You can change it later.</div>
-  <div class="stars" id="stars" role="radiogroup" aria-label="Rate this website"></div>
-  <div class="avg" id="avg">Loading ratings...</div>
+  <div class="stars" id="stars" role="radiogroup" aria-label="Rate this website">
+    <button type="button" aria-label="1 star">&#9733;</button><button type="button" aria-label="2 stars">&#9733;</button><button type="button" aria-label="3 stars">&#9733;</button><button type="button" aria-label="4 stars">&#9733;</button><button type="button" aria-label="5 stars">&#9733;</button>
+  </div>
+  <div class="avg" id="avg">Tap a star to rate</div>
   <div class="bars" id="bars"></div>
   <div class="note" id="rateMsg" style="text-align:center"></div>
 </section>
 
 <footer>&copy; Preyar Piyush &bull; Built with love from India</footer>
 
+<!-- ===== SCRIPT 1: common helpers and tabs ===== -->
 <script>
-/* ============ PROFILE ============ */
-(function(){
-  var CONFIG = {
-    github:    '63piyush63',
-    linkedin:  'https://www.linkedin.com/in/63piyush63',
-    tryhackme: 'https://tryhackme.com/p/63piyush63',
-    gitlab:    'https://gitlab.com/63piyush63'
-  };
-  var user = CONFIG.github;
-  var av = document.getElementById('pfAvatar');
-  av.src = 'https://github.com/' + encodeURIComponent(user) + '.png?size=240';
-  var avTry = 0;
-  av.onerror = function(){
-    avTry++;
-    if (avTry === 1) this.src = 'https://avatars.githubusercontent.com/' + encodeURIComponent(user) + '?s=240';
-    else this.style.display = 'none';
-  };
-  document.getElementById('lnGithub').href   = 'https://github.com/' + encodeURIComponent(user);
-  document.getElementById('lnLinkedin').href = CONFIG.linkedin;
-  document.getElementById('lnTHM').href      = CONFIG.tryhackme;
-  document.getElementById('lnGitlab').href   = CONFIG.gitlab;
+var $ = function(id){ return document.getElementById(id); };
+function loadScript(url){
+  return new Promise(function(res, rej){
+    var s = document.createElement('script');
+    s.src = url; s.async = true;
+    s.onload = function(){ res(); };
+    s.onerror = function(){ rej(new Error('Could not load ' + url)); };
+    document.head.appendChild(s);
+  });
+}
+function withTimeout(p, ms, label){
+  return new Promise(function(res, rej){
+    var t = setTimeout(function(){ rej(new Error(label + ' timed out')); }, ms);
+    p.then(function(v){ clearTimeout(t); res(v); }, function(e){ clearTimeout(t); rej(e); });
+  });
+}
+function loadImage(file){
+  return new Promise(function(res, rej){
+    var img = new Image();
+    img.onload = function(){ res(img); };
+    img.onerror = function(){ rej(new Error('This photo format is not supported by your browser')); };
+    img.src = (file instanceof Blob) ? URL.createObjectURL(file) : file;
+  });
+}
+function showTab(img){
+  $('pImg').classList.toggle('hide', !img);
+  $('pVid').classList.toggle('hide', img);
+  $('tImg').classList.toggle('on', img);
+  $('tVid').classList.toggle('on', !img);
+}
+$('tImg').addEventListener('click', function(){ showTab(true); });
+$('tVid').addEventListener('click', function(){ showTab(false); });
+window.__ok.common = 1;
+</script>
 
-  var box = document.getElementById('pfStats');
+<!-- ===== SCRIPT 2: profile stats ===== -->
+<script>
+(function(){
+  var box = $('pfStats');
   function chip(t){ var s = document.createElement('span'); s.textContent = t; box.appendChild(s); }
-  chip('📍 Lucknow, Uttar Pradesh, India');
-  fetch('https://api.github.com/users/' + encodeURIComponent(user))
+  fetch('https://api.github.com/users/63piyush63')
     .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
     .then(function(d){
-      chip('📦 ' + d.public_repos + ' Repos');
-      chip('👥 ' + d.followers + ' Followers');
-      chip('➡️ ' + d.following + ' Following');
-      if (d.created_at) chip('📅 Since ' + new Date(d.created_at).getFullYear());
+      chip('\uD83D\uDCE6 ' + d.public_repos + ' Repos');
+      chip('\uD83D\uDC65 ' + d.followers + ' Followers');
+      chip('\u27A1\uFE0F ' + d.following + ' Following');
+      if (d.created_at) chip('\uD83D\uDCC5 Since ' + new Date(d.created_at).getFullYear());
     }).catch(function(){});
 })();
+</script>
 
-/* ============ DIRECTORY ============ */
+<!-- ===== SCRIPT 3: directory search ===== -->
+<script>
 (function(){
-  var software = [
-    ["Kali Linux","https://www.kali.org"],["Nmap","https://nmap.org"],["Wireshark","https://www.wireshark.org"],
-    ["Burp Suite","https://portswigger.net/burp"],["OWASP ZAP","https://www.zaproxy.org"],["Metasploit","https://www.metasploit.com"],
-    ["Nikto","https://github.com/sullo/nikto"],["Nessus","https://www.tenable.com/products/nessus"],["OpenVAS","https://www.openvas.org"],
-    ["SQLMap","https://sqlmap.org"],["Hydra","https://github.com/vanhauser-thc/thc-hydra"],["John the Ripper","https://www.openwall.com/john/"],
-    ["Hashcat","https://hashcat.net"],["Aircrack-ng","https://www.aircrack-ng.org"],["Reaver","https://github.com/t6x/reaver-wps-fork-t6x"],
-    ["Wifite","https://github.com/derv82/wifite2"],["CrackMapExec","https://github.com/byt3bl33d3r/CrackMapExec"],
-    ["Responder","https://github.com/lgandx/Responder"],["Bettercap","https://www.bettercap.org"],["Netcat (Ncat)","https://nmap.org/ncat/"],
-    ["BeEF","https://beefproject.com"],["SET Toolkit","https://github.com/trustedsec/social-engineer-toolkit"],
-    ["Social-Engineer Toolkit","https://www.trustedsec.com/resources/tools/the-social-engineer-toolkit-set"],
-    ["Maltego","https://www.maltego.com"],["TheHarvester","https://github.com/laramies/theHarvester"],["Shodan","https://www.shodan.io"],
-    ["Recon-ng","https://github.com/lanmaster53/recon-ng"],["SpiderFoot","https://www.spiderfoot.net"],["Gobuster","https://github.com/OJ/gobuster"],
-    ["Dirb","https://dirb.sourceforge.net"],["WFuzz","https://github.com/xmendez/wfuzz"],["CeWL","https://digi.ninja/projects/cewl.php"],
-    ["FFUF","https://github.com/ffuf/ffuf"],["Sublist3r","https://github.com/aboul3la/Sublist3r"],["Amass","https://github.com/owasp-amass/amass"],
-    ["Masscan","https://github.com/robertdavidgraham/masscan"],["Enum4linux","https://github.com/CiscoCXSecurity/enum4linux"],
-    ["Impacket","https://github.com/fortra/impacket"],["DumpsterDiver","https://github.com/securing/DumpsterDiver"],
-    ["OSINT Framework","https://osintframework.com"],["Tor","https://www.torproject.org"],["GitHub Dorks","https://github.com"],
-    ["Google Dorking (GHDB)","https://www.exploit-db.com/google-hacking-database"],["VirusTotal","https://www.virustotal.com"],
-    ["Have I Been Pwned","https://haveibeenpwned.com"],["Censys","https://censys.io"],["Nuclei","https://github.com/projectdiscovery/nuclei"],
-    ["ParamSpider","https://github.com/devanshbatham/ParamSpider"],["AssetFinder","https://github.com/tomnomnom/assetfinder"],
-    ["WhatWeb","https://www.morningstarsecurity.com/research/whatweb"],["CMSMap","https://github.com/Dionach/CMSmap"],
-    ["Postman","https://www.postman.com"],["Insomnia","https://insomnia.rest"],["Fiddler","https://www.telerik.com/fiddler"],
-    ["Charles Proxy","https://www.charlesproxy.com"],["Suricata","https://suricata.io"],["Snort","https://www.snort.org"],
-    ["Autopsy","https://www.autopsy.com"],["Volatility","https://www.volatilityfoundation.org"],["Binwalk","https://github.com/ReFirmLabs/binwalk"],
-    ["ExifTool","https://exiftool.org"],["Steghide","https://steghide.sourceforge.net"]
-  ];
-  var hardware = [
-    ["Raspberry Pi","https://www.raspberrypi.com"],["Arduino","https://www.arduino.cc"],["ESP32","https://www.espressif.com/en/products/socs/esp32"],
-    ["ESP8266","https://www.espressif.com/en/products/socs/esp8266"],["M5StickC Plus2","https://shop.m5stack.com"],
-    ["Flipper Zero","https://flipperzero.one"],["Digispark","https://digistump.com"],
-    ["USB Rubber Ducky","https://shop.hak5.org/products/usb-rubber-ducky"],["Wi-Fi Adapter (ALFA)","https://www.alfa.com.tw"],
-    ["RTL-SDR","https://www.rtl-sdr.com"],["TP-Link T3U","https://www.tp-link.com"],["Wi-Fi Pineapple","https://shop.hak5.org"],
-    ["LAN Turtle","https://shop.hak5.org"],["Proxmark3","https://proxmark.com"],["YubiKey","https://www.yubico.com"],
-    ["HackRF One","https://greatscottgadgets.com/hackrf/"],["Bus Pirate","https://buspirate.com"],["NRF24L01","https://www.nordicsemi.com"],
-    ["RFID Reader","https://www.elechouse.com"]
-  ];
-  var bounty = [
-    ["HackerOne","https://www.hackerone.com"],["Bugcrowd","https://www.bugcrowd.com"],["Intigriti","https://www.intigriti.com"],
-    ["Open Bug Bounty","https://www.openbugbounty.org"],["YesWeHack","https://www.yeswehack.com"],["Synack","https://www.synack.com"],
-    ["HackenProof","https://hackenproof.com"],["Cobalt","https://www.cobalt.io"],["Google Bug Hunters (VRP)","https://bughunters.google.com"],
-    ["Standoff 365 Bug Bounty","https://bugbounty.standoff365.com"]
-  ];
-  var labs = [
-    ["TryHackMe","https://tryhackme.com"],["Hack The Box","https://www.hackthebox.com"],
-    ["PortSwigger Web Security Academy","https://portswigger.net/web-security"],["Hacker101","https://www.hacker101.com"],
-    ["OverTheWire","https://overthewire.org"],["PicoCTF","https://picoctf.org"],["VulnHub","https://www.vulnhub.com"],
-    ["PentesterLab","https://pentesterlab.com"],["Root Me","https://www.root-me.org"],["HackThisSite","https://www.hackthissite.org"],
-    ["CTFtime","https://ctftime.org"],["CyberDefenders","https://cyberdefenders.org"],["Blue Team Labs Online","https://blueteamlabs.online"],
-    ["LetsDefend","https://letsdefend.io"],["RangeForce","https://www.rangeforce.com"],["OWASP Juice Shop","https://owasp-juice.shop"],
-    ["OWASP WebGoat","https://github.com/WebGoat/WebGoat"],["DVWA","https://github.com/digininja/DVWA"],
-    ["Bugcrowd University","https://www.bugcrowd.com/hackers/bugcrowd-university/"]
-  ];
-  var courses = [
-    ["Offensive Security (OSCP)","https://www.offsec.com"],["EC-Council (CEH)","https://www.eccouncil.org"],
-    ["SANS Institute","https://www.sans.org"],["CompTIA","https://www.comptia.org"],["INE / eLearnSecurity","https://ine.com"],
-    ["TCM Security","https://tcm-sec.com"],["Cybrary","https://www.cybrary.it"],["Google Cybersecurity Certificate","https://grow.google/certificates/cybersecurity/"],
-    ["Coursera","https://www.coursera.org"],["Udemy","https://www.udemy.com"],["edX","https://www.edx.org"],
-    ["Cisco Networking Academy","https://www.netacad.com"],["ISC2","https://www.isc2.org"]
-  ];
-  function logo(url){
-    var u = new URL(url);
-    if (u.hostname === 'github.com'){
-      var o = u.pathname.split('/')[1];
-      if (o) return 'https://github.com/' + o + '.png?size=96';
+  var input = $('toolSearch'), list = $('toolList');
+  var rows = list.querySelectorAll('.row'), heads = list.querySelectorAll('h3');
+  function apply(){
+    var q = input.value.trim().toLowerCase(), shown = 0;
+    for (var i = 0; i < rows.length; i++){
+      var ok = rows[i].getAttribute('data-name').indexOf(q) !== -1;
+      rows[i].style.display = ok ? '' : 'none';
+      if (ok) shown++;
     }
-    return 'https://www.google.com/s2/favicons?domain=' + u.hostname + '&sz=128';
+    for (var j = 0; j < heads.length; j++) heads[j].style.display = q ? 'none' : '';
+    $('count').textContent = q ? (shown + ' of ' + rows.length + ' items') : (rows.length + ' items');
+    $('noRes').classList.toggle('hide', shown > 0);
+    $('sClr').classList.toggle('hide', !q);
   }
-  var list = document.getElementById('toolList');
-  var n = 0;
-  function section(title, arr){
-    var h = document.createElement('h3'); h.textContent = title; list.appendChild(h);
-    arr.forEach(function(it){
-      var name = it[0], url = it[1];
-      n++;
-      var a = document.createElement('a');
-      a.className = 'row'; a.href 
+  input.addEventListener('input', apply);
+  $('sform').addEventListener('submit', function(e){ e.preventDefault(); apply(); input.blur(); list.scrollIntoView({behavior:'smooth', block:'start'}); });
+  $('sBtn').addEventListener('click', function(){ apply(); });
+  $('sClr').addEventListener('click', function(){ input.value = ''; apply(); input.focus(); });
+})();
+</script>
+
+<!-- ===== SCRIPT 4: rating ===== -->
+<script>
+(function(){
+  var NS = '63piyush63-site-rating';
+  var KEY = 'site_rating_v2';
+  var starsBox = $('stars'), avgBox = $('avg'), barsBox = $('bars'), msg = $('rateMsg');
+  var mine = 0, counts = [0,0,0,0,0], P = null, busy = false;
+  try { mine = parseInt(localStorage.getItem(KEY) || '0', 10) || 0; } catch(e){}
+
+  function req(url){
+    var ctl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var t = setTimeout(function(){ if (ctl) ctl.abort(); }, 6000);
+    return fetch(url, ctl ? { signal: ctl.signal } : undefined).then(function(r){
+      clearTimeout(t);
+      if (r.status === 404) return { missing: true };
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.json();
+    }, function(e){ clearTimeout(t); throw e; });
+  }
+  function num(j){ if (!j || j.missing) return 0; var v = j.value != null ? j.value : j.count; return Math.max(0, parseInt(v, 10) || 0); }
+  var PROVIDERS = [
+    { name: 'a',
+      get: function(k){ return req('https://abacus.jasoncameron.dev/get/' + NS + '/' + k).then(num); },
+      hit: function(k){ return req('https://abacus.jasoncameron.dev/hit/' + NS + '/' + k).then(num); } },
+    { name: 'c',
+      get: function(k){ return req('https://api.counterapi.dev/v1/' + NS + '/' + k).then(num); },
+      hit: function(k){ return req('https://api.counterapi.dev/v1/' + NS + '/' + k + '/up').then(num); } }
+  ];
+
+  function paint(n){
+    var bs = starsBox.children;
+    for (var i = 0; i < bs.length; i++) bs[i].classList.toggle('on', i < n);
+  }
+  function render(){
+    var total = 0, sum = 0, i;
+    for (i = 0; i < 5; i++){ total += counts[i]; sum += counts[i] * (i + 1); }
+    if (P && total > 0) avgBox.innerHTML = '<b>' + (sum / total).toFixed(1) + '</b> / 5 &nbsp;&bull;&nbsp; ' + total + ' rating' + (total > 1 ? 's' : '');
+    else if (P) avgBox.textContent = 'No ratings yet. Be the first!';
+    else avgBox.textContent = mine ? 'Your rating: ' + mine + ' / 5' : 'Tap a star to rate';
+    barsBox.innerHTML = '';
+    if (!P) return;
+    for (var s = 5; s >= 1; s--){
+      var pct = total ? Math.round(counts[s-1] * 100 / total) : 0;
+      var row = document.createElement('div'); row.className = 'bar';
+      row.innerHTML = '<span style="width:28px;text-align:left">' + s + '\u2605</span><i><s style="width:' + pct + '%"></s></i><span>' + counts[s-1] + '</span>';
+      barsBox.appendChild(row);
+    }
+  }
+  function fetchCounts(p){
+    var jobs = [];
+    for (var i = 1; i <= 5; i++){ jobs.push(p.get('star' + i)); jobs.push(p.get('removed' + i)); }
+    return Promise.all(jobs).then(function(v){
+      var out = [];
+      for (var i = 0; i < 5; i++) out.push(Math.max(0, v[i*2] - v[i*2+1]));
+      return out;
+    });
+  }
+  function load(){
+    var idx = 0;
+    function next(){
+      if (idx >= PROVIDERS.length){ P = null; render(); return; }
+      var p = PROVIDERS[idx++];
+      fetchCounts(p).then(function(c){ P = p; counts = c; render(); }, next);
+    }
+    next();
+  }
+  function vote(n){
+    if (busy) return;
+    if (n === mine){ msg.className = 'note'; msg.textContent = 'You rated ' + n + ' / 5. Tap another star to change.'; return; }
+    var prev = mine;
+    mine = n; paint(n);
+    try { localStorage.setItem(KEY, String(n)); } catch(e){}
+    if (!P){
+      msg.className = 'note err';
+      msg.textContent = 'Saved on this device. The shared rating counter is not reachable right now.';
+      render(); return;
+    }
+    busy = true;
+    if (prev) counts[prev-1] = Math.max(0, counts[prev-1] - 1);
+    counts[n-1]++;
+    render();
+    msg.className = 'note'; msg.textContent = 'Saving...';
+    var jobs = [P.hit('star' + n)];
+    if (prev) jobs.push(P.hit('removed' + prev));
+    Promise.all(jobs).then(function(){
+      msg.className = 'note ok'; msg.textContent = 'Thank you for rating ' + n + ' / 5!';
+    }).catch(function(){
+      msg.className = 'note err'; msg.textContent = 'Saved on this device, but the shared counter could not be updated.';
+    }).then(function(){ busy = false; });
+  }
+  for (var i = 0; i < starsBox.children.length; i++){
+    (function(n){
+      var b = starsBox.children[n-1];
+      b.addEventListener('click', function(){ vote(n); });
+      b.addEventListener('mouseenter', function(){ paint(n); });
+      b.addEventListener('mouseleave', function(){ paint(mine); });
+    })(i + 1);
+  }
+  paint(mine); render(); load();
+})();
+</script>
+
+<!-- ===== SCRIPT 5: photo enhance ===== -->
+<script>
+(function(){
+  var imgFile = null;
+  $('imgIn').addEventListener('change', function(e){ imgFile = e.target.files[0] || null; $('imgGo').disabled = !imgFile; });
+
+  function sharpen(canvas, amount){
+    var w = canvas.width, h = canvas.height;
+    if (w * h > 36e6) return canvas;
+    try {
+      var ctx = canvas.getContext('2d');
+      var blur = document.createElement('canvas');
+      blur.width = w; blur.height = h;
+      var bx = blur.getContext('2d');
+      bx.filter = 'blur(1.2px)';
+      bx.drawImage(canvas, 0, 0);
+      var a = ctx.getImageData(0, 0, w, h), b = bx.getImageData(0, 0, w, h);
+      var d = a.data, o = b.data;
+      for (var i = 0; i < d.length; i += 4){
+        for (var k = 0; k < 3; k++){
+          var v = d[i+k] + (d[i+k] - o[i+k]) * amount;
+          d[i+k] = v < 0 ? 0 : v > 255 ? 255 : v;
+        }
+      }
+      ctx.putImageData(a, 0, 0);
+    } catch(e){}
+    return canvas;
+  }
+  function smoothUpscale(src, scale, amount){
+    var w = src.naturalWidth || src.width, h = src.naturalHeight || src.height;
+    var tw = Math.round(w * scale), th = Math.round(h * scale);
+    var cur = src, cw = w, ch = h;
+    while (cw < tw || ch < th){
+      cw = Math.min(Math.round(cw * 1.5), tw); ch = Math.min(Math.round(ch * 1.5), th);
+      var c = document.createElement('canvas');
+      c.width = cw; c.height = ch;
+      var x = c.getContext('2d');
+      x.imageSmoothingEnabled = true; x.imageSmoothingQuality = 'high';
+      x.drawImage(cur, 0, 0, cw, ch);
+      cur = c;
+    }
+    if (cur === src){
+      var c2 = document.createElement('canvas'); c2.width = w; c2.height = h;
+      c2.getContext('2d').drawImage(src, 0, 0); cur = c2;
+    }
+    return sharpen(cur, amount);
+  }
+  function canvasToUrl(c){
+    return new Promise(function(res, rej){
+      c.toBlob(function(b){ b ? res(URL.createObjectURL(b)) : rej(new Error('Result is too large for this device. Try a smaller scale.')); }, 'image/png');
+    });
+  }
+  function showImage(url){
+    $('imgOut').src = url; $('imgOut').classList.remove('hide');
+    $('imgDl').href = url; $('imgDl').classList.remove('hide');
+  }
+  var aiReady = null;
+  function loadAI(){
+    if (aiReady) return aiReady;
+    aiReady = (async function(){
+      if (typeof tf === 'undefined') await loadScript('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js');
+      if (typeof Upscaler === 'undefined') await loadScript('https://cdn.jsdelivr.net/npm/upscaler@latest/dist/browser/umd/upscaler.min.js');
+      if (typeof DefaultUpscalerJSModel === 'undefined') await loadScript('https://cdn.jsdelivr.net/npm/@upscalerjs/default-model@latest/dist/umd/index.min.js');
+      if (typeof Upscaler === 'undefined' || typeof DefaultUpscalerJSModel === 'undefined') throw new Error('AI model not available');
+    })();
+    aiReady.catch(function(){ aiReady = null; });
+    return aiReady;
+  }
+
+  $('imgGo').addEventListener('click', async function(){
+    $('imgGo').disabled = true;
+    $('imgOut').classList.add('hide'); $('imgDl').classList.add('hide');
+    $('imgMsg').className = 'note'; $('imgMsg').textContent = 'Working...';
+    $('imgProg').classList.remove('hide'); $('imgProg').value = 0;
+    try {
+      var img = await loadImage(imgFile);
+      var w = img.naturalWidth, h = img.naturalHeight;
+      var scale = +$('imgScale').value;
+      var maxPix = 50e6;
+      if (w * h * scale * scale > maxPix){
+        scale = Math.floor(Math.sqrt(maxPix / (w * h)) * 10) / 10;
+        if (scale < 1.2) throw new Error('This photo is already very large. More upscaling is not possible on this device.');
+      }
+      var out = null, note = '';
+      if ($('imgMode').value === 'ai'){
+        if (Math.max(w, h) > 1500){
+          note = 'Photo is bigger than 1500 px, so Smooth Fast was used.';
+        } else {
+          try {
+            $('imgMsg').textContent = 'Loading AI model (first time only)...';
+            await withTimeout(loadAI(), 90000, 'AI loading');
+            $('imgMsg').textContent = 'AI is enhancing your photo...';
+            var up = new Upscaler({ model: DefaultUpscalerJSModel });
+            var src = await up.upscale(img, { patchSize: 64, padding: 4, progress: function(p){ $('imgProg').value = Math.round(p * 100); } });
+            var aiImg = await loadImage(src);
+            var rest = scale / 2;
+            if (rest > 1.05) out = smoothUpscale(aiImg, rest, 0.3);
+            else {
+              var c = document.createElement('canvas'); c.width = aiImg.naturalWidth; c.height = aiImg.naturalHeight;
+              c.getContext('2d').drawImage(aiImg, 0, 0); out = sharpen(c, 0.25);
+            }
+            try { if (up.dispose) up.dispose(); } catch(e){}
+          } catch (e){
+            console.warn('AI failed, using Smooth Fast', e);
+            note = 'AI could not run here, so Smooth Fast was used instead.';
+            out = null;
+          }
+        }
+      }
+      if (!out){
+        $('imgMsg').textContent = 'Enhancing...';
+        out = smoothUpscale(img, scale, 0.6);
+      }
+      $('imgProg').value = 100;
+      showImage(await canvasToUrl(out));
+      $('imgMsg').className = 'note ok';
+      $('imgMsg').textContent = 'Done! ' + out.width + ' x ' + out.height + ' px. ' + note;
+    } catch (e){
+      console.error(e);
+      $('imgMsg').className = 'note err';
+      $('imgMsg').textContent = 'Error: ' + (e.message || e);
+    }
+    $('imgGo').disabled = false;
+  });
+})();
+</script>
+
+<!-- ===== SCRIPT 6: video enhance ===== -->
+<script>
+(function(){
+  var MAX_VIDEO_SEC = 300;
+  var vidFile = null, ffmpeg = null;
+  function log(t){ var l = $('log'); l.textContent += t + '\n'; l.scrollTop = l.scrollHeight; }
+
+  $('vidIn').addEventListener('change', function(e){
+    vidFile = e.target.files[0] || null;
+    $('vidGo').disabled = true;
+    $('vidMsg').className = 'note'; $('vidMsg').textContent = '';
+    if (!vidFile) return;
+    var v = document.createElement('video');
+    v.preload = 'metadata';
+    v.src = URL.createObjectURL(vidFile);
+    v.onloadedmetadata = function(){
+      if (v.duration > MAX_VIDEO_SEC){
+        $('vidMsg').className = 'note err';
+        $('vidMsg').textContent = 'This video is about ' + Math.round(v.duration / 60) + ' minutes long. Only videos up to 5 minutes work in the browser.';
+      } else { $('vidGo').disabled = false; }
+    };
+    v.onerror = function(){ $('vidGo').disabled = false; };
+  });
+
+  async function getFFmpeg(){
+    if (ffmpeg) return ffmpeg;
+    if (typeof FFmpegWASM === 'undefined') await loadScript('https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js');
+    if (typeof FFmpegUtil === 'undefined') await loadScript('https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/umd/index.js');
+    var toBlobURL = FFmpegUtil.toBlobURL;
+    var ff = new FFmpegWASM.FFmpeg();
+    ff.on('log', function(o){ log(o.message); });
+    ff.on('progress', function(o){ $('vidProg').value = Math.max(0, Math.min(100, Math.round(o.progress * 100))); });
+    var core = 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm';
+    await ff.load({
+      classWorkerURL: await toBlobURL('https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/814.ffmpeg.js', 'text/javascript'),
+      coreURL: await toBlobURL(core + '/ffmpeg-core.js', 'text/javascript'),
+      wasmURL: await toBlobURL(core + '/ffmpeg-core.wasm', 'application/wasm')
+    });
+    ffmpeg = ff;
+    return ff;
+  }
+  async function enhanceWithFFmpeg(height, fps){
+    var ff = await withTimeout(getFFmpeg(), 120000, 'Video engine loading');
+    $('vidMsg').textContent = 'Enhancing video, please keep this page open...';
+    await ff.writeFile('input_video', await FFmpegUtil.fetchFile(vidFile));
+    var vf = ['hqdn3d=1.5:1.5:6:6', 'scale=-2:' + height + ':flags=lanczos', 'unsharp=5:5:0.8:5:5:0.0'];
+    if (fps !== 'keep') vf.push('minterpolate=fps=' + fps + ':mi_mode=blend');
+    var code = await ff.exec(['-i', 'input_video', '-vf', vf.join(','), '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19',
+      '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', 'out.mp4']);
+    if (code !== 0) throw new Error('The video engine could not convert this file');
+    var data = await ff.readFile('out.mp4');
+    try { await ff.deleteFile('input_video'); await ff.deleteFile('out.mp4'); } catch(e){}
+    return { blob: new Blob([data.buffer], { type: 'video/mp4' }), ext: 'mp4' };
+  }
+
+  async function enhanceWithCanvas(height, fps){
+    if (typeof MediaRecorder === 'undefined' || !HTMLCanvasElement.prototype.captureStream)
+      throw new Error('This browser cannot record video. Please use the latest Chrome.');
+    var url = URL.createObjectURL(vidFile);
+    var v = document.createElement('video');
+    v.src = url; v.playsInline = true; v.preload = 'auto';
+    await new Promise(function(res, rej){
+      v.onloadedmetadata = res;
+      v.onerror = function(){ rej(new Error('This browser cannot play this video format')); };
+    });
+    var outH = Math.round(height / 2) * 2;
+    var outW = Math.round((v.videoWidth * outH / v.videoHeight) / 2) * 2;
+    var canvas = document.createElement('canvas');
+    canvas.width = outW; canvas.height = outH;
+    var ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+    var rate = fps === 'keep' ? 30 : +fps;
+    var stream = canvas.captureStream(rate);
+    var ac = null;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      ac = new AC();
+      var srcNode = ac.createMediaElementSource(v);
+      var dest = ac.createMediaStreamDestination();
+      srcNode.connect(dest);
+      dest.stream.getAudioTracks().forEach(function(t){ stream.addTrack(t); });
+      if (ac.state === 'suspended') await ac.resume();
+    } catch(e){ console.warn('No audio capture', e); }
+    var types = ['video/mp4;codecs=avc1.640028,mp4a.40.2', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm'];
+    var mime = types.filter(function(t){ return MediaRecorder.isTypeSupported(t); })[0] || '';
+    var bps = height >= 2160 ? 35e6 : height >= 1080 ? 14e6 : 7e6;
+    var rec = new MediaRecorder(stream, mime ? { mimeType: mime, videoBitsPerSecond: bps } : { videoBitsPerSecond: bps });
+    var chunks = [];
+    rec.ondataavailable = function(e){ if (e.data && e.data.size) chunks.push(e.data); };
+    var done = new Promise(function(res, rej){
+      rec.onstop = res;
+      rec.onerror = function(e){ rej(e.error || new Error('Recording failed')); };
+    });
+    var running = true;
+    function draw(){
+      if (!running) return;
+      ctx.filter = 'contrast(1.06) saturate(1.1) brightness(1.01)';
+      ctx.drawImage(v, 0, 0, outW, outH);
+      if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(draw); else requestAnimationFrame(draw);
+    }
+    var tick = setInterval(function(){ if (v.duration) $('vidProg').value = Math.min(99, Math.round(v.currentTime * 100 / v.duration)); }, 500);
+    v.onended = function(){ running = false; setTimeout(function(){ if (rec.state !== 'inactive') rec.stop(); }, 300); };
+    v.onerror = function(){ running = false; if (rec.state !== 'inactive') rec.stop(); };
+    rec.start(1000);
+    try { await v.play(); } catch(e){ clearInterval(tick); throw new Error('The browser blocked playback. Tap the button again.'); }
+    draw();
+    $('vidMsg').textContent = 'Enhancing in real time (same time as the video length). Keep this page open and the screen on...';
+    await done;
+    clearInterval(tick);
+    try { if (ac) ac.close(); } catch(e){}
+    URL.revokeObjectURL(url);
+    var type = (rec.mimeType || mime || 'video/webm').split(';')[0];
+    var blob = new Blob(chunks, { type: type });
+    if (!blob.size) throw new Error('No video was recorded');
+    return { blob: blob, ext: type.indexOf('mp4') !== -1 ? 'mp4' : 'webm' };
+  }
+
+  $('vidGo').addEventListener('click', async function(){
+    $('vidGo').disabled = true;
+    $('vidOut').classList.add('hide'); $('vidDl').classList.add('hide');
+    $('log').textContent = '';
+    $('vidProg').classList.remove('hide'); $('vidProg').value = 0;
+    $('vidMsg').className = 'note';
+    var height = +$('vidRes').value, fps = $('vidFps').value;
+    var res = null, note = '';
+    try {
+      $('vidMsg').textContent = 'Loading video engine (first time about 30 MB)...';
+      try {
+  
