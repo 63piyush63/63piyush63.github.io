@@ -864,4 +864,34 @@ window.__ok.common = 1;
     try {
       $('vidMsg').textContent = 'Loading video engine (first time about 30 MB)...';
       try {
+                  res = await enhanceWithFFmpeg(height, fps);
+      } catch (e){
+        console.warn('ffmpeg engine failed, switching to browser engine', e);
+        log('Main engine failed: ' + (e.message || e));
+        ffmpeg = null;
+        $('vidProg').value = 0;
+        $('vidMsg').textContent = 'Main engine is not available, switching to the built-in browser engine...';
+        note = ' (built-in browser engine used)';
+        res = await enhanceWithCanvas(height, fps);
+      }
+      var url = URL.createObjectURL(res.blob);
+      $('vidOut').src = url; $('vidOut').classList.remove('hide');
+      $('vidDl').href = url; $('vidDl').download = 'enhanced.' + res.ext; $('vidDl').classList.remove('hide');
+      $('vidProg').value = 100;
+      $('vidMsg').className = 'note ok';
+      $('vidMsg').textContent = 'Done!' + note;
+    } catch (e){
+      console.error(e);
+      $('vidMsg').className = 'note err';
+      $('vidMsg').textContent = 'Error: ' + (e.message || e) + ' Try a shorter video or 720p.';
+    }
+    $('vidGo').disabled = false;
+  });
+})();
+</script>
+
+<!-- ===== END MARKER (must be the last script) ===== -->
+<script>window.__ok.end = 1;</script>
+</body>
+</html>
   
