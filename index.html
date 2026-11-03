@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+u<!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
@@ -52,59 +52,52 @@
   :root{--bg:#031a4a;--card:rgba(6,34,88,.55);--fg:#eaf4ff;--mut:#9cc0e8;--acc:#2fd0c8;--ok:#2fd0c8;--err:#ff8080;--teal:#35e0d2}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#031a4a;color:var(--fg);
-    padding:16px;max-width:760px;margin-inline:auto;position:relative;min-height:100vh}
-
-  /* ===== Iceberg / Ocean background ===== */
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#031a4a;color:var(--fg);padding:16px;max-width:760px;margin-inline:auto;position:relative;min-height:100vh}
   body::before{content:"";position:fixed;inset:0;z-index:-2;
     background:linear-gradient(180deg,#6db4e6 0,#a9d4f0 5%,#2f7fc0 14%,#0b4a92 22%,#08306c 45%,#04204f 75%,#020f2e 100%)}
   body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35;
     background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 800' preserveAspectRatio='xMidYMin slice'><defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23ffffff'/><stop offset='.25' stop-color='%23dff3ff'/><stop offset='1' stop-color='%234aa8e8' stop-opacity='.2'/></linearGradient></defs><polygon points='150,95 185,45 205,70 225,30 255,100 270,110 330,110 300,250 280,420 245,640 205,790 170,640 120,420 95,250 70,110 130,110' fill='url(%23g)'/></svg>") center top/cover no-repeat}
-
-  h1{text-align:center;font-size:1.8rem;font-weight:900;letter-spacing:.04em;margin:22px 0 2px;color:#fff;text-shadow:0 2px 12px rgba(0,30,80,.6)}
+  h1{text-align:center;font-size:1.9rem;font-weight:900;letter-spacing:.04em;margin:18px 0 2px;color:#fff;text-shadow:0 2px 12px rgba(0,30,80,.6)}
   h1 span{color:var(--teal)}
-  .sub{text-align:center;letter-spacing:.25em;font-size:.72rem;color:#e6f4ff;margin:0 0 20px;text-shadow:0 1px 6px rgba(0,30,80,.7)}
-
-  .card{background:var(--card);border-radius:16px;padding:16px;margin-bottom:16px;border:1px solid rgba(160,210,255,.22);
+  .sub{text-align:center;letter-spacing:.25em;font-size:.75rem;color:#e6f4ff;margin:0 0 20px;text-shadow:0 1px 6px rgba(0,30,80,.7)}
+  .card{background:var(--card);border-radius:14px;padding:16px;margin-bottom:16px;border:1px solid rgba(160,210,255,.22);
     backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 30px rgba(0,10,40,.35)}
+  .tabs{display:flex;gap:8px;margin-bottom:16px}
+  .tabs button{flex:1;padding:12px;border:0;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:1rem;font-weight:700;cursor:pointer}
+  .tabs button.on{background:#fff;color:#031a4a;font-weight:800}
+  label{display:block;margin:12px 0 4px;color:var(--mut);font-size:.9rem}
+  select,input[type=file],#toolSearch{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(160,210,255,.25);background:rgba(2,15,46,.55);color:var(--fg);font-size:1rem}
+  #toolSearch{padding:12px;border-radius:10px;margin:10px 0}
+  button.go{width:100%;margin-top:14px;padding:14px;border:0;border-radius:999px;background:var(--ok);color:#032033;font-weight:700;font-size:1rem;cursor:pointer}
+  button.go:disabled{opacity:.5;cursor:not-allowed}
+  progress{width:100%;margin-top:12px;height:14px}
+  #log{font-size:.8rem;color:var(--mut);white-space:pre-wrap;margin-top:8px;max-height:140px;overflow:auto}
+  #log:empty{display:none}
+  img,video{max-width:100%;border-radius:10px;margin-top:12px}
+  a.dl{display:block;text-align:center;margin-top:12px;padding:12px;border-radius:999px;background:#fff;color:#031a4a;font-weight:700;text-decoration:none}
+  .hide{display:none!important}
+  .note{color:var(--mut);font-size:.85rem;margin-top:8px}
+  .err{color:var(--err)}
+  .ok{color:var(--teal)}
 
-  /* ===== Profile ===== */
-  .profile{text-align:center;padding:26px 16px;background:rgba(3,12,36,.78);border:1px solid rgba(53,224,210,.35);
+  /* Profile */
+  .profile{text-align:center;padding:24px 16px;background:rgba(3,12,36,.75);border:1px solid rgba(53,224,210,.35);
     box-shadow:0 0 30px rgba(53,224,210,.15),0 8px 30px rgba(0,10,40,.45)}
-  #pfAvatar{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto;display:block;background:#0a1f4d;
-    border:3px solid var(--teal);box-shadow:0 0 0 3px #b02aff,0 0 26px rgba(53,224,210,.7)}
-  .pfName{font-size:1.8rem;font-weight:800;margin-top:14px;color:#fff;text-shadow:0 0 14px rgba(53,224,210,.6)}
-  .pfAlias{color:var(--mut);font-size:.85rem;font-family:ui-monospace,monospace;margin-top:2px}
-  .pfRole{margin-top:8px;font-size:.76rem;letter-spacing:.16em;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace}
+  #pfAvatar{width:110px;height:110px;border-radius:50%;object-fit:cover;margin:0 auto;display:block;background:#0a1f4d;
+    border:3px solid var(--teal);box-shadow:0 0 0 3px #b02aff,0 0 24px rgba(53,224,210,.7)}
+  .pfName{font-size:1.7rem;font-weight:800;margin-top:14px;color:#fff;text-shadow:0 0 14px rgba(53,224,210,.6)}
+  .pfRole{margin-top:6px;font-size:.78rem;letter-spacing:.18em;font-weight:700;color:var(--teal);font-family:ui-monospace,monospace}
   .pfBio{margin:12px 0 0;color:#cfe3f8;font-size:.92rem;line-height:1.55}
   .pfStats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
   .pfStats span{background:rgba(53,224,210,.1);border:1px solid rgba(53,224,210,.35);border-radius:999px;padding:5px 12px;font-size:.8rem;color:#bff6f1}
   .pfLinks{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
-  .pfLinks a{padding:9px 16px;border-radius:999px;background:#07163a;border:1px solid rgba(160,210,255,.35);
-    color:#fff;text-decoration:none;font-size:.85rem;font-family:ui-monospace,monospace}
+  .pfLinks a{padding:8px 16px;border-radius:999px;background:#07163a;border:1px solid rgba(160,210,255,.35);color:#fff;text-decoration:none;font-size:.85rem;font-family:ui-monospace,monospace}
   .pfLinks a:active{background:#0e2a66}
 
-  /* ===== Tabs and forms ===== */
-  .tabs{display:flex;gap:8px;margin-bottom:16px}
-  .tabs button{flex:1;padding:12px;border:0;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-size:1rem;font-weight:700}
-  .tabs button.on{background:#fff;color:#031a4a;font-weight:800}
-  label{display:block;margin:12px 0 4px;color:var(--mut);font-size:.9rem}
-  select,input[type=file],#toolSearch{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(160,210,255,.25);background:rgba(2,15,46,.55);color:var(--fg)}
-  #toolSearch{padding:12px;border-radius:10px;margin:10px 0;font-size:1rem}
-  button.go{width:100%;margin-top:14px;padding:14px;border:0;border-radius:999px;background:#2fd0c8;color:#032033;font-weight:800;font-size:1rem}
-  button.go:disabled{opacity:.5}
-  progress{width:100%;margin-top:12px;height:14px}
-  #log{font-size:.8rem;color:var(--mut);white-space:pre-wrap;margin-top:8px;max-height:160px;overflow:auto}
-  .card img.res,video{max-width:100%;border-radius:10px;margin-top:12px}
-  a.dl{display:block;text-align:center;margin-top:12px;padding:12px;border-radius:999px;background:#fff;color:#031a4a;font-weight:700;text-decoration:none}
-  .hide{display:none}
-  .note{color:var(--mut);font-size:.85rem;margin-top:8px}
-  .err{color:var(--err)}
-
-  /* ===== Directory (contact-list style) ===== */
-  #tools h2{font-size:1.15rem;margin:0 0 4px}
+  /* Directory */
+  #tools h2,#rating h2{font-size:1.15rem;margin:0 0 4px}
   .tl{max-height:70vh;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;overscroll-behavior:contain}
-  .tl h3{position:sticky;top:0;margin:0;padding:8px 4px;background:#072a63;color:var(--teal);letter-spacing:.12em;font-size:.95rem;z-index:1}
+  .tl h3{position:sticky;top:0;margin:0;padding:8px 4px;background:#072a63;color:var(--teal);font-size:.95rem;letter-spacing:.12em;z-index:1}
   .row{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px solid rgba(160,210,255,.15);text-decoration:none;color:var(--fg)}
   .row:active{background:rgba(255,255,255,.1)}
   .row .n{width:34px;text-align:right;color:var(--mut);font-size:.85rem;flex:none}
@@ -114,29 +107,39 @@
   .row .t small{color:var(--mut);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .row .go2{color:var(--teal);font-size:1.2rem}
   #toTop{display:block;text-align:center;margin-top:10px;color:var(--teal);text-decoration:none}
-  footer{text-align:center;color:var(--mut);font-size:.8rem;padding:10px 0 24px}
+
+  /* Rating */
+  .stars{display:flex;justify-content:center;gap:6px;margin:14px 0 6px}
+  .stars button{background:none;border:0;font-size:2.4rem;line-height:1;color:rgba(255,255,255,.3);cursor:pointer;padding:2px 4px;transition:transform .12s,color .12s}
+  .stars button.on{color:#ffd54a;text-shadow:0 0 12px rgba(255,213,74,.55)}
+  .stars button:active{transform:scale(1.25)}
+  .avg{text-align:center;font-size:1.05rem}
+  .avg b{font-size:1.9rem;color:#ffd54a}
+  .bars{margin-top:12px}
+  .bar{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--mut);margin:4px 0}
+  .bar i{flex:1;height:8px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden;display:block}
+  .bar i s{display:block;height:100%;background:#ffd54a;width:0;transition:width .4s}
+  .bar span{width:40px;text-align:right}
+  footer{text-align:center;color:var(--mut);font-size:.8rem;margin:8px 0 24px}
 </style>
 </head>
 <body>
 
-<!-- ================= PROFILE (TOP) ================= -->
+<!-- PROFILE -->
 <section class="profile card" id="profile">
-  <img id="pfAvatar" alt="Preyar Piyush" src="https://63piyush63.github.com/63piyush63.png?size=240">
+  <img id="pfAvatar" alt="Preyar Piyush profile photo">
   <div class="pfName">Preyar Piyush</div>
-  <div class="pfAlias">@63piyush63</div>
-  <div class="pfRole">[ ETHICAL HACKER &amp; CYBER SECURITY ANALYST ]</div>
+  <div class="pfRole">[ ETHICAL HACKER & CYBER SECURITY ]</div>
   <p class="pfBio">Cyber Security Expert from India. Specializing in secure architectures, penetration testing, automated systems, and advanced AI directory engines.</p>
-  <div class="pfStats" id="pfStats">
-    <span>&#128205; Lucknow, Uttar Pradesh, India</span>
-    <span>&#128188; GitHub / Freelance</span>
-  </div>
+  <div class="pfStats" id="pfStats"></div>
   <div class="pfLinks">
-    <a href="https://github.com/63piyush63" target="_blank" rel="noopener noreferrer">&#128187; GitHub</a>
-    <a href="https://gitlab.com/63piyush63" target="_blank" rel="noopener noreferrer">&#129418; GitLab</a>
-    <a href="https://www.linkedin.com/in/63piyush63" target="_blank" rel="noopener noreferrer">&#128279; LinkedIn</a>
-    <a href="https://tryhackme.com/p/63piyush63" target="_blank" rel="noopener noreferrer">&#128128; TryHackMe</a>
-    <a href="https://hackthebox.com/63piyush63" target="_blank" rel="noopener noreferrer">&#128230; HackTheBox</a>
-    <a href="https://www.wikidata.org/wiki/User:63piyush63" target="_blank" rel="noopener noreferrer">&#127760; Wikidata</a>
+    <a id="lnGithub" href="https://63piyush63.github.com/63piyush63" target="_blank" rel="noopener noreferrer">&#128187; GitHub</a>
+    <a id="lnLinkedin" href="https://www.linkedin.com/in/63piyush63" target="_blank" rel="noopener noreferrer">&#128279; LinkedIn</a>
+    <a id="lnTHM" href="https://tryhackme.com/p/63piyush63" target="_blank" rel="noopener noreferrer">&#128128; TryHackMe</a>
+    <a id="lnGitlab" href="https://gitlab.com/63piyush63" target="_blank" rel="noopener noreferrer">&#129418; GitLab</a>
+    <a id="lnHTB" href="https://hackthebox.com/63piyush63" target="_blank" rel="noopener noreferrer">&#128230; HackTheBox</a>
+    <a id="lnGdev" href="https://me.developers.google.com/u/109809989349859704969" target="_blank" rel="noopener noreferrer">&#128310; Google Dev</a>
+    <a id="lnWiki" href="https://www.wikidata.org/wiki/Q141662462" target="_blank" rel="noopener noreferrer">&#127760; Wikidata</a>
   </div>
 </section>
 
@@ -148,98 +151,121 @@
   <button id="tVid">Video</button>
 </div>
 
-<!-- ================= PHOTO ================= -->
+<!-- PHOTO -->
 <section id="pImg" class="card">
-  <label>Photo chunein</label>
+  <label for="imgIn">Choose a photo</label>
   <input type="file" id="imgIn" accept="image/*">
-  <label>Method</label>
+  <label for="imgMode">Method</label>
   <select id="imgMode">
-    <option value="ai">AI Upscale (sabse best, thoda slow)</option>
-    <option value="smooth">Smooth Fast (Lanczos + sharpen)</option>
+    <option value="smooth">Smooth Fast (works everywhere, recommended)</option>
+    <option value="ai">AI Upscale (best detail, slower, needs internet)</option>
   </select>
-  <label>Scale</label>
+  <label for="imgScale">Scale</label>
   <select id="imgScale">
     <option value="2">2x</option>
+    <option value="3">3x</option>
     <option value="4">4x</option>
   </select>
-  <button class="go" id="imgGo" disabled>Quality Badhao</button>
+  <button class="go" id="imgGo" disabled>Enhance Photo</button>
   <progress id="imgProg" class="hide" max="100" value="0"></progress>
   <div id="imgMsg" class="note"></div>
-  <img id="imgOut" class="res hide" alt="Result">
-  <a id="imgDl" class="dl hide" download="upscaled.png">Download</a>
-  <div class="note">AI mode chal na paaye ya photo bahut badi ho, toh site apne aap Smooth mode use kar leti hai.</div>
+  <img id="imgOut" class="hide" alt="Enhanced result">
+  <a id="imgDl" class="dl hide" download="enhanced.png">Download Photo</a>
+  <div class="note">AI mode works on photos up to about 1500 px on the long side. Larger photos automatically use Smooth Fast. If AI cannot load, Smooth Fast is used automatically.</div>
 </section>
 
-<!-- ================= VIDEO ================= -->
+<!-- VIDEO -->
 <section id="pVid" class="card hide">
-  <label>Video chunein (3gp, mp4, mov, mkv, webm... max 5 minute)</label>
+  <label for="vidIn">Choose a video (3gp, mp4, mov, mkv, webm... up to 5 minutes)</label>
   <input type="file" id="vidIn" accept="video/*,.3gp">
-  <label>Output quality</label>
+  <label for="vidRes">Output quality</label>
   <select id="vidRes">
-    <option value="1280:720">720p HD</option>
-    <option value="1920:1080" selected>1080p Full HD</option>
-    <option value="3840:2160">4K (bahut slow)</option>
+    <option value="720">720p HD</option>
+    <option value="1080" selected>1080p Full HD</option>
+    <option value="2160">4K (very slow)</option>
   </select>
-  <label>Smoothness (FPS)</label>
+  <label for="vidFps">Smoothness (FPS)</label>
   <select id="vidFps">
     <option value="keep">Original FPS</option>
     <option value="30">30 FPS</option>
-    <option value="60">60 FPS (motion smooth, slow)</option>
+    <option value="60">60 FPS (smoother motion, much slower)</option>
   </select>
-  <button class="go" id="vidGo" disabled>Video Upgrade Karo</button>
+  <button class="go" id="vidGo" disabled>Enhance Video</button>
   <progress id="vidProg" class="hide" max="100" value="0"></progress>
   <div id="vidMsg" class="note"></div>
   <div id="log"></div>
   <video id="vidOut" class="hide" controls playsinline></video>
-  <a id="vidDl" class="dl hide" download="upscaled.mp4">Download MP4</a>
-  <div class="note">Yeh browser mein chalta hai, isliye phone par 1-3 minute ki video best hai. Processing mein kai minute lag sakte hain, page band na karein. 8K aur 3 ghante ki video ke liye GPU server chahiye.</div>
+  <a id="vidDl" class="dl hide" download="enhanced.mp4">Download Video</a>
+  <div class="note">Everything runs inside your browser, so nothing is uploaded. Keep this page open and the screen on while it works. Best results on videos of 1 to 3 minutes on a phone. 8K and 3-hour videos need a GPU server and are not possible here.</div>
 </section>
 
-<!-- ================= DIRECTORY ================= -->
+<!-- TOOLS LIST -->
 <section id="tools" class="card">
-  <h2>Cyber Tools aur Learning Directory</h2>
-  <div class="note">Sab official links hain. Sirf legal aur authorized testing ke liye use karein.</div>
-  <input id="toolSearch" type="search" placeholder="Tool ya platform ka naam khojein...">
+  <h2>Cyber Tools &amp; Learning Directory</h2>
+  <div class="note">Official links. Use only for legal and authorized testing.</div>
+  <input id="toolSearch" type="search" placeholder="Search a tool or platform...">
   <div class="tl" id="toolList"></div>
-  <a id="toTop" href="#profile">Upar jayein</a>
+  <a id="toTop" href="#profile">Back to top</a>
 </section>
 
-<footer>&copy; Preyar Piyush (63piyush63)</footer>
+<!-- RATING -->
+<section id="rating" class="card">
+  <h2>Rate this website</h2>
+  <div class="note" style="text-align:center">Tap a star to give your rating. You can change it later.</div>
+  <div class="stars" id="stars" role="radiogroup" aria-label="Rate this website"></div>
+  <div class="avg" id="avg">Loading ratings...</div>
+  <div class="bars" id="bars"></div>
+  <div class="note" id="rateMsg" style="text-align:center"></div>
+</section>
 
-<!-- ============ Profile: photo fallback + GitHub stats ============ -->
+<footer>&copy; Preyar Piyush &bull; Built with love from India</footer>
+
 <script>
+/* ============ PROFILE ============ */
 (function(){
-  const USER = '63piyush63';
-  const av = document.getElementById('pfAvatar');
-  let tried = 0;
+  var CONFIG = {
+    github:    '63piyush63',
+    linkedin:  'https://www.linkedin.com/in/63piyush63',
+    tryhackme: 'https://tryhackme.com/p/63piyush63',
+    gitlab:    'https://gitlab.com/63piyush63'
+  };
+  var user = CONFIG.github;
+  var av = document.getElementById('pfAvatar');
+  av.src = 'https://github.com/' + encodeURIComponent(user) + '.png?size=240';
+  var avTry = 0;
   av.onerror = function(){
-    if (tried++ === 0) this.src = 'https://avatars.githubusercontent.com/' + USER + '?s=240';
+    avTry++;
+    if (avTry === 1) this.src = 'https://avatars.githubusercontent.com/' + encodeURIComponent(user) + '?s=240';
     else this.style.display = 'none';
   };
-  const box = document.getElementById('pfStats');
-  function chip(t){ const s = document.createElement('span'); s.textContent = t; box.appendChild(s); }
-  fetch('https://api.github.com/users/' + USER)
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(d => {
-      chip('\uD83D\uDCE6 ' + d.public_repos + ' Repos');
-      chip('\uD83D\uDC65 ' + d.followers + ' Followers');
-      chip('\u27A1\uFE0F ' + d.following + ' Following');
-      if (d.created_at) chip('\uD83D\uDCC5 Since ' + new Date(d.created_at).getFullYear());
-    }).catch(() => {});
-})();
-</script>
+  document.getElementById('lnGithub').href   = 'https://github.com/' + encodeURIComponent(user);
+  document.getElementById('lnLinkedin').href = CONFIG.linkedin;
+  document.getElementById('lnTHM').href      = CONFIG.tryhackme;
+  document.getElementById('lnGitlab').href   = CONFIG.gitlab;
 
-<!-- ============ Directory list ============ -->
-<script>
+  var box = document.getElementById('pfStats');
+  function chip(t){ var s = document.createElement('span'); s.textContent = t; box.appendChild(s); }
+  chip('📍 Lucknow, Uttar Pradesh, India');
+  fetch('https://api.github.com/users/' + encodeURIComponent(user))
+    .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
+    .then(function(d){
+      chip('📦 ' + d.public_repos + ' Repos');
+      chip('👥 ' + d.followers + ' Followers');
+      chip('➡️ ' + d.following + ' Following');
+      if (d.created_at) chip('📅 Since ' + new Date(d.created_at).getFullYear());
+    }).catch(function(){});
+})();
+
+/* ============ DIRECTORY ============ */
 (function(){
-  const software = [
+  var software = [
     ["Kali Linux","https://www.kali.org"],["Nmap","https://nmap.org"],["Wireshark","https://www.wireshark.org"],
     ["Burp Suite","https://portswigger.net/burp"],["OWASP ZAP","https://www.zaproxy.org"],["Metasploit","https://www.metasploit.com"],
     ["Nikto","https://github.com/sullo/nikto"],["Nessus","https://www.tenable.com/products/nessus"],["OpenVAS","https://www.openvas.org"],
     ["SQLMap","https://sqlmap.org"],["Hydra","https://github.com/vanhauser-thc/thc-hydra"],["John the Ripper","https://www.openwall.com/john/"],
     ["Hashcat","https://hashcat.net"],["Aircrack-ng","https://www.aircrack-ng.org"],["Reaver","https://github.com/t6x/reaver-wps-fork-t6x"],
     ["Wifite","https://github.com/derv82/wifite2"],["CrackMapExec","https://github.com/byt3bl33d3r/CrackMapExec"],
-    ["Responder","https://github.com/lgandx/Responder"],["Bettercap","https://www.bettercap.org"],["Netcat","http://netcat.sourceforge.net"],
+    ["Responder","https://github.com/lgandx/Responder"],["Bettercap","https://www.bettercap.org"],["Netcat (Ncat)","https://nmap.org/ncat/"],
     ["BeEF","https://beefproject.com"],["SET Toolkit","https://github.com/trustedsec/social-engineer-toolkit"],
     ["Social-Engineer Toolkit","https://www.trustedsec.com/resources/tools/the-social-engineer-toolkit-set"],
     ["Maltego","https://www.maltego.com"],["TheHarvester","https://github.com/laramies/theHarvester"],["Shodan","https://www.shodan.io"],
@@ -248,8 +274,8 @@
     ["FFUF","https://github.com/ffuf/ffuf"],["Sublist3r","https://github.com/aboul3la/Sublist3r"],["Amass","https://github.com/owasp-amass/amass"],
     ["Masscan","https://github.com/robertdavidgraham/masscan"],["Enum4linux","https://github.com/CiscoCXSecurity/enum4linux"],
     ["Impacket","https://github.com/fortra/impacket"],["DumpsterDiver","https://github.com/securing/DumpsterDiver"],
-    ["OSINT Tools","https://osintframework.com"],["Tor","https://www.torproject.org"],["GitHub Dorks","https://github.com"],
-    ["Google Dorking","https://www.exploit-db.com/google-hacking-database"],["VirusTotal","https://www.virustotal.com"],
+    ["OSINT Framework","https://osintframework.com"],["Tor","https://www.torproject.org"],["GitHub Dorks","https://github.com"],
+    ["Google Dorking (GHDB)","https://www.exploit-db.com/google-hacking-database"],["VirusTotal","https://www.virustotal.com"],
     ["Have I Been Pwned","https://haveibeenpwned.com"],["Censys","https://censys.io"],["Nuclei","https://github.com/projectdiscovery/nuclei"],
     ["ParamSpider","https://github.com/devanshbatham/ParamSpider"],["AssetFinder","https://github.com/tomnomnom/assetfinder"],
     ["WhatWeb","https://www.morningstarsecurity.com/research/whatweb"],["CMSMap","https://github.com/Dionach/CMSmap"],
@@ -258,7 +284,7 @@
     ["Autopsy","https://www.autopsy.com"],["Volatility","https://www.volatilityfoundation.org"],["Binwalk","https://github.com/ReFirmLabs/binwalk"],
     ["ExifTool","https://exiftool.org"],["Steghide","https://steghide.sourceforge.net"]
   ];
-  const hardware = [
+  var hardware = [
     ["Raspberry Pi","https://www.raspberrypi.com"],["Arduino","https://www.arduino.cc"],["ESP32","https://www.espressif.com/en/products/socs/esp32"],
     ["ESP8266","https://www.espressif.com/en/products/socs/esp8266"],["M5StickC Plus2","https://shop.m5stack.com"],
     ["Flipper Zero","https://flipperzero.one"],["Digispark","https://digistump.com"],
@@ -268,13 +294,13 @@
     ["HackRF One","https://greatscottgadgets.com/hackrf/"],["Bus Pirate","https://buspirate.com"],["NRF24L01","https://www.nordicsemi.com"],
     ["RFID Reader","https://www.elechouse.com"]
   ];
-  const bounty = [
+  var bounty = [
     ["HackerOne","https://www.hackerone.com"],["Bugcrowd","https://www.bugcrowd.com"],["Intigriti","https://www.intigriti.com"],
     ["Open Bug Bounty","https://www.openbugbounty.org"],["YesWeHack","https://www.yeswehack.com"],["Synack","https://www.synack.com"],
     ["HackenProof","https://hackenproof.com"],["Cobalt","https://www.cobalt.io"],["Google Bug Hunters (VRP)","https://bughunters.google.com"],
     ["Standoff 365 Bug Bounty","https://bugbounty.standoff365.com"]
   ];
-  const labs = [
+  var labs = [
     ["TryHackMe","https://tryhackme.com"],["Hack The Box","https://www.hackthebox.com"],
     ["PortSwigger Web Security Academy","https://portswigger.net/web-security"],["Hacker101","https://www.hacker101.com"],
     ["OverTheWire","https://overthewire.org"],["PicoCTF","https://picoctf.org"],["VulnHub","https://www.vulnhub.com"],
@@ -284,32 +310,27 @@
     ["OWASP WebGoat","https://github.com/WebGoat/WebGoat"],["DVWA","https://github.com/digininja/DVWA"],
     ["Bugcrowd University","https://www.bugcrowd.com/hackers/bugcrowd-university/"]
   ];
-  const courses = [
+  var courses = [
     ["Offensive Security (OSCP)","https://www.offsec.com"],["EC-Council (CEH)","https://www.eccouncil.org"],
     ["SANS Institute","https://www.sans.org"],["CompTIA","https://www.comptia.org"],["INE / eLearnSecurity","https://ine.com"],
     ["TCM Security","https://tcm-sec.com"],["Cybrary","https://www.cybrary.it"],["Google Cybersecurity Certificate","https://grow.google/certificates/cybersecurity/"],
     ["Coursera","https://www.coursera.org"],["Udemy","https://www.udemy.com"],["edX","https://www.edx.org"],
     ["Cisco Networking Academy","https://www.netacad.com"],["ISC2","https://www.isc2.org"]
   ];
-
   function logo(url){
-    const u = new URL(url);
+    var u = new URL(url);
     if (u.hostname === 'github.com'){
-      const o = u.pathname.split('/')[1];
+      var o = u.pathname.split('/')[1];
       if (o) return 'https://github.com/' + o + '.png?size=96';
     }
     return 'https://www.google.com/s2/favicons?domain=' + u.hostname + '&sz=128';
   }
-  const list = document.getElementById('toolList');
-  let n = 0;
+  var list = document.getElementById('toolList');
+  var n = 0;
   function section(title, arr){
-    const h = document.createElement('h3'); h.textContent = title; list.appendChild(h);
-    arr.forEach(([name, url]) => {
+    var h = document.createElement('h3'); h.textContent = title; list.appendChild(h);
+    arr.forEach(function(it){
+      var name = it[0], url = it[1];
       n++;
-      const a = document.createElement('a');
-      a.className = 'row'; a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
-      a.dataset.name = name.toLowerCase();
-      a.innerHTML = '<span class="n">' + n + '.</span><img loading="lazy" alt="" src="' + logo(url) + '"><span class="t"><b></b><small></small></span><span class="go2">&rsaquo;</span>';
-      a.querySelector('b').textContent = name;
-      a.querySelector('small').textContent 
-
+      var a = document.createElement('a');
+      a.className = 'row'; a.href 
