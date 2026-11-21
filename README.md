@@ -17,3 +17,6 @@ This is the official portfolio website of Preyar Piyush.
 - [HackTheBox (63piyush63)](https://app.hackthebox.com/users/4208373)
 - [Google Developer Profile](https://me.developers.google.com/u/109809989349859704969)
 - [Instagram (63piyush63)](https://www.instagram.com/63piyush63)
+- [Threads (63piyush63)](https://www.threads.com/@63piyush63)
+- [Stack Overflow](https://stackoverflow.com/users/33330524)
+- [Reddit (63piyush63)](https://www.reddit.com/user/63piyush63)
